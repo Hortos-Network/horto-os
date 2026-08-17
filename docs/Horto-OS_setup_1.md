@@ -1,0 +1,95 @@
+---
+type: guide
+title: Horto-OS setup 1
+aliases:
+  - setup1
+description: "First part of the Horto-OS setup sequence: prepare the board, copy the system, and clone the repository."
+source_refs:
+  - docs.armbian.com
+  - https://github.com/Hortos-Network/horto-os
+tags:
+  - software
+  - Horto-OS
+timestamp: 2026-08-14T18:30:00
+created: 2026-07-25T15:52:35
+---
+
+# Horto-OS setup 1
+
+**Summary**: Prepare the RK3588 board, install the base OS, and clone the Horto-OS repository into `/srv/horto-os`.
+
+---
+
+## 1. Flash and boot Armbian
+
+Before you start, make sure you have:
+
+- a suitable power supply for the board,
+- a reliable SD card,
+- a way to flash the card from another computer.
+
+We recommend using Armbian Imager.
+
+Reference:
+[docs.armbian.com/User-Guide_Getting-Started](https://docs.armbian.com/User-Guide_Getting-Started/)
+## 2. Install git manually
+
+Before using the Horto-OS setup scripts, install `git` manually.
+Without `git` you cannot clone the repository.
+
+```bash
+sudo apt update
+sudo apt install -y git
+```
+
+## 3. Clone the repository into `/srv`
+
+```bash
+cd /srv
+git clone https://github.com/Hortos-Network/horto-os.git
+```
+
+The resulting layout should look like this:
+
+```text
+/srv/
+├── horto-os/         <-- Git repository
+│   ├── config/       <-- Managed configuration templates and static files
+│   ├── docker_source/ <-- Docker stacks and app data sources
+│   ├── docs/         <-- Documentation
+│   └── scripts/      <-- Setup and deployment scripts
+├── active_setup/     <-- Machine-specific active configuration (created later)
+└── backup/           <-- Local safety backups (created later)
+```
+
+
+## 4. Copy the system from SD card to eMMC
+
+After first boot you can move the installation to the internal eMMC.
+
+> [!NOTE]
+> You can do this step later in the process too. If your SD card is large enough (min. 32GB) you can do the full install on the SD card, but we don't reccomend running Horto-OS on SD cards.
+
+```bash
+nand-sata-install
+```
+
+
+![[Screenshot_Armbian_nand-sata-install.avif]]
+
+**Select Boot from eMMC - system on eMMC** You will be asked to erase and then format the eMMC drive (choose ext4).
+
+If you get storage-related errors, check the visible block devices:
+
+```bash
+lsblk
+```
+
+Then reboot the device and remove teh SD card before it boots again. Now it should automatically boot from the eMMC.
+
+## 5. Choose the next setup path
+
+After the repository exists in `/srv/horto-os`, continue with either:
+
+- [Horto-OS setup 2 – manual](Horto-OS_setup_2_manual.md)
+- [Horto-OS setup 2 – scripted](Horto-OS_setup_2_scripted.md)

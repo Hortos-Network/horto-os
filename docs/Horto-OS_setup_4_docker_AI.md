@@ -1,0 +1,221 @@
+---
+type: guide
+title: Horto-OS setup 4 – Docker AI
+aliases:
+  - Docker AI
+  - AI apps
+description: Guide for AI-related Docker services used in Horto-OS.
+source_refs:
+  - https://sensecraft.seeed.cc/ai-lab/en/tutorials/rk/application/cv
+  - docker_source/
+tags:
+  - SLM
+  - RK3588
+  - Docker
+  - AI
+timestamp: 2026-08-15T09:30:00
+created: 2026-07-26T18:32:03
+---
+
+# Horto-OS setup 4 – Docker AI
+
+**Summary**: This guide covers the AI-related Docker services for Horto-OS, including LLM, STT, TTS, and vision-related stacks.
+
+---
+
+## Overview
+
+Horto-OS can run several AI-related services on RK3588 boards.
+These are normally managed as Docker stacks, typically through Dockge.
+
+The exact services you can run depend strongly on available RAM, storage, and NPU support.
+
+> [!NOTE]
+> On RK3588 systems with 8 GB RAM, the realistic model selection is limited. The smaller DeepSeek/Qwen-class models are the practical starting point.
+
+## Base idea
+
+Use Dockge to manage these services from stack directories under:
+
+```text
+/srv/docker/stacks/
+```
+
+The Horto-OS repository provides source material and examples under:
+
+```text
+/srv/horto-os/docker_source/
+```
+
+## Example LLM stack
+
+Example stack snippet for a local LLM container:
+
+```yaml
+services:
+  deepseek-npu:
+    image: ghcr.io/seeed-projects/rk3588-qwen3:1.7b-w8a8-latest
+    container_name: deepseek-npu
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/dma_heap:/dev/dma_heap
+      - /dev/rknpu:/dev/rknpu
+      - /dev/mali0:/dev/mali0
+    volumes:
+      - /dev:/dev
+```
+
+## Open-WebUI
+
+Optional web UI stack:
+
+```yaml
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: "no"
+    ports:
+      - "3000:8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://192.168.10.1:8001/v1
+      - OLLAMA_BASE_URL=http://127.0.0.1:11434
+      - OLLAMA_ENABLED=false
+      - ENABLE_OLLAMA=false
+    volumes:
+      - open-webui:/app/backend/data
+
+volumes:
+  open-webui:
+```
+
+## Whisper (STT)
+
+```yaml
+services:
+  whisper-cv:
+    image: ghcr.io/seeed-projects/recomputer-rk-cv/rk3588-whisper:latest
+    container_name: whisper-cv
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/dma_heap:/dev/dma_heap
+      - /dev/rknpu:/dev/rknpu
+      - /dev/mali0:/dev/mali0
+    environment:
+      - RKNN_LOG_LEVEL=0
+    volumes:
+      - /proc/device-tree/compatible:/proc/device-tree/compatible:ro
+```
+
+## YOLO (vision)
+
+```yaml
+services:
+  yolo-detection:
+    image: ghcr.io/seeed-projects/recomputer-rk-cv/rk3588-yolo11:latest
+    container_name: rk3588-yolo11n
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    devices:
+      - /dev/video1:/dev/video1
+      - /dev/dri/renderD129:/dev/dri/renderD129
+      - /dev/dri:/dev/dri
+      - /dev/dma_heap:/dev/dma_heap
+      - /dev/rknpu:/dev/rknpu
+      - /dev/mali0:/dev/mali0
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RKNN_LOG_LEVEL=0
+    volumes:
+      - /proc/device-tree/compatible:/proc/device-tree/compatible:ro
+    command: python web_detection.py --model_path model/yolo11n.rknn --video video/test.mp4
+```
+
+## rkvoice-stream (TTS)
+
+For `rkvoice-stream`, the usual path is to create a Dockge stack and then copy the required build context into that stack directory.
+
+Typical stack directory:
+
+```text
+/srv/docker/stacks/rkvoice-stream/
+```
+
+Typical compose definition:
+
+```yaml
+services:
+  rkvoice-stream:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: rkvoice-stream
+    container_name: rkvoice-stream
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/dma_heap:/dev/dma_heap
+      - /dev/rknpu:/dev/rknpu
+      - /dev/mali0:/dev/mali0
+```
+
+Then copy the required source folders from the repository or the upstream source checkout into the stack directory.
+
+## Testing
+
+Example local API test for the LLM endpoint:
+
+```bash
+curl http://192.168.10.1:8001/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "DeepSeek-R1-Qwen-1.7B_w8a8_RK3588.rkllm",
+    "messages": [{"role": "user", "content": "Do you know about Holochain, p2p app framework ?"}]
+  }'
+```
+
+## Homepage integration
+
+Once the containers run with stable `container_name` values, Homepage can show them through Docker integration.
+
+Typical entries in `services.yaml` use:
+
+```yaml
+server: my-docker
+container: deepseek-npu
+```
+
+or similar for:
+
+- `open-webui`
+- `cloudflare-tunnel`
+- `rkvoice-stream`
+- `whisper-cv`
+- `rk3588-yolo11n`
+
+## Remote access
+
+Cloudflared can expose selected services remotely.
+This is especially useful for:
+
+- Open-WebUI
+- EVCC
+- Dockge
+- Homepage
+- Cockpit
+
+Remote links can be templated with `MY_URL` in the Homepage config.
+
+## Continue
+
+- [Homepage (Dashboard)](Homepage%20%28Dashboard%29.md)
+- [What is Horto OS?](What%20is%20Horto%20OS%3F.md)

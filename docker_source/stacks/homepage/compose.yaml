@@ -1,0 +1,15 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=*
+    ports:
+      - 3021:3000
+    env_file: .env
+    volumes:
+      - /srv/docker/app_data/homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Optional: allows Homepage to auto-discover your other containers
+      - /srv/horto-os/_assets:/app/public/images # for serving images from /srv/horto-os/_assets to Homepage
+networks: {}

@@ -1,0 +1,54 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Group Hortos Apps:
+    - EVCC (HEMS):
+        icon: evcc.png
+        href: https://evcc-hos01.{{MY_URL}}
+        description: Home Energy Manager
+        widget:
+           type: evcc
+           url: http://192.168.10.1:7070
+
+    -  Open-WebUI:
+        href: https://owebui-hos01.{{MY_URL}}
+        description: DeepSeek 1.7b param LLM
+
+- Group Hortos Services:
+    - Cockpit:
+        icon: cockpit.png
+        href: https://cockpit-hos01.{{MY_URL}}
+        description: Server Management
+
+    - Dockge:
+        icon: dockge.png
+        href: https://dockge-hos01.{{MY_URL}}
+        description: Docker Service Management
+
+- Group Hortos (AI) Services:
+    - Cloudflared:
+        icon: cloudflared.png
+        description: Tunnel to the Hortos OS services
+        server: my-docker
+        container: cloudflare-tunnel
+    - Deepseek 1.7b param LLM:
+        icon: deepseek.png
+        description: Accessible through OpenWebUI
+        server: my-docker
+        container: deepseek-npu
+    - rkvoice-stream (TTS):
+        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/laudspeaker.webp
+        description: Rockchip NPU speech engine
+        server: my-docker
+        container: rkvoice-stream
+    - Whisper (STT):
+        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/laudspeaker.webp
+        description: Speech recognition model
+        server: my-docker
+        container: whisper-cv
+    - YOLO RK3588-yolo11n:
+        icon: https://cdn.simpleicons.org/yolo/111F68
+        description: Object Detection for RK3588
+        server: my-docker
+        container: rk3588-yolo11n

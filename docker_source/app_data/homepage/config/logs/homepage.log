@@ -1,0 +1,648 @@
+[2026-08-04T08:02:17.330Z] info: kubernetes.yaml was copied to the config folder
+[2026-08-04T08:05:14.318Z] info: widgets.yaml was copied to the config folder
+[2026-08-04T08:05:14.326Z] info: docker.yaml was copied to the config folder
+[2026-08-04T08:05:14.327Z] info: services.yaml was copied to the config folder
+[2026-08-04T08:05:14.328Z] info: bookmarks.yaml was copied to the config folder
+[2026-08-04T08:05:14.329Z] info: proxmox.yaml was copied to the config folder
+[2026-08-04T08:05:14.342Z] info: custom.css was copied to the config folder
+[2026-08-04T08:05:14.343Z] info: custom.js was copied to the config folder
+[2026-08-04T08:08:50.054Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'end of the stream or a document separator is expected',
+    mark: {
+      name: null,
+      buffer: '---\n' +
+        '# For configuration options and examples, please see:\n' +
+        '# https://gethomepage.dev/configs/settings/\n' +
+        '- Group Hortos Apps:\n' +
+        '    - EVCC (HEMS):\n' +
+        '        href: http://localhost:7070\n' +
+        '\n' +
+        '- Group Hortos Services:\n' +
+        '    - Service B:\n' +
+        '        href: http://localhost/\n' +
+        '\n' +
+        'providers:\n' +
+        '  openweathermap: openweathermapapikey\n' +
+        '  weatherapi: weatherapiapikey\n',
+      position: 254,
+      line: 11,
+      column: 0,
+      snippet: '  9 |     - Service B:\n' +
+        ' 10 |         href: http://localhost/\n' +
+        ' 11 | \n' +
+        ' 12 | providers:\n' +
+        '------^\n' +
+        ' 13 |   openweathermap: openweatherma ...\n' +
+        ' 14 |   weatherapi: weatherapiapikey'
+    },
+    message: 'end of the stream or a document separator is expected (12:1)\n' +
+      '\n' +
+      '  9 |     - Service B:\n' +
+      ' 10 |         href: http://localhost/\n' +
+      ' 11 | \n' +
+      ' 12 | providers:\n' +
+      '------^\n' +
+      ' 13 |   openweathermap: openweatherma ...\n' +
+      ' 14 |   weatherapi: weatherapiapikey',
+    config: 'settings.yaml'
+  }
+]
+[2026-08-04T08:08:50.079Z] error: <index> YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Service B:
+ 10 |         href: http://localhost/
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+    at generateError (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:1289:10)
+    at throwError (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:1293:9)
+    at readDocument (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2741:5)
+    at loadDocuments (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2784:5)
+    at Object.load$1 [as load] (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2810:19)
+    at m (/app/.next/server/pages/browserconfig.xml.js:9:1608)
+    at K (/app/.next/server/pages/index.js:2:51393)
+    at /app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/next-server/pages.runtime.prod.js:13:3078
+    at /app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/server/lib/trace/tracer.js:195:36
+    at NoopContextManager.with (/app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+[2026-08-04T08:08:50.095Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:08:50.095Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Service B:
+ 10 |         href: http://localhost/
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:08:50.102Z] error: Failed to discover services, please check kubernetes.yaml for errors or remove example entries.
+[2026-08-04T08:08:50.102Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Service B:
+ 10 |         href: http://localhost/
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:08:50.106Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:08:50.106Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Service B:
+ 10 |         href: http://localhost/
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:08:50.259Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'end of the stream or a document separator is expected',
+    mark: {
+      name: null,
+      buffer: '---\n' +
+        '# For configuration options and examples, please see:\n' +
+        '# https://gethomepage.dev/configs/settings/\n' +
+        '- Group Hortos Apps:\n' +
+        '    - EVCC (HEMS):\n' +
+        '        href: http://localhost:7070\n' +
+        '\n' +
+        '- Group Hortos Services:\n' +
+        '    - Service B:\n' +
+        '        href: http://localhost/\n' +
+        '\n' +
+        'providers:\n' +
+        '  openweathermap: openweathermapapikey\n' +
+        '  weatherapi: weatherapiapikey\n',
+      position: 254,
+      line: 11,
+      column: 0,
+      snippet: '  9 |     - Service B:\n' +
+        ' 10 |         href: http://localhost/\n' +
+        ' 11 | \n' +
+        ' 12 | providers:\n' +
+        '------^\n' +
+        ' 13 |   openweathermap: openweatherma ...\n' +
+        ' 14 |   weatherapi: weatherapiapikey'
+    },
+    message: 'end of the stream or a document separator is expected (12:1)\n' +
+      '\n' +
+      '  9 |     - Service B:\n' +
+      ' 10 |         href: http://localhost/\n' +
+      ' 11 | \n' +
+      ' 12 | providers:\n' +
+      '------^\n' +
+      ' 13 |   openweathermap: openweatherma ...\n' +
+      ' 14 |   weatherapi: weatherapiapikey',
+    config: 'settings.yaml'
+  }
+]
+[2026-08-04T08:08:50.291Z] error: Failed to discover services, please check kubernetes.yaml for errors or remove example entries.
+[2026-08-04T08:08:50.292Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Service B:
+ 10 |         href: http://localhost/
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:08:50.292Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:08:50.293Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Service B:
+ 10 |         href: http://localhost/
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:08:50.294Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:08:50.295Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Service B:
+ 10 |         href: http://localhost/
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:13:33.359Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'end of the stream or a document separator is expected',
+    mark: {
+      name: null,
+      buffer: '---\n' +
+        '# For configuration options and examples, please see:\n' +
+        '# https://gethomepage.dev/configs/settings/\n' +
+        '- Group Hortos Apps:\n' +
+        '    - EVCC (HEMS):\n' +
+        '        href: http://localhost:7070\n' +
+        '\n' +
+        '- Group Hortos Services:\n' +
+        '    - Cockpit:\n' +
+        '        href: http://localhost:9890\n' +
+        '\n' +
+        'providers:\n' +
+        '  openweathermap: openweathermapapikey\n' +
+        '  weatherapi: weatherapiapikey\n',
+      position: 256,
+      line: 11,
+      column: 0,
+      snippet: '  9 |     - Cockpit:\n' +
+        ' 10 |         href: http://localhost:9890\n' +
+        ' 11 | \n' +
+        ' 12 | providers:\n' +
+        '------^\n' +
+        ' 13 |   openweathermap: openweatherma ...\n' +
+        ' 14 |   weatherapi: weatherapiapikey'
+    },
+    message: 'end of the stream or a document separator is expected (12:1)\n' +
+      '\n' +
+      '  9 |     - Cockpit:\n' +
+      ' 10 |         href: http://localhost:9890\n' +
+      ' 11 | \n' +
+      ' 12 | providers:\n' +
+      '------^\n' +
+      ' 13 |   openweathermap: openweatherma ...\n' +
+      ' 14 |   weatherapi: weatherapiapikey',
+    config: 'settings.yaml'
+  }
+]
+[2026-08-04T08:13:33.401Z] error: <index> YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Cockpit:
+ 10 |         href: http://localhost:9890
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+    at generateError (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:1289:10)
+    at throwError (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:1293:9)
+    at readDocument (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2741:5)
+    at loadDocuments (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2784:5)
+    at Object.load$1 [as load] (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2810:19)
+    at m (/app/.next/server/pages/browserconfig.xml.js:9:1608)
+    at K (/app/.next/server/pages/index.js:2:51393)
+    at /app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/next-server/pages.runtime.prod.js:13:3078
+    at /app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/server/lib/trace/tracer.js:195:36
+    at NoopContextManager.with (/app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+[2026-08-04T08:13:33.596Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'end of the stream or a document separator is expected',
+    mark: {
+      name: null,
+      buffer: '---\n' +
+        '# For configuration options and examples, please see:\n' +
+        '# https://gethomepage.dev/configs/settings/\n' +
+        '- Group Hortos Apps:\n' +
+        '    - EVCC (HEMS):\n' +
+        '        href: http://localhost:7070\n' +
+        '\n' +
+        '- Group Hortos Services:\n' +
+        '    - Cockpit:\n' +
+        '        href: http://localhost:9890\n' +
+        '\n' +
+        'providers:\n' +
+        '  openweathermap: openweathermapapikey\n' +
+        '  weatherapi: weatherapiapikey\n',
+      position: 256,
+      line: 11,
+      column: 0,
+      snippet: '  9 |     - Cockpit:\n' +
+        ' 10 |         href: http://localhost:9890\n' +
+        ' 11 | \n' +
+        ' 12 | providers:\n' +
+        '------^\n' +
+        ' 13 |   openweathermap: openweatherma ...\n' +
+        ' 14 |   weatherapi: weatherapiapikey'
+    },
+    message: 'end of the stream or a document separator is expected (12:1)\n' +
+      '\n' +
+      '  9 |     - Cockpit:\n' +
+      ' 10 |         href: http://localhost:9890\n' +
+      ' 11 | \n' +
+      ' 12 | providers:\n' +
+      '------^\n' +
+      ' 13 |   openweathermap: openweatherma ...\n' +
+      ' 14 |   weatherapi: weatherapiapikey',
+    config: 'settings.yaml'
+  }
+]
+[2026-08-04T08:13:33.623Z] error: Failed to discover services, please check kubernetes.yaml for errors or remove example entries.
+[2026-08-04T08:13:33.623Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Cockpit:
+ 10 |         href: http://localhost:9890
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:13:33.624Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:13:33.624Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Cockpit:
+ 10 |         href: http://localhost:9890
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:13:33.626Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:13:33.626Z] error: YAMLException: end of the stream or a document separator is expected (12:1)
+
+  9 |     - Cockpit:
+ 10 |         href: http://localhost:9890
+ 11 | 
+ 12 | providers:
+------^
+ 13 |   openweathermap: openweatherma ...
+ 14 |   weatherapi: weatherapiapikey
+[2026-08-04T08:17:48.035Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'end of the stream or a document separator is expected',
+    mark: {
+      name: null,
+      buffer: '---\n' +
+        '# For configuration options and examples, please see:\n' +
+        '# https://gethomepage.dev/configs/settings/\n' +
+        '\n' +
+        'title: Hortos OS Dashboard\n' +
+        '\n' +
+        '- Group Hortos Apps:\n' +
+        '    - EVCC (HEMS):\n' +
+        '        href: http://localhost:7070\n' +
+        '\n' +
+        '- Group Hortos Services:\n' +
+        '    - Cockpit:\n' +
+        '        href: http://localhost:9890\n',
+      position: 131,
+      line: 6,
+      column: 0,
+      snippet: ' 4 | \n' +
+        ' 5 | title: Hortos OS Dashboard\n' +
+        ' 6 | \n' +
+        ' 7 | - Group Hortos Apps:\n' +
+        '-----^\n' +
+        ' 8 |     - EVCC (HEMS):\n' +
+        ' 9 |         href: http://localhost:7070'
+    },
+    message: 'end of the stream or a document separator is expected (7:1)\n' +
+      '\n' +
+      ' 4 | \n' +
+      ' 5 | title: Hortos OS Dashboard\n' +
+      ' 6 | \n' +
+      ' 7 | - Group Hortos Apps:\n' +
+      '-----^\n' +
+      ' 8 |     - EVCC (HEMS):\n' +
+      ' 9 |         href: http://localhost:7070',
+    config: 'settings.yaml'
+  }
+]
+[2026-08-04T08:17:48.049Z] error: <index> YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+    at generateError (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:1289:10)
+    at throwError (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:1293:9)
+    at readDocument (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2741:5)
+    at loadDocuments (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2784:5)
+    at Object.load$1 [as load] (file:///app/node_modules/.pnpm/js-yaml@4.1.1/node_modules/js-yaml/dist/js-yaml.mjs:2810:19)
+    at m (/app/.next/server/pages/browserconfig.xml.js:9:1608)
+    at K (/app/.next/server/pages/index.js:2:51393)
+    at /app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/next-server/pages.runtime.prod.js:13:3078
+    at /app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/server/lib/trace/tracer.js:195:36
+    at NoopContextManager.with (/app/node_modules/.pnpm/next@16.2.6_react-dom@19.2.5_react@19.2.5__react@19.2.5/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+[2026-08-04T08:17:48.075Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:17:48.076Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-04T08:17:48.085Z] error: Failed to discover services, please check kubernetes.yaml for errors or remove example entries.
+[2026-08-04T08:17:48.086Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-04T08:17:48.092Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:17:48.093Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-04T08:17:48.240Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'end of the stream or a document separator is expected',
+    mark: {
+      name: null,
+      buffer: '---\n' +
+        '# For configuration options and examples, please see:\n' +
+        '# https://gethomepage.dev/configs/settings/\n' +
+        '\n' +
+        'title: Hortos OS Dashboard\n' +
+        '\n' +
+        '- Group Hortos Apps:\n' +
+        '    - EVCC (HEMS):\n' +
+        '        href: http://localhost:7070\n' +
+        '\n' +
+        '- Group Hortos Services:\n' +
+        '    - Cockpit:\n' +
+        '        href: http://localhost:9890\n',
+      position: 131,
+      line: 6,
+      column: 0,
+      snippet: ' 4 | \n' +
+        ' 5 | title: Hortos OS Dashboard\n' +
+        ' 6 | \n' +
+        ' 7 | - Group Hortos Apps:\n' +
+        '-----^\n' +
+        ' 8 |     - EVCC (HEMS):\n' +
+        ' 9 |         href: http://localhost:7070'
+    },
+    message: 'end of the stream or a document separator is expected (7:1)\n' +
+      '\n' +
+      ' 4 | \n' +
+      ' 5 | title: Hortos OS Dashboard\n' +
+      ' 6 | \n' +
+      ' 7 | - Group Hortos Apps:\n' +
+      '-----^\n' +
+      ' 8 |     - EVCC (HEMS):\n' +
+      ' 9 |         href: http://localhost:7070',
+    config: 'settings.yaml'
+  }
+]
+[2026-08-04T08:17:48.271Z] error: Failed to discover services, please check kubernetes.yaml for errors or remove example entries.
+[2026-08-04T08:17:48.271Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-04T08:17:48.273Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:17:48.273Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-04T08:17:48.275Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:17:48.275Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-04T08:18:41.970Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'end of the stream or a document separator is expected',
+    mark: {
+      name: null,
+      buffer: '---\n' +
+        '# For configuration options and examples, please see:\n' +
+        '# https://gethomepage.dev/configs/settings/\n' +
+        '\n' +
+        'title: Hortos OS Dashboard\n' +
+        '\n' +
+        '- Group Hortos Apps:\n' +
+        '    - EVCC (HEMS):\n' +
+        '        href: http://localhost:7070\n' +
+        '\n' +
+        '- Group Hortos Services:\n' +
+        '    - Cockpit:\n' +
+        '        href: http://localhost:9890\n',
+      position: 131,
+      line: 6,
+      column: 0,
+      snippet: ' 4 | \n' +
+        ' 5 | title: Hortos OS Dashboard\n' +
+        ' 6 | \n' +
+        ' 7 | - Group Hortos Apps:\n' +
+        '-----^\n' +
+        ' 8 |     - EVCC (HEMS):\n' +
+        ' 9 |         href: http://localhost:7070'
+    },
+    message: 'end of the stream or a document separator is expected (7:1)\n' +
+      '\n' +
+      ' 4 | \n' +
+      ' 5 | title: Hortos OS Dashboard\n' +
+      ' 6 | \n' +
+      ' 7 | - Group Hortos Apps:\n' +
+      '-----^\n' +
+      ' 8 |     - EVCC (HEMS):\n' +
+      ' 9 |         href: http://localhost:7070',
+    config: 'settings.yaml'
+  }
+]
+[2026-08-04T08:18:45.616Z] error: <configValidationHandler> Configuration validation errors [
+  {
+    name: 'YAMLException',
+    reason: 'end of the stream or a document separator is expected',
+    mark: {
+      name: null,
+      buffer: '---\n' +
+        '# For configuration options and examples, please see:\n' +
+        '# https://gethomepage.dev/configs/settings/\n' +
+        '\n' +
+        'title: Hortos OS Dashboard\n' +
+        '\n' +
+        '- Group Hortos Apps:\n' +
+        '    - EVCC (HEMS):\n' +
+        '        href: http://localhost:7070\n' +
+        '\n' +
+        '- Group Hortos Services:\n' +
+        '    - Cockpit:\n' +
+        '        href: http://localhost:9890\n',
+      position: 131,
+      line: 6,
+      column: 0,
+      snippet: ' 4 | \n' +
+        ' 5 | title: Hortos OS Dashboard\n' +
+        ' 6 | \n' +
+        ' 7 | - Group Hortos Apps:\n' +
+        '-----^\n' +
+        ' 8 |     - EVCC (HEMS):\n' +
+        ' 9 |         href: http://localhost:7070'
+    },
+    message: 'end of the stream or a document separator is expected (7:1)\n' +
+      '\n' +
+      ' 4 | \n' +
+      ' 5 | title: Hortos OS Dashboard\n' +
+      ' 6 | \n' +
+      ' 7 | - Group Hortos Apps:\n' +
+      '-----^\n' +
+      ' 8 |     - EVCC (HEMS):\n' +
+      ' 9 |         href: http://localhost:7070',
+    config: 'settings.yaml'
+  }
+]
+[2026-08-04T08:18:45.685Z] error: Failed to discover services, please check kubernetes.yaml for errors or remove example entries.
+[2026-08-04T08:18:45.686Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-04T08:18:45.687Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:18:45.687Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-04T08:18:45.690Z] error: Failed to load settings.yaml, please check for errors
+[2026-08-04T08:18:45.690Z] error: YAMLException: end of the stream or a document separator is expected (7:1)
+
+ 4 | 
+ 5 | title: Hortos OS Dashboard
+ 6 | 
+ 7 | - Group Hortos Apps:
+-----^
+ 8 |     - EVCC (HEMS):
+ 9 |         href: http://localhost:7070
+[2026-08-07T15:25:04.342Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.690Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.694Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.697Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.708Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.712Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.714Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.718Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.735Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.739Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.743Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:04.785Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:05.008Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:10.919Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.057Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.060Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.064Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.067Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.070Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.072Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.076Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.084Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.092Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.095Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.098Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.105Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:11.158Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.152Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.323Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.326Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.328Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.330Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.333Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.335Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.345Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.355Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.358Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.360Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.385Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.433Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:13.456Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:20.892Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:20.895Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:27.664Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:43.960Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:25:43.965Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:32:53.605Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:32:53.608Z] error: Host validation failed for: horto-os01:3021. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.425Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.943Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.946Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.950Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.954Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.957Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.961Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.990Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.993Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:11.995Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:12.003Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:12.306Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:33:12.311Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:39:38.325Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.
+[2026-08-07T15:39:38.329Z] error: Host validation failed for: hos01.hortos.dev. Hint: Set the HOMEPAGE_ALLOWED_HOSTS environment variable to allow requests from this host / port.

@@ -1,0 +1,61 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Horto Apps:
+    - EVCC (HEMS):
+        icon: evcc.png
+        href: http://{{MY_HOSTNAME}}:7070
+        description: Home Energy Manager
+        server: my-docker
+        container: evcc
+        widget:
+           type: evcc
+           url: http://192.168.10.1:7070
+
+    -  Open-WebUI:
+        icon: open-webui.png
+        href: http://{{MY_HOSTNAME}}:3000
+        description: DeepSeek 1.7b param LLM
+        server: my-docker
+        container: open-webui
+
+- Horto Server Apps:
+    - Cockpit:
+        icon: cockpit.png
+        href: http://{{MY_HOSTNAME}}:9890
+        description: Server Management
+
+    - Dockge:
+        icon: dockge.png
+        href: http://{{MY_HOSTNAME}}:5001
+        description: Docker Service Management
+        server: my-docker
+        container: dockge
+
+- Horto (AI) Services:
+    - Cloudflared:
+        icon: cloudflared.png
+        description: Tunnel to the Hortos OS services
+        server: my-docker
+        container: cloudflare-tunnel
+    - Deepseek 1.7b param LLM:
+        icon: deepseek.png
+        description: Accessible through OpenWebUI
+        server: my-docker
+        container: deepseek-npu
+    - rkvoice-stream (TTS):
+        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/laudspeaker.webp
+        description: Rockchip NPU speech engine
+        server: my-docker
+        container: rkvoice-stream
+    - Whisper (STT):
+        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/laudspeaker.webp
+        description: Speech recognition model
+        server: my-docker
+        container: whisper-cv
+    - YOLO RK3588-yolo11n:
+        icon: https://cdn.simpleicons.org/yolo/111F68
+        description: Object Detection for RK3588
+        server: my-docker
+        container: rk3588-yolo11n
