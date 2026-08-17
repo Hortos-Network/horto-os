@@ -2,12 +2,13 @@
 
 Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). This repo contains a set of documentation, scripts, and managed configuration files to deploy a basic Horto OS stack on a fresh Armbian-based RK3588 system.
 
+
 ![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
 
 
 > [!NOTE]
-> This project is in a early stage and not all the functionalities are yet present.
-> Nevertheless it can already be used to run a Homelab focused on Home Energy Management and / or Home Automation.
+> This project is in an early stage and not all functionalities are present yet.
+> Nevertheless, it can already be used to run a Homelab focused on Home Energy Management and / or Home Automation.
 
 **List of potential use cases in the current stage of development:**
 
