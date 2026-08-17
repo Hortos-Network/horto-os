@@ -1,19 +1,3 @@
----
-type: guide
-title: "Horto-OS setup 2 – scripted"
-aliases:
-  - setup_scripted
-  - scripted setup
-description: Step by step guide for the scripted Horto-OS setup flow.
-source_refs:
-  - scripts/
-tags:
-  - software
-  - Horto-OS
-timestamp: 2026-08-14T18:30:00
-created: 2026-07-25T15:52:35
----
-
 # Horto-OS scripted setup
 
 **Summary**: This guide describes the tested scripted setup flow for Horto-OS on a fresh RK3588-based system.

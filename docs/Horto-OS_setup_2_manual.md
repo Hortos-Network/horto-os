@@ -1,18 +1,3 @@
----
-type: guide
-title: "Horto-OS setup 2 – manual"
-aliases:
-  - setup2
-  - manual setup
-description: Manual Horto-OS setup path without using the scripted deployment flow.
-source_refs:
-  - config/
-tags:
-  - software
-  - Horto-OS
-timestamp: 2026-08-14T18:30:00
-created: 2026-07-25T15:52:35
----
 # Horto-OS manual setup 2
 
 **Summary**: This guide describes the manual setup path for Horto-OS when you do not want to use the scripted deployment flow.

@@ -1,12 +1,8 @@
----
-created: 2026-08-11T15:21:01
-timestamp: 2026-08-11T15:36:43
----
+# Horto OS
 
 Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). This repo contains a set of documentation, scripts, and managed configuration files to deploy a basic Horto OS stack on a fresh Armbian-based RK3588 system.
 
-
-![[Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif]]
+![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
 
 
 > [!NOTE]
@@ -25,7 +21,7 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 
 At its core, Horto OS runs on Armbian and integrates a variety of applications, connected through the NEXUS Layer.
 
-More information about Horto OS: [What is Horto OS?](docs/What%20is%20Horto%20OS.md) and [[Vision]].
+More information about Horto OS: [What is Horto OS?](docs/What%20is%20Horto%20OS.md) and [Vision](docs/Vision.md).
 
 ## What you get with Horto OS?
 
@@ -36,7 +32,7 @@ More information about Horto OS: [What is Horto OS?](docs/What%20is%20Horto%20OS
 - A pre-configured Dashboard (Homepage Dasboard) to get easy access to the apps and monitor your Horto-Box.
 - If your Horto-Box has sufficient RAM (16GB) you can also install Home Assistant and Frigate NVR.
 
-![[Screenshot__Homepage-Dashboard_Draft.avif]]
+![Dashboard](_assets/Screenshot__Homepage-Dashboard_Draft.avif)
 
 ## Requirements
 

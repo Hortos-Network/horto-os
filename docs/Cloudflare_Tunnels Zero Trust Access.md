@@ -1,18 +1,3 @@
----
-type: guide
-title: Cloudflare Tunnels Zero Trust Access
-aliases:
-  - Cloudflare Tunnels
-description: Gate your tunnel behind Cloudflare’s Zero Trust Access
-source_refs:
-tags:
-  - dashboard
-  - docker
-  - Horto-OS
-timestamp: 2026-08-15T09:30:00
-created: 2026-08-04T10:10:03
----
-
 # Cloudflare Tunnels Zero Trust Access
 
 **Summary**: Gate your tunnel behind Cloudflare’s Zero Trust Access

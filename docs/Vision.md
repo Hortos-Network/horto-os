@@ -1,17 +1,3 @@
----
-type: vision
-title: Horto OS
-aliases:
-  - Horto OS Vision
-  - Vision of Horto OS
-description: Horto-OS, Create a shareable Walled Garden for advanced Smart Home Apps
-resource:
-tags:
-  - Horto-OS
-  - Holochain
-timestamp: 2026-08-10T17:04:10
-created: 2026-07-05T16:43:59
----
 # Hortos Vision
 
 ### Etymology
@@ -19,7 +5,7 @@ created: 2026-07-05T16:43:59
 Garden in Portuguese, Huerto in Spanish
 From Old Galician-Portuguese orto, from Latin hortus (“garden”), from Proto-Indo-European *ǵʰortós, from *ǵʰer- (“to enclose”)
 
-![[secret-garden-ideas.jpg]]
+![Secret garden ideas](../_assets/secret-garden-ideas.jpg)
 ### Secret Garden analogy
 
 As the name Horto suggests, the vision of an enclosed garden is exactly what we aim for. Through the unique Holochain / NEXUS architecture it provides a high degree of privacy without limiting communication with the wider network. Think of NEXUS as the central meeting point in this garden, where a secret gardener keeps the plants in good shape, including a solarpunk-styled house with solar panels. The secret gardener lives inside the Horto-OS software stack and is represented by the integrated AI, which constantly monitors and improves the ecosystem.

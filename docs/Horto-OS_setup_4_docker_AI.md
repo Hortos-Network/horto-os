@@ -1,22 +1,3 @@
----
-type: guide
-title: Horto-OS setup 4 – Docker AI
-aliases:
-  - Docker AI
-  - AI apps
-description: Guide for AI-related Docker services used in Horto-OS.
-source_refs:
-  - https://sensecraft.seeed.cc/ai-lab/en/tutorials/rk/application/cv
-  - docker_source/
-tags:
-  - SLM
-  - RK3588
-  - Docker
-  - AI
-timestamp: 2026-08-15T09:30:00
-created: 2026-07-26T18:32:03
----
-
 # Horto-OS setup 4 – Docker AI
 
 **Summary**: This guide covers the AI-related Docker services for Horto-OS, including LLM, STT, TTS, and vision-related stacks.

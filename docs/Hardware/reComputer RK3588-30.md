@@ -1,17 +1,3 @@
----
-type: hardware
-title: reComputer RK3588-30
-aliases: reComputer RK3588-30
-description: Open Rockchip AI Box tailored for AI Application Development
-source_refs:
-  - https://www.seeedstudio.com/reComputer-RK3588-30-p-6817.html
-tags:
-  - Hardware
-  - RK3588
-timestamp: 2026-07-27T13:41:43
-created: 2026-07-18T14:42:51
-
----
 # reComputer RK3588-30 
 
 **Summary**: Open Rockchip AI Box tailored for AI application development.
@@ -19,7 +5,7 @@ It is recommended hardware for running Horto OS. Minimum RAM requirement is 8 GB
 
 **Sources**: [seeedstudio.com/reComputer-RK3588-30-p-6817.html](https://www.seeedstudio.com/reComputer-RK3588-30-p-6817.html)
 
-![[3-recomputer-rk3588_rebranded.avif]]
+![reComputer RK3588-30](../../_assets/3-recomputer-rk3588_rebranded.avif)
 ## Description
 
 reComputer RK3588-30 is an Open Rockchip AI Box tailored for AI Application Development

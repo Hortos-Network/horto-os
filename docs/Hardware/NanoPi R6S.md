@@ -1,17 +1,3 @@
----
-type: hardware
-title: NanoPi R6S
-aliases: NanoPi R6S
-description: The NanoPi R6S ("R6S") is a mini IoT edge device with two 2.5G and one 1GbE Ethernet ports, based on the Rockchip RK3588S.
-source_refs:
-  - https://wiki.friendlyelec.com/wiki/index.php/NanoPi_R6S
-tags:
-  - RK3588
-  - Hardware
-timestamp: 2026-07-31T10:51:03
-created: 2026-07-18T14:34:38
-
----
 # NanoPi R6S
 
 **Summary**: The NanoPi R6S ("R6S") is a mini IoT edge device with two 2.5G and one 1GbE Ethernet ports, based on the Rockchip RK3588S.

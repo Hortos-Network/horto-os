@@ -1,20 +1,3 @@
----
-type: guide
-title: Homepage (Dashboard)
-aliases:
-  - Homepage (Dashboard)
-description: Setup and configuration notes for the Homepage dashboard used in Horto-OS.
-source_refs:
-  - docker_source/app_data/homepage/config/
-  - docker_source/stacks/homepage/compose.yaml
-tags:
-  - dashboard
-  - docker
-  - Horto-OS
-timestamp: 2026-08-15T09:30:00
-created: 2026-08-04T10:10:03
----
-
 # Homepage (Dashboard)
 
 **Summary**: Homepage is the lightweight dashboard used to access and monitor Horto-OS services.
@@ -164,7 +147,7 @@ Cockpit is a system service, not a Docker container, so it should usually remain
 ## Remote links
 
 > [!NOTE]
-> In case you want to access your Horto-OS over the internet, you can use `services_remote.yaml` instead of `services.yaml`. Rename `services.yaml` into `services_local.yaml` and copy `services_remote.yaml` into `services.yaml`. After a container restart your Horto OS can be accessed over the internet, which introduces security risks. Be sure to secure your Cloudflare tunnel with ACL, you can find a short guide here [[Cloudflare_Tunnels Zero Trust Access]].
+> In case you want to access your Horto-OS over the internet, you can use `services_remote.yaml` instead of `services.yaml`. Rename `services.yaml` into `services_local.yaml` and copy `services_remote.yaml` into `services.yaml`. After a container restart your Horto OS can be accessed over the internet, which introduces security risks. Be sure to secure your Cloudflare tunnel with ACL. See [Cloudflare Tunnels](Cloudflare%20Tunnels.md) for more information.
 
 Remote/public links can be defined separately in: 
 

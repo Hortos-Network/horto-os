@@ -1,18 +1,3 @@
----
-type: guide
-title: Backup your Horto-OS
-aliases:
-  - Horto-OS backup
-description: A concise step by step instruction how to back up Horto-OS on a RK3588 mini PC.
-source_refs:
-  - Gemini
-tags:
-  - software
-  - Horto-OS
-timestamp: 2026-08-01T12:09:49
-created: 2026-07-25T15:52:35
----
-
 # Backup your Horto-OS
 
 **Summary**: A concise step by step instruction how to back up Horto-OS on a RK3588 mini PC.

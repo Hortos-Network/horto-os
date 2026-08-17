@@ -1,20 +1,3 @@
----
-type: guide
-title: Docker apps for Horto OS
-aliases:
-  - Docker
-  - Docker apps
-description: How to install Docker and basic Docker apps for Horto OS.
-source_refs:
-  - 
-tags:
-  - SLM
-  - RK3588
-  - Docker
-timestamp: 2026-08-11T15:05:31
-created: 2026-07-26T18:32:03
-
----
 # Docker apps for Horto OS
 
 **Summary**: How to install Docker and basic Docker apps for Horto OS.

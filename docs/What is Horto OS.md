@@ -1,7 +1,3 @@
----
-created: 2026-08-11T15:21:01
-timestamp: 2026-08-11T15:36:43
----
 Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). 
 
 Topology of the full stack:

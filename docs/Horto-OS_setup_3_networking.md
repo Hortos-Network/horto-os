@@ -1,22 +1,3 @@
----
-type: guide
-title: Horto-OS setup 3 – networking
-aliases:
-  - Networking
-  - Netplan
-description: Manual networking reference for the Horto-OS IoT LAN setup.
-source_refs:
-  - https://docs.armbian.com/User-Guide_Armbian-Config/Network/
-  - config/netplan/99-iot-lan.yaml
-  - config/hostapd/hostapd.conf
-  - config/dnsmasq.d/iot-lan.conf
-tags:
-  - Network
-  - Horto-OS
-timestamp: 2026-08-15T09:00:00
-created: 2026-07-27T15:41:41
----
-
 # Horto-OS setup 3 – networking
 
 **Summary**: Reference for the networking configuration used by the Horto-OS IoT LAN setup.

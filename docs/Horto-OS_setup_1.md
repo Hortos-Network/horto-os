@@ -1,19 +1,3 @@
----
-type: guide
-title: Horto-OS setup 1
-aliases:
-  - setup1
-description: "First part of the Horto-OS setup sequence: prepare the board, copy the system, and clone the repository."
-source_refs:
-  - docs.armbian.com
-  - https://github.com/Hortos-Network/horto-os
-tags:
-  - software
-  - Horto-OS
-timestamp: 2026-08-14T18:30:00
-created: 2026-07-25T15:52:35
----
-
 # Horto-OS setup 1
 
 **Summary**: Prepare the RK3588 board, install the base OS, and clone the Horto-OS repository into `/srv/horto-os`.
@@ -75,7 +59,7 @@ nand-sata-install
 ```
 
 
-![[Screenshot_Armbian_nand-sata-install.avif]]
+![Armbian nand-sata-install screenshot](../_assets/Screenshot_Armbian_nand-sata-install.avif)
 
 **Select Boot from eMMC - system on eMMC** You will be asked to erase and then format the eMMC drive (choose ext4).
 
