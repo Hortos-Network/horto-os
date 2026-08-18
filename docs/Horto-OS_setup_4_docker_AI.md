@@ -119,15 +119,9 @@ services:
     command: python web_detection.py --model_path model/yolo11n.rknn --video video/test.mp4
 ```
 
-## rkvoice-stream (TTS)
+## rkvoice-stream / openvoicestream (TTS)
 
 For `rkvoice-stream`, the usual path is to create a Dockge stack and then copy the required build context into that stack directory.
-
-Typical stack directory:
-
-```text
-/srv/docker/stacks/rkvoice-stream/
-```
 
 Typical compose definition:
 
@@ -149,7 +143,68 @@ services:
       - /dev/mali0:/dev/mali0
 ```
 
-Then copy the required source folders from the repository or the upstream source checkout into the stack directory.
+Git clone the repository into the docker_repos directory:
+
+```bash
+cd /srv/docker/docker_repos/
+git clone --recurse-submodule https://github.com/suharvest/rkvoice-stream.git
+```
+
+### Copy Required Project Files to the Stack Directory
+
+The Dockerfile for rkvoice-stream expects certain files and directories to be present in the build context (the stack's root directory). You need to manually copy these from the cloned repository (/srv/docker/docker_repos//rkvoice-stream) into your Dockge stack directory (/srv/docker/stacks/rkvoice-stream/).
+
+Navigate to your Dockge stack directory:
+
+```bash
+cd /srv/docker/stacks/rkvoice-stream/
+```
+
+Then, copy the following folders and the pyproject.toml file:
+
+```bash
+cp -r ~/rkvoice-stream/baseline .
+cp -r ~/rkvoice-stream/configs .
+cp -r ~/rkvoice-stream/docker .
+cp -r ~/rkvoice-stream/models .
+cp -r ~/rkvoice-stream/rkvoice_stream .
+cp ~/rkvoice-stream/pyproject.toml .
+```
+
+After these commands, your /srv/docker/stacks/rkvoice-stream/ directory should contain:
+
+```tree
+compose.yaml
+baseline/
+configs/
+docker/ (containing Dockerfile)
+models/
+rkvoice_stream/
+pyproject.toml
+```
+
+### Deploy the Stack in Dockge
+
+Go back to the Dockge web UI for your rkvoice-stream stack. Click the "Deploy"
+or "Update" button. Dockge will now:
+
+Find the Dockerfile in the docker/ subdirectory.
+Locate all the necessary files (pyproject.toml, rkvoice_stream/, etc.) in the build context.
+Build the rkvoice-stream Docker image.
+Start the rkvoice-stream container.
+Access the rkvoice-stream Service:
+Once the container is running, rkvoice-stream will be accessible directly on
+your NanoPi's IP address. The service typically runs on port 8621.
+
+You can access it from any device on your network by navigating to:
+
+http://"MY_HOST_IP":8621
+
+Note: Because network_mode: host is used in the Docker Compose file, the container
+shares the host's network. This means no explicit port mapping (ports:) is
+required in the compose.yaml file, as the container's internal port 8621 is
+directly exposed on the host's port 8621.
+
 
 ## Testing
 
@@ -166,7 +221,8 @@ curl http://192.168.10.1:8001/v1/chat/completions \
 
 ## Homepage integration
 
-Once the containers run with stable `container_name` values, Homepage can show them through Docker integration.
+Once the containers run with stable `container_name` values, Homepage can show
+them the through Docker integration.
 
 Typical entries in `services.yaml` use:
 
