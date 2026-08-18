@@ -104,7 +104,7 @@ Here's a high-level overview of the main installation phases:
 
 ## Contributing
 
-We welcome contributions to Horto OS! Please refer to the `docs/` folder for guidelines on how to contribute, report issues, or suggest enhancements.
+We welcome contributions to Horto OS! Please refer to the `CONTRIBUTING.md` file for guidelines on how to contribute, report issues, or suggest enhancements.
 
 ## License
 
