@@ -1,7 +1,9 @@
+# Horto OS
+
 Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). 
 
 Topology of the full stack:
-![Horto OS topology](../_assets/infographic_topology_horto-os.avif)
+![Horto OS topology](../_assets/Infographic_topology_horto-os.avif)
 
 
 > [!NOTE]
