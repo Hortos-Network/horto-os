@@ -11,5 +11,5 @@ services:
     volumes:
       - /srv/docker/app_data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro # Optional: allows Homepage to auto-discover your other containers
-      - /srv/horto-os/_assets:/app/public/images # for serving images from /srv/horto-os/_assets to Homepage
+      - /srv/docker/assets:/app/public/images # for serving images from /srv/docker/assets to Homepage
 networks: {}

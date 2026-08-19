@@ -38,6 +38,27 @@ mkdir -p "$TARGET_DIR"
 cp -a "$SOURCE_DIR/." "$TARGET_DIR/"
 echo "Copied docker source tree: $SOURCE_DIR -> $TARGET_DIR"
 
+# Copy assets (Homepage images, filtered to homepage*)
+ASSETS_SOURCE="$REPO_ROOT/_assets"
+ASSETS_TARGET="/srv/docker/assets"
+if [ -d "$ASSETS_SOURCE" ]; then
+  mkdir -p "$ASSETS_TARGET"
+  copied=0
+  for asset in "$ASSETS_SOURCE"/homepage*; do
+    [ -f "$asset" ] || continue
+    cp -a "$asset" "$ASSETS_TARGET/"
+    echo "Copied asset: $asset -> $ASSETS_TARGET/"
+    copied=1
+  done
+  if [ "$copied" -eq 0 ]; then
+    echo "No homepage* assets found in $ASSETS_SOURCE; skipping asset copy."
+  else
+    echo "Copied assets: $ASSETS_SOURCE/homepage* -> $ASSETS_TARGET"
+  fi
+else
+  echo "Skipping assets: directory not found at $ASSETS_SOURCE"
+fi
+
 render_file_in_place() {
   file_path="$1"
 
@@ -55,5 +76,18 @@ find "$TARGET_DIR" -type f | while IFS= read -r file_path; do
     render_file_in_place "$file_path"
   fi
 done
+
+# Clone rkvoice-stream submodule
+cd "$TARGET_DIR"/docker_repos/
+git clone --recurse-submodule https://github.com/suharvest/rkvoice-stream.git
+
+# Copy rkvoice-stream files to stacks/rkvoice-stream
+cp -r rkvoice-stream/baseline -t "$TARGET_DIR"/stacks/rkvoice-stream/
+cp -r rkvoice-stream/configs -t "$TARGET_DIR"/stacks/rkvoice-stream/
+cp -r rkvoice-stream/docker -t "$TARGET_DIR"/stacks/rkvoice-stream/
+cp -r rkvoice-stream/models -t "$TARGET_DIR"/stacks/rkvoice-stream/
+cp -r rkvoice-stream/rkvoice_stream -t "$TARGET_DIR"/stacks/rkvoice-stream/
+cp rkvoice-stream/pyproject.toml -t "$TARGET_DIR"/stacks/rkvoice-stream/
+
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"

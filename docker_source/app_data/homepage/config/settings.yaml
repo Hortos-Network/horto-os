@@ -5,7 +5,7 @@ title: Horto OS Dashboard
 
 # Needs restart to change image.
 background:
-  image: /images/frontpage_WP-BP.avif
+  image: /images/homepage_background.avif
   saturate: 50 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
   brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
   opacity: 50 # 0-100

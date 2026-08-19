@@ -1,4 +1,4 @@
-# Horto OS
+# What is Horto OS?
 
 Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). 
 
@@ -49,8 +49,3 @@ The core of the Horto-OS stack is focused on deploying a managed service for Hom
 For instance, you can install Home Assistant or Frigate NVR, but keep in mind that these more resource-hungry applications are constrained by available memory.
 
 In short, this comprehensive framework focuses on **enclosed, stable environments** that prioritize user autonomy and connectivity, while allowing the integration of third-party containerized apps and community-driven Holochain applications.
-
-## Contributing
-
-We welcome contributions to Horto OS! Please refer to the `docs/` folder for
-guidelines on how to contribute, report issues, or suggest enhancements.

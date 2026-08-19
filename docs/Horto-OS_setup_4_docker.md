@@ -74,6 +74,7 @@ services:
 
 
 Run this command in the dockge folder:
+
 ```Bash
 ##### Be sure are in the /srv/docker/dockge folder!!
 ##### Start the server
@@ -147,6 +148,13 @@ URL: `https://<your.IP>:7070`
 ## Homepage (Dashboard)
 
 Homepage [gethomepage.io](https://gethomepage.io) can be installed via Dockge.
+Assets such as background images are automatically copied by `d1_docker_init.sh`:
+
+```bash
+sh /srv/horto-os/scripts/d1_docker_init.sh
+```
+
+This copies the `_assets/` folder into `/srv/docker/assets/`, which can then be mounted in the Homepage container.
 
 ```YAML
 services:
@@ -158,11 +166,11 @@ services:
       - HOMEPAGE_ALLOWED_HOSTS=*
     ports:
       - 3021:3000
-    env_file: .env # use .env
+    env_file: .env
     volumes:
       - /srv/docker/app_data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro # Optional: allows Homepage to auto-discover your other containers
-      - /srv/horto-os/_assets:/app/public/images # for serving images from /srv/horto-os/_assets to Homepage
+      - /srv/docker/assets:/app/public/images # for serving images from /srv/docker/assets to Homepage
 networks: {}
 ```
 
