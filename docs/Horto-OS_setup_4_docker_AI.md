@@ -65,6 +65,7 @@ docker system prune -a --volumes
 Uvicorn running on http://MY_HOSTNAME:8001 (Press CTRL+C to quit)
 
 The LLM API is exposed at `127.0.0.1:8001`.
+
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8001/docs`.
 
 Now you can run a test with the following command inside Horto-OS.
@@ -129,6 +130,7 @@ services:
 ```
 
 The Whisper API is exposed at `127.0.0.1:8000`.
+
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8000/docs`.
 
 ## YOLO (vision)
@@ -161,6 +163,7 @@ networks: {}
 ```
 
 The YOLO API is exposed at `127.0.0.1:8002`.
+
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8002/docs`.
 
 ## rkvoice-stream / openvoicestream (TTS)
@@ -239,6 +242,7 @@ Start the rkvoice-stream container.
 Access the rkvoice-stream Service:
 
 The Voice Stream API is exposed at `127.0.0.1:8621`.
+
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8621/docs`.
 
 Note: Because network_mode: host is used in the Docker Compose file, the container
