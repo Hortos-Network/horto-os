@@ -101,4 +101,20 @@ case "$mode" in
     ;;
 esac
 
+echo "Setting up periodic DHCP lease export for Homepage..."
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+EXPORT_SCRIPT="$SCRIPT_DIR/export_dhcp_leases.sh"
+if [ -f "$EXPORT_SCRIPT" ]; then
+  CRON_JOB="* * * * * $EXPORT_SCRIPT"
+  if crontab -l 2>/dev/null | grep -F "$EXPORT_SCRIPT" >/dev/null 2>&1; then
+    echo "  cron job already installed for export_dhcp_leases.sh"
+  else
+    (crontab -l 2>/dev/null || true; echo "$CRON_JOB") | crontab -
+    echo "  cron job installed: runs every minute"
+  fi
+  sh "$EXPORT_SCRIPT"
+else
+  echo "  skipping: export_dhcp_leases.sh not found"
+fi
+
 echo "Step 7 complete: applied configuration activated. A reboot is recommended, especially after network changes."

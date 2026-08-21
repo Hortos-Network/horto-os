@@ -7,7 +7,7 @@
 
 > [!NOTE]
 > Memory constraints: Keep in mind that with a RK3588 based board with 8 GB RAM
-there are some memory constraints. 
+there are some memory constraints.
 
 
 ## Step by Step guide
@@ -20,10 +20,15 @@ First you need you need to install the full Docker stack.
 armbian-config --cmd CON001
 ```
 
-What is Docker? Docker helps developers build, share, run, and verify
-applications anywhere - without tedious environment configuration or management.
-
 Ref: [docs.armbian.com/User-Guide_Armbian-Software/Containers](https://docs.armbian.com/User-Guide_Armbian-Software/Containers/)
+
+> [!NOTE]
+>We recommend to use the install script, which automatically copies all the necessary files.
+>`d1_docker_init.sh`:
+
+```bash
+sh /srv/horto-os/scripts/d1_docker_init.sh
+```
 
 ## Dockge, docker compose.yaml stack
 

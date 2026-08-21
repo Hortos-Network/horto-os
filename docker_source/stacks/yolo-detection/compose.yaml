@@ -20,6 +20,5 @@ services:
       # If 'model' and 'video' directories are on the host, you'll need to mount them:
       # - ./model:/app/model:ro # Assuming models are in a 'model' folder next to compose file
       # - ./video:/app/video:ro # Assuming videos are in a 'video' folder next to compose file
-    command: python web_detection.py --model_path model/yolo11n.rknn --video
-      video/test.mp4
+    command: python web_detection.py --model_path model/yolo11n.rknn --video video/test.mp4 --port 8002
 networks: {}

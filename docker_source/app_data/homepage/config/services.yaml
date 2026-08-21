@@ -33,6 +33,12 @@
         server: my-docker
         container: dockge
 
+    - Active DHCP Leases:
+        icon: /images/homepage_dhcp_icon.png
+        widget:
+          type: iframe
+          src: /images/leases.html
+
 - Horto (AI) Services:
     - Cloudflared:
         icon: cloudflared.png
@@ -50,7 +56,7 @@
         server: my-docker
         container: rkvoice-stream
     - Whisper (STT):
-        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/laudspeaker.webp
+        icon: /images/homepage_mic_icon.png
         description: Speech recognition model
         server: my-docker
         container: whisper-cv
