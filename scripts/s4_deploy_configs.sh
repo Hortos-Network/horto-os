@@ -14,8 +14,7 @@ REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 CONFIG_DIR="$REPO_ROOT/config"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 STAGING_ETC_DIR="$ACTIVE_SETUP_DIR/etc"
-FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_hostname.env"
+MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
 
 if [ ! -d "$CONFIG_DIR" ]; then
   echo "Error: config directory not found: $CONFIG_DIR" >&2

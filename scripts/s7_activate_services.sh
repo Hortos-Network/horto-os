@@ -9,9 +9,14 @@ case "${0##*/}" in
     ;;
 esac
 
+FULL_ACTIVE_FILE="/srv/active_setup/my_variables.env"
+if [ ! -f "$FULL_ACTIVE_FILE" ]; then
+  echo "This script is only needed for a IOT-LAN Setup"
+  exit 0
+fi
+
 ACTIVE_SETUP_DIR="/srv/active_setup"
-FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_hostname.env"
+MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
 
 if [ -f "$FULL_ACTIVE_FILE" ]; then
   mode="full"
@@ -102,6 +107,37 @@ case "$mode" in
 esac
 
 echo "Setting up periodic DHCP lease export for Homepage..."
+OUTPUT_DIR="/srv/docker/assets"
+mkdir -p "$OUTPUT_DIR"
+sh /srv/horto-os/scripts/export_dhcp_leases.sh
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+EXPORT_SCRIPT="$SCRIPT_DIR/export_dhcp_leases.sh"
+if [ -f "$EXPORT_SCRIPT" ]; then
+  CRON_JOB="* * * * * $EXPORT_SCRIPT"
+  if crontab -l 2>/dev/null | grep -F "$EXPORT_SCRIPT" >/dev/null 2>&1; then
+    echo "  cron job already installed for export_dhcp_leases.sh"
+  else
+    (crontab -l 2>/dev/null || true; echo "$CRON_JOB") | crontab -
+    echo "  cron job installed: runs every minute"
+  fi
+  sh "$EXPORT_SCRIPT"
+else
+  echo "  skipping: export_dhcp_leases.sh not found"
+fi
+
+echo "Step 7 complete: applied configuration activated. A reboot is recommended, especially after network changes."
+
+# === IoT LAN specific steps (only when full IoT LAN config is present) ===
+if [ -f "$FULL_ACTIVE_FILE" ]; then
+    ;;
+esac
+
+echo "Setting up periodic DHCP lease export for Homepage..."
+OUTPUT_DIR="/srv/docker/assets"
+mkdir -p "$OUTPUT_DIR"
+sh /srv/horto-os/scripts/export_dhcp_leases.sh
+
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
 EXPORT_SCRIPT="$SCRIPT_DIR/export_dhcp_leases.sh"
 if [ -f "$EXPORT_SCRIPT" ]; then

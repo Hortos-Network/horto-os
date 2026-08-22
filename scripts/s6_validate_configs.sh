@@ -9,9 +9,14 @@ case "${0##*/}" in
     ;;
 esac
 
+FULL_ACTIVE_FILE="/srv/active_setup/my_variables.env"
+if [ ! -f "$FULL_ACTIVE_FILE" ]; then
+  echo "This script is only needed for a IOT-LAN Setup"
+  exit 0
+fi
+
 ACTIVE_SETUP_DIR="/srv/active_setup"
-FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_hostname.env"
+MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
 TARGET_ROOT="/etc"
 FAILED=0
 

@@ -19,6 +19,13 @@ At this point the scripted setup begins.
 
 Run the scripts from `/srv/horto-os/scripts`.
 
+> [!NOTE]
+> The scripts are run in the order shown below.
+There is a difference between the full IoT LAN setup and the minimal hostname-only setup.
+In the minimal setup, only the hostname is configured (s1, s2_init_env_vars.sh plus s3_are run).
+In the full IoT LAN setup, the hostname is configured along with the WiFi
+credentials and a DHCP server is installed.
+
 ### 1. Install required packages
 
 ```bash

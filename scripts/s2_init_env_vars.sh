@@ -17,7 +17,7 @@ ACTIVE_SETUP_DIR="/srv/active_setup"
 FULL_TEMPLATE_FILE="$REPO_ROOT/config/my_variables.env"
 MINIMAL_TEMPLATE_FILE="$REPO_ROOT/config/my_hostname.env"
 FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_hostname.env"
+MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
 SETUP_SCRIPT="$SCRIPT_DIR/s2_helper_script.sh"
 
 mkdir -p "$ACTIVE_SETUP_DIR"

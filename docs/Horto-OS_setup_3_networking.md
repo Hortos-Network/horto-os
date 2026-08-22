@@ -5,7 +5,8 @@
 ---
 
 > [!WARNING]
-> This networking layout is currently tested primarily on the [NanoPi R6S](Hardware/NanoPi%20R6S.md). If your board has a different interface layout, adjust the config accordingly.
+> This networking layout is currently tested primarily on the [NanoPi R6S](Hardware/NanoPi%20R6S.md).
+If your board has a different interface layout, adjust the config accordingly.
 
 ## Networking model
 
@@ -25,6 +26,11 @@ The host should obtain:
 - default route
 
 via DHCP from the upstream router.
+
+## Requirements
+
+- If you intend to use WiFi for the IoT LAN, you will need to attach a Linux compatible WiFi USB
+  stick to the board. Or if your board does have built-in WiFi, you can use this instead.
 
 ## Current managed Netplan config
 

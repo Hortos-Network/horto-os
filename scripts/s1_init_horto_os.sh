@@ -11,7 +11,7 @@ esac
 
 sudo apt update
 
-# Install Cockpit via Armbian, then add the network manager package.
+# Install Cockpit, then add the network manager package.
 sudo apt install -y cockpit cockpit-networkmanager
 
 echo "Step 1 complete: base packages installed."
