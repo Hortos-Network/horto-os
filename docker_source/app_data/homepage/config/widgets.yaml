@@ -4,8 +4,10 @@
 
 - resources:
     cpu: true
+    cputemp: true
     memory: true
     disk: /
+    units: metric # optional, ensures Celsius
 
 - search:
     provider: duckduckgo

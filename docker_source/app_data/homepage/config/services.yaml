@@ -46,21 +46,25 @@
         server: my-docker
         container: cloudflare-tunnel
     - Deepseek 1.7b param LLM:
+        href: http://{{MY_HOSTNAME}}:8001/docs
         icon: deepseek.png
         description: Accessible through OpenWebUI
         server: my-docker
         container: deepseek-npu
     - rkvoice-stream (TTS):
+        href: http://{{MY_HOSTNAME}}:8621/docs
         icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/laudspeaker.webp
         description: Rockchip NPU speech engine
         server: my-docker
         container: rkvoice-stream
     - Whisper (STT):
         icon: /images/homepage_mic_icon.png
+        href: http://{{MY_HOSTNAME}}:8000/docs
         description: Speech recognition model
         server: my-docker
         container: whisper-cv
     - YOLO RK3588-yolo11n:
+        href: http://{{MY_HOSTNAME}}:8002/docs
         icon: https://cdn.simpleicons.org/yolo/111F68
         description: Object Detection for RK3588
         server: my-docker

@@ -15,20 +15,3 @@ sudo apt update
 sudo apt install -y cockpit cockpit-networkmanager
 
 echo "Step 1 complete: base packages installed."
-printf "Install IoT LAN components? [y/N]: " >&2
-IFS= read -r install_iot_lan || true
-
-# Install additional packages used by the Horto OS setup for IoT LAN components.
-case "$install_iot_lan" in
-  y|Y)
-    echo "Installing IoT LAN components..."
-    sudo apt install -y hostapd dnsmasq avahi-daemon
-    ;;
-  ""|n|N)
-    echo "Skipping IoT LAN package installation."
-    ;;
-  *)
-    echo "Invalid choice '$install_iot_lan'. Expected y or n." >&2
-    exit 1
-    ;;
-esac

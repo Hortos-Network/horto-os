@@ -42,11 +42,11 @@ For a minimal hostname-only setup:
 
 ```bash
 mkdir -p /srv/active_setup
-cp /srv/horto-os/config/my_hostname.env /srv/active_setup/
-nano /srv/active_setup/my_hostname.env
+cp /srv/horto-os/config/minimal_setup_vars.env /srv/active_setup/
+nano /srv/active_setup/minimal_setup_vars.env
 ```
 
-Edit the `my_hostname.env` file to set your desired hostname.
+Edit the `minimal_setup_vars.env` file to set your desired hostname.
 
 Skip the IoT LAN setup and continue with:
 

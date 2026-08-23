@@ -215,19 +215,31 @@ Supports backing up root & boot (if existing) partitions. Data from other partit
 For btrfs, all existing top level 5 subvolumes in /etc/fstab will be created with new backups, nested subvolumes will be created and can also be removed/added in an update of the backup img.
 Please read Info section for more information.
 
-Autoexpansion tested & supported on following operating systems:
+Autoexpansion tested & supported on Armbian:
 
-```text
-Raspberry Pi OS (trixie and older)
-Armbian
-Manjaro-arm
-DietPi
-ArchLinuxArm
-Kali-arm
-Ubuntu-server-arm (Ubuntu autoexpands by default, but that can be disabled with -e option)
+Download:
+
+```Bash
+wget raw.githubusercontent.com/UnconnectedBedna/shrink-backup/main/shrink-backup -O shrink-backup
+```
+
+Usage:
+
+```Bash
+chmod +x shrink-backup
+./shrink-backup -a /path/to/backup.img 
+```
+
+the "./" in front of "shrink-backup" says the script to use is in the current folder
+
+Full drive backup example
+
+```bash
+# mount sda5, change to the appropriate device
+sudo mount /dev/sda5 /mnt/external
+sudo apt install gdisk # install gdisk if not already installed
+# start backup of eMMC partition 1
+sudo ./shrink-backup -a  /mnt/external/horto-os/horto-os_expndbl_backup_$(date +%Y%m%d).img
 ```
 
 Ref: [github.com/UnconnectedBedna/shrink-backup](https://github.com/UnconnectedBedna/shrink-backup)
-## Related Topics
-
-- 

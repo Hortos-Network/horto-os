@@ -1,6 +1,7 @@
 # Horto-OS scripted setup
 
-**Summary**: This guide describes the tested scripted setup flow for Horto-OS on a fresh RK3588-based system.
+**Summary**: This guide describes the tested scripted setup flow for Horto-OS on
+a fresh RK3588-based system with IoT LAN support.
 
 ---
 
@@ -22,20 +23,22 @@ Run the scripts from `/srv/horto-os/scripts`.
 > [!NOTE]
 > The scripts are run in the order shown below.
 There is a difference between the full IoT LAN setup and the minimal hostname-only setup.
-In the minimal setup, only the hostname is configured (s1, s2_init_env_vars.sh plus s3_are run).
-In the full IoT LAN setup, the hostname is configured along with the WiFi
+For the minimal setup, only the hostname is configured, go to
+[Horto-OS_setup_2_scripted_minimal.md](Horto-OS_setup_2_scripted_minimal.md) and follow the guide.
+In the full IoT LAN setup below, the hostname is configured along with the WiFi
 credentials and a DHCP server is installed.
 
-### 1. Install required packages
+
+### 1. Install required packages for IOT-LAN setup
 
 ```bash
 sh s1_init_horto_os.sh
 ```
 
-This installs the required host packages for the chosen setup path.
+This installs the required host packages for the IOT-LAN path.
 
 - The base packages are installed first.
-- You can choose whether to install the IoT-LAN-specific packages too.
+
 
 ### 2. Create active variables
 
@@ -43,10 +46,9 @@ This installs the required host packages for the chosen setup path.
 sh s2_init_env_vars.sh
 ```
 
-This creates one of these files in `/srv/active_setup/`:
+This creates this file in `/srv/active_setup/`:
 
 - `/srv/active_setup/my_variables.env` for the full IoT LAN setup
-- `/srv/active_setup/my_hostname.env` for the minimal hostname-only setup
 
 For the full setup, the script currently manages these variables:
 
@@ -147,22 +149,6 @@ sudo reboot
 ```
 
 A reboot is strongly recommended after network-related changes.
-
-## Docker source deployment
-
-After the base host setup is working, initialize the Docker app data and stacks:
-
-```bash
-sh d1_docker_init.sh
-```
-
-This copies the full `docker_source/` tree into:
-
-```text
-/srv/docker/
-```
-
-and renders placeholders in the copied files there.
 
 ## Notes and decisions
 
