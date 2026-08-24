@@ -29,12 +29,12 @@ apply_file() {
   staged_file="$1"
   rel_path=${staged_file#"$STAGING_ETC_DIR"/}
   target_file="$TARGET_ROOT/$rel_path"
-
   mkdir -p "$(dirname "$target_file")"
   cp "$staged_file" "$target_file"
   echo "Applied file: $staged_file -> $target_file"
 }
 
+# Copy all files from staging directory
 find "$STAGING_ETC_DIR" -type f | while IFS= read -r staged_file; do
   apply_file "$staged_file"
 done

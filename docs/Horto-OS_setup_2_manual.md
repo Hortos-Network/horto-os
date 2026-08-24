@@ -1,6 +1,7 @@
 # Horto-OS manual setup 2
 
-**Summary**: This guide describes the manual setup path for Horto-OS when you do not want to use the scripted deployment flow.
+**Summary**: This guide describes the manual setup path for Horto-OS when you do
+not want to use the scripted deployment flow.
 
 ---
 

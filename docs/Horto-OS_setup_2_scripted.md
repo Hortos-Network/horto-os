@@ -50,6 +50,17 @@ This creates this file in `/srv/active_setup/`:
 
 - `/srv/active_setup/my_variables.env` for the full IoT LAN setup
 
+> [!NOTE]
+> In case you want to use a WiFi Adapter for the IOT-LAN you need to define
+`WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+
+This command `ip link show` lists the network interfaces on the system. Look for
+the WiFi interface you want to use for the IOT-LAN.
+
+```bash
+ip link show
+```
+
 For the full setup, the script currently manages these variables:
 
 ```env

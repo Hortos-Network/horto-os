@@ -16,7 +16,6 @@ if [ ! -f "$FULL_ACTIVE_FILE" ]; then
 fi
 
 ACTIVE_SETUP_DIR="/srv/active_setup"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
 TARGET_ROOT="/etc"
 FAILED=0
 
@@ -46,52 +45,42 @@ check_no_placeholders() {
   fi
 }
 
-if [ -f "$FULL_ACTIVE_FILE" ]; then
-  mode="full"
-elif [ -f "$MINIMAL_ACTIVE_FILE" ]; then
-  mode="minimal"
-else
-  echo "Error: no active setup file found in $ACTIVE_SETUP_DIR" >&2
-  exit 1
-fi
-
 check_file_exists "$TARGET_ROOT/hosts"
 check_no_placeholders "$TARGET_ROOT/hosts"
 
-case "$mode" in
-  full)
-    check_file_exists "$TARGET_ROOT/netplan/99-iot-lan.yaml"
-    check_no_placeholders "$TARGET_ROOT/netplan/99-iot-lan.yaml"
+check_file_exists "$TARGET_ROOT/netplan/99-iot-lan.yaml"
+check_no_placeholders "$TARGET_ROOT/netplan/99-iot-lan.yaml"
 
-    check_file_exists "$TARGET_ROOT/hostapd/hostapd.conf"
-    check_no_placeholders "$TARGET_ROOT/hostapd/hostapd.conf"
+check_file_exists "$TARGET_ROOT/hostapd/hostapd.conf"
+check_no_placeholders "$TARGET_ROOT/hostapd/hostapd.conf"
 
-    check_file_exists "$TARGET_ROOT/avahi/avahi-daemon.conf"
-    check_file_exists "$TARGET_ROOT/avahi/hosts"
-    check_file_exists "$TARGET_ROOT/resolv.conf"
-    check_file_exists "$TARGET_ROOT/dnsmasq.d/iot-lan.conf"
-    check_file_exists "$TARGET_ROOT/sysctl.d/packet_forwarding.conf"
+check_file_exists "$TARGET_ROOT/avahi/avahi-daemon.conf"
+check_file_exists "$TARGET_ROOT/avahi/hosts"
+check_file_exists "$TARGET_ROOT/resolv.conf"
+check_file_exists "$TARGET_ROOT/dnsmasq.d/iot-lan.conf"
+check_file_exists "$TARGET_ROOT/sysctl.d/packet_forwarding.conf"
 
-    if command -v netplan >/dev/null 2>&1; then
-      if netplan generate >/tmp/horto-netplan-validate.out 2>/tmp/horto-netplan-validate.err; then
-        echo "OK: netplan generate succeeded"
-      else
-        echo "ERROR: netplan generate failed" >&2
-        cat /tmp/horto-netplan-validate.err >&2
-        FAILED=1
-      fi
-    else
-      echo "WARNING: netplan command not found; skipping netplan validation"
-    fi
-    ;;
-  minimal)
-    echo "Minimal mode: only hostname-related validation required."
-    ;;
-esac
+if command -v netplan >/dev/null 2>&1; then
+  if netplan generate >/tmp/horto-netplan-validate.out 2>/tmp/horto-netplan-validate.err; then
+    echo "OK: netplan generate succeeded"
+  else
+    echo "ERROR: netplan generate failed" >&2
+    cat /tmp/horto-netplan-validate.err >&2
+    FAILED=1
+  fi
+else
+  echo "WARNING: netplan command not found; skipping netplan validation"
+fi
 
 if [ "$FAILED" -ne 0 ]; then
   echo "Step 6 failed: configuration validation found errors." >&2
   exit 1
 fi
 
-echo "Step 6 complete: configuration validation passed in $mode mode."
+echo "Step 6 complete: configuration validation passed."
+
+# Unmask / enable / start hostapd (required for IoT LAN)
+echo "Enabling hostapd..."
+sudo systemctl unmask hostapd || true
+sudo systemctl enable hostapd || true
+sudo systemctl start hostapd || true
