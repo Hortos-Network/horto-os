@@ -8,7 +8,7 @@
 
 ## Step by Step Guide
 
-#### Method 1: `dd` with Compression (e.g., `gzip`)
+## Method 1: `dd` with Compression (e.g., `gzip`)
 
 This method copies the entire raw disk but compresses it as it goes.
 
@@ -70,7 +70,7 @@ This method copies the entire raw disk but compresses it as it goes.
 
 ------
 
-#### Method 2: `partclone`
+## Method 2: `partclone`
 
 `partclone` is designed for cloning and restoring partitions. It's more efficient for backups as it only copies used blocks.
 
@@ -203,7 +203,7 @@ sudo gzip -dc /mnt/external/horto-os/emmc_p1_backup_YYYYMMDD.img.gz | partclone.
 For frequent snapshots, `partclone` is generally more efficient due to its block-level copying. However, `dd` with compression is simpler if you just want a full disk image without worrying about individual partitions. Choose the method that best fits your comfort level and specific needs.
 
 
-#### Method 3: shrink-backup (Backup to img files)
+## Method 3: shrink-backup (Backup to img files)
 
 There is also a more universal method for backing up SBCs into small image files, largely independent of the operating system in use.
 

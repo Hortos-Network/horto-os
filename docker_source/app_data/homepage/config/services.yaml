@@ -2,7 +2,7 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/services/
 
-- Horto Apps:
+- Apps:
     - EVCC (HEMS):
         icon: evcc.png
         href: http://{{MY_HOSTNAME}}:7070
@@ -20,7 +20,7 @@
         server: my-docker
         container: open-webui
 
-- Horto Server Apps:
+- Horto-OS Server Apps:
     - Cockpit:
         icon: cockpit.png
         href: http://{{MY_HOSTNAME}}:9890
@@ -39,12 +39,7 @@
           type: iframe
           src: /images/leases.html
 
-- Horto (AI) Services:
-    - Cloudflared:
-        icon: cloudflared.png
-        description: Tunnel to the Hortos OS services
-        server: my-docker
-        container: cloudflare-tunnel
+- Horto-OS (AI) Services:
     - Deepseek 1.7b param LLM:
         href: http://{{MY_HOSTNAME}}:8001/docs
         icon: deepseek.png
@@ -69,3 +64,8 @@
         description: Object Detection for RK3588
         server: my-docker
         container: rk3588-yolo11n
+    - Cloudflared:
+        icon: cloudflared.png
+        description: Tunnel to the Hortos OS services
+        server: my-docker
+        container: cloudflare-tunnel
