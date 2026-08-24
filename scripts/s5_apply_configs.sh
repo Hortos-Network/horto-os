@@ -29,8 +29,26 @@ apply_file() {
   staged_file="$1"
   rel_path=${staged_file#"$STAGING_ETC_DIR"/}
   target_file="$TARGET_ROOT/$rel_path"
+  
+  # Special handling for resolv.conf to avoid overwriting a symlink
+  if [ "$rel_path" = "resolv.conf" ]; then
+    # Remove the symlink if it exists
+    if [ -L "$target_file" ]; then
+      echo "Removing existing resolv.conf symlink..."
+      sudo rm -f "$target_file"
+    fi
+    # Also remove the file if it exists (in case it's a regular file)
+    if [ -f "$target_file" ]; then
+      echo "Removing existing resolv.conf file..."
+      sudo rm -f "$target_file"
+    fi
+  fi
+  
   mkdir -p "$(dirname "$target_file")"
   cp "$staged_file" "$target_file"
+  # Set proper ownership and permissions
+  sudo chown root:root "$target_file"
+  sudo chmod 644 "$target_file"
   echo "Applied file: $staged_file -> $target_file"
 }
 
@@ -40,3 +58,16 @@ find "$STAGING_ETC_DIR" -type f | while IFS= read -r staged_file; do
 done
 
 echo "Step 5 complete: staged configuration applied from $STAGING_ETC_DIR to $TARGET_ROOT."
+echo ""
+echo "The hostname has been updated. A reboot is required for the changes to take effect."
+echo -n "Do you want to reboot now? [y/N]: " >&2
+IFS= read -r reboot_choice || true
+case "$reboot_choice" in
+  y|Y)
+    echo "Rebooting..."
+    reboot
+    ;;
+  *)
+    echo "Skipping reboot. Remember to reboot later to apply hostname changes before proceeding."
+    ;;
+esac

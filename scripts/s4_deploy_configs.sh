@@ -98,6 +98,7 @@ case "$mode" in
     fi
 
     render_and_stage_file "hosts"
+    render_and_stage_file "hostname"
     ;;
 esac
 
