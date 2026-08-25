@@ -30,7 +30,22 @@ Ref: [docs.armbian.com/User-Guide_Armbian-Software/Containers](https://docs.armb
 sh /srv/horto-os/scripts/d1_docker_init.sh
 ```
 
-## Dockge, docker compose.yaml stack
+After running this script, come back to this document to continue with spinning
+up the Dockge container.
+
+Run this command in the dockge folder:
+
+```Bash
+##### Be sure are in the /srv/docker/dockge folder!!
+##### Start the server
+docker compose up -d
+```
+
+After running this command, the Dockge container should be up and running and you
+can access it via the web interface at `http://MY_HOSTNAME:5001`.
+
+
+## Dockge, docker compose.yaml stack (Manual setup)
 
 Ref: [github.com/louislam/dockge](https://github.com/louislam/dockge)
 

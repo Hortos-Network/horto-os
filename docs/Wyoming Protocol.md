@@ -27,7 +27,7 @@ The most recent version you find in the [Horto-OS dev_wyoming branch](https://gi
 
 ## Acknowledgments
 
-To get wyoming compatible API's in to Horto-OS we the libraries from:
+To get wyoming compatible API's in to Horto-OS we use the libraries from:
 
 - Wyoming for RK3576 [Github repo of Hanzo-Huang](https://github.com/Hanzo-Huang/rk3576-home-assistant-voice.git)
 - [Wyoming Protocol](https://github.com/OHF-Voice/wyoming.git) (AI Voice Pipeline)
