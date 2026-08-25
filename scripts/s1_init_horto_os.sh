@@ -16,6 +16,6 @@ sudo apt install -y cockpit cockpit-networkmanager
 
 # Install additional packages used by the Horto OS setup for IoT LAN components.
 echo "Installing IoT LAN components..."
-sudo apt install -y hostapd dnsmasq avahi-daemon
+sudo apt install -y hostapd dnsmasq iptables avahi-daemon
 
 echo "Step 1 complete: base packages installed."

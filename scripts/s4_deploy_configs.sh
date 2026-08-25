@@ -82,6 +82,7 @@ case "$mode" in
     done
 
     render_and_stage_file "hosts"
+    render_and_stage_file "hostname"
     render_and_stage_file "hostapd/hostapd.conf"
     render_and_stage_file "netplan/99-iot-lan.yaml"
 
@@ -101,6 +102,10 @@ case "$mode" in
     render_and_stage_file "hostname"
     ;;
 esac
+
+# Set minimlal permissions for netplan files
+chmod 640 "$STAGING_ETC_DIR/netplan/99-iot-lan.yaml"
+chmod 640 "$STAGING_ETC_DIR/netplan"/*
 
 echo "Step 4 complete: configuration staged in $STAGING_ETC_DIR using $mode mode."
 echo "!!! Review the staged files there before copying them into /etc. by running s5_apply_configs.sh !!!"

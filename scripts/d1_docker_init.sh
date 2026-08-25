@@ -78,6 +78,7 @@ find "$TARGET_DIR" -type f | while IFS= read -r file_path; do
 done
 
 # Clone rkvoice-stream submodule
+mkdir -p "$TARGET_DIR"/docker_repos/
 cd "$TARGET_DIR"/docker_repos/
 git clone --recurse-submodule https://github.com/suharvest/rkvoice-stream.git
 
@@ -91,3 +92,4 @@ cp rkvoice-stream/pyproject.toml -t "$TARGET_DIR"/stacks/rkvoice-stream/
 
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"
+echo "Go back the Docker documentation file `Horto-OS_setup_4_docker`"

@@ -2,9 +2,7 @@
 
 Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). This repo contains a set of documentation, scripts, and managed configuration files to deploy a basic Horto OS stack on a fresh Armbian-based RK3588 system.
 
-
 ![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
-
 
 > [!NOTE]
 > This project is in an early stage and not all functionalities are present yet.
@@ -42,6 +40,7 @@ More information about Horto OS: [What is Horto OS?](docs/What%20is%20Horto%20OS
 - The tools to flash a SD card.
 
 For a more capable Horto-BOX we recommend to have 16GB RAM and minimal 128 GB of storage.
+
 ## Repository Structure
 
 This `horto-os` repository contains the core components for deploying and managing Horto OS. When cloned to your target system (e.g., `/srv/horto-os`), it will have the following structure:
@@ -60,13 +59,12 @@ This `horto-os` repository contains the core components for deploying and managi
 └── backup/           <-- Local system safety backups (NOT in Git)
 ```
 
-
 **Explanation**
 
--   `config/`: Configuration templates (e.g., `dnsmasq.conf.template`, etc.).
--   `docker_source/`: Full Docker stack definitions and application data intended to be copied to your machine-specific Docker directory.
--   `docs/`: Comprehensive documentation and detailed step-by-step guides for installation and setup.
--   `scripts/`: Setup and deployment scripts. The current scripted host setup sequence is `s1_init_horto_os.sh` → `s2_init_env_vars.sh` → `s3_backup_etc_configs.sh` → `s4_deploy_configs.sh` → `s5_apply_configs.sh` → `s6_validate_configs.sh` → `s7_activate_services.sh`. Docker app-data initialization currently begins with `d1_docker_init.sh`.
+- `config/`: Configuration templates (e.g., `dnsmasq.conf.template`, etc.).
+- `docker_source/`: Full Docker stack definitions and application data intended to be copied to your machine-specific Docker directory.
+- `docs/`: Comprehensive documentation and detailed step-by-step guides for installation and setup.
+- `scripts/`: Setup and deployment scripts. The current scripted host setup sequence is `s1_init_horto_os.sh` → `s2_init_env_vars.sh` → `s3_backup_etc_configs.sh` → `s4_deploy_configs.sh` → `s5_apply_configs.sh` → `s6_validate_configs.sh` → `s7_activate_services.sh`. Docker app-data initialization currently begins with `d1_docker_init.sh`.
 
 ## Getting Started
 
@@ -74,33 +72,39 @@ To deploy Horto OS on a fresh RK3588-based system, follow the setup guides in th
 
 Here's a high-level overview of the main installation phases:
 
-1.  **[Horto-OS setup 1](docs/Horto-OS_setup_1.md)**:
-    *   Flash and boot Armbian.
-    *   Optionally move the system to eMMC.
-    *   Install `git` and clone the repository into `/srv/horto-os`.
+1. **[Horto-OS setup 1](docs/Horto-OS_setup_1.md)**:
+   
+   * Flash and boot Armbian.
+   * Optionally move the system to eMMC.
+   * Install `git` and clone the repository into `/srv/horto-os`.
 
-2.  **Choose the setup path**:
-    *   **[Manual path](docs/Horto-OS_setup_2_manual.md)** for manual editing and copying.
-    *   **[Scripted path](docs/Horto-OS_setup_2_scripted.md)** for the tested host setup scripts.
+2. **Choose the setup path**:
+   
+   * **[Manual path](docs/Horto-OS_setup_2_manual.md)** for manual editing and copying.
+   * **[Scripted path](docs/Horto-OS_setup_2_scripted.md)** for the tested host setup scripts.
+   * **[Scripted path minimal](docs/Horto-OS_setup_2_scripted_minimal.md)** for the tested host setup scripts.
 
-3.  **Scripted host setup flow**:
-    *   `scripts/s1_init_horto_os.sh`
-    *   `scripts/s2_init_env_vars.sh`
-    *   `scripts/s3_backup_etc_configs.sh`
-    *   `scripts/s4_deploy_configs.sh`
-    *   `scripts/s5_apply_configs.sh`
-    *   `scripts/s6_validate_configs.sh`
-    *   `scripts/s7_activate_services.sh`
+3. **Scripted host setup flow**:
+   
+   * `scripts/s1_init_horto_os.sh`
+   * `scripts/s2_init_env_vars.sh`
+   * `scripts/s3_backup_etc_configs.sh`
+   * `scripts/s4_deploy_configs.sh`
+   * `scripts/s5_apply_configs.sh`
+   * `scripts/s6_validate_configs.sh`
+   * `scripts/s7_activate_services.sh`
 
-4.  **Network Configuration reference**:
-    *   Additional network explanations and NAT examples are in [Horto-OS setup 3 – networking](docs/Horto-OS_setup_3_networking.md).
+4. **Network Configuration reference**:
+   
+   * Additional network explanations and NAT examples are in [Horto-OS setup 3 – networking](docs/Horto-OS_setup_3_networking.md).
 
-5.  **Docker and dashboard setup**:
-    *   How to install the full Docker stack.
-    *   Deployment of Dockge for user-friendly management of containerized applications.
-    *   Docker source/app-data initialization begins with `scripts/d1_docker_init.sh`.
-    *   Steps to deploy other services like EVCC, Whisper (CV), and MMS (TTS) using Dockge.
-    *   **[Detailed Guide: docs/Horto-OS_setup_4_docker.md](docs/Horto-OS_setup_4_docker.md)**
+5. **Docker and dashboard setup**:
+   
+   * How to install the full Docker stack.
+   * Deployment of Dockge for user-friendly management of containerized applications.
+   * Docker source/app-data initialization begins with `scripts/d1_docker_init.sh`.
+   * Steps to deploy other services like EVCC, Whisper (CV), and MMS (TTS) using Dockge.
+   * **[Detailed Guide: docs/Horto-OS_setup_4_docker.md](docs/Horto-OS_setup_4_docker.md)**
 
 ## Contributing
 
@@ -110,3 +114,12 @@ We welcome contributions to Horto OS! Please refer to the `CONTRIBUTING.md` file
 
 Unless otherwise stated, this repository is licensed under Apache-2.0.  
 Some subdirectories may be licensed differently; see the local LICENSE files.
+
+## Acknowledgments
+
+Horto-OS is developed by Hortos Network and uses ideas or app/libraries from:
+
+- Coasys [Github](https://github.com/Coasys)
+- Holochain [Github](https://github.com/holochain)
+- [evcc.io](https://evcc.io/) (Home Energy Management)
+- [Wyoming Protocol](https://github.com/OHF-Voice/wyoming.git) (AI Voice Pipeline)

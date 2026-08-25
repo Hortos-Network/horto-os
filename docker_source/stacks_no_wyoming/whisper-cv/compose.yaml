@@ -1,6 +1,5 @@
 services:
   whisper-cv:
-    build: .
     image: ghcr.io/seeed-projects/recomputer-rk-cv/rk3588-whisper:latest
     container_name: whisper-cv
     restart: no
@@ -15,5 +14,4 @@ services:
       - RKNN_LOG_LEVEL=0
     volumes:
       - /proc/device-tree/compatible:/proc/device-tree/compatible:ro
-    command: ["python", "whisper_wyoming.py", "--host", "whisper-cv", "--port", "10300"]
 networks: {}
