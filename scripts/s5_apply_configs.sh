@@ -29,7 +29,7 @@ apply_file() {
   staged_file="$1"
   rel_path=${staged_file#"$STAGING_ETC_DIR"/}
   target_file="$TARGET_ROOT/$rel_path"
-  
+
   # Special handling for resolv.conf to avoid overwriting a symlink
   if [ "$rel_path" = "resolv.conf" ]; then
     # Remove the symlink if it exists
@@ -43,7 +43,7 @@ apply_file() {
       sudo rm -f "$target_file"
     fi
   fi
-  
+
   mkdir -p "$(dirname "$target_file")"
   cp "$staged_file" "$target_file"
   # Set proper ownership and permissions
@@ -56,6 +56,10 @@ apply_file() {
 find "$STAGING_ETC_DIR" -type f | while IFS= read -r staged_file; do
   apply_file "$staged_file"
 done
+
+# Disable systemd-resolved, to free up port 53 for dnsmasq
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
 
 echo "Step 5 complete: staged configuration applied from $STAGING_ETC_DIR to $TARGET_ROOT."
 echo ""
