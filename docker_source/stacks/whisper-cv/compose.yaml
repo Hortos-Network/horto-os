@@ -15,5 +15,4 @@ services:
       - RKNN_LOG_LEVEL=0
     volumes:
       - /proc/device-tree/compatible:/proc/device-tree/compatible:ro
-    command: ["python", "whisper_wyoming.py", "--host", "whisper-cv", "--port", "10300"]
 networks: {}

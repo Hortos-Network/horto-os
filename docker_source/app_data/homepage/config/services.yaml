@@ -40,6 +40,12 @@
           src: /images/leases.html
 
 - Horto-OS (AI) Services:
+    - Whisper (STT):
+        icon: /images/homepage_mic_icon.png
+        href: http://{{MY_HOSTNAME}}:8000/docs
+        description: Speech recognition model
+        server: my-docker
+        container: whisper-cv
     - Deepseek 1.7b param LLM:
         href: http://{{MY_HOSTNAME}}:8001/docs
         icon: deepseek.png
@@ -52,12 +58,6 @@
         description: Rockchip NPU speech engine
         server: my-docker
         container: rkvoice-stream
-    - Whisper (STT):
-        icon: /images/homepage_mic_icon.png
-        href: http://{{MY_HOSTNAME}}:8000/docs
-        description: Speech recognition model
-        server: my-docker
-        container: whisper-cv
     - YOLO RK3588-yolo11n:
         href: http://{{MY_HOSTNAME}}:8002/docs
         icon: https://cdn.simpleicons.org/yolo/111F68
