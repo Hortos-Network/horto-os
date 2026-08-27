@@ -84,7 +84,7 @@ Here's a high-level overview of the main installation phases:
    * **[Scripted path](docs/Horto-OS_setup_2_scripted.md)** for the tested host setup scripts.
    * **[Scripted path minimal](docs/Horto-OS_setup_2_scripted_minimal.md)** for the tested host setup scripts.
 
-3. **Scripted host setup flow**:
+3. **Scripted host setup (IOT-LAN) flow**:
    
    * `scripts/s1_init_horto_os.sh`
    * `scripts/s2_init_env_vars.sh`
@@ -109,6 +109,14 @@ Here's a high-level overview of the main installation phases:
 ## Contributing
 
 We welcome contributions to Horto OS! Please refer to the `CONTRIBUTING.md` file for guidelines on how to contribute, report issues, or suggest enhancements.
+
+## Known Issues
+
+- The scripted host setup flow may not work on all platforms.
+- The minimal SETUP flow is not extensifly tested,and may need some adjustments.
+- The Docker container 'yolo-detection' has an issue in consuming a high amount
+of CPU power in idle state.
+
 
 ## License
 
