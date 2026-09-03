@@ -75,9 +75,9 @@ Then reboot the device and remove teh SD card before it boots again. Now it shou
 
 After the repository exists in `/srv/horto-os`, continue with either:
 
-- [Horto-OS setup 2 – manual](Horto-OS_setup_2_manual.md)
-- [Horto-OS setup 2 – scripted](Horto-OS_setup_2_scripted.md)
+- [HORTO-OS_SETUP_2_MANUAL](HORTO-OS_SETUP_2_MANUAL.MD)
+- [HORTO-OS_SETUP_2_SCRIPTED](HORTO-OS_SETUP_2_SCRIPTED.MD)
 
 Or in case you want a scripted setup without IOT-LAN:
 
-- [Horto-OS setup 2 – scripted minimal](Horto-OS_setup_2_scripted_minimal.md)
+- [HORTO-OS_SETUP_2_SCRIPTED_MINIMAL](HORTO-OS_SETUP_2_SCRIPTED_MINIMAL.MD)

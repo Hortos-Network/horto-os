@@ -49,5 +49,5 @@ a) 2 × M.2 M Key: PCIe 3.0 x4 and PCIe 2.1 x1, supports SSD expansion and AI ac
 b) 1 x miniPCIe for wireless expansion, like 4G LTE, LoRaWAN, Wi-Fi HaLow
 
 ## Related Topics
-- [Horto-OS setup 1](../Horto-OS_setup_1.md)
-- [Horto-OS setup 4 – Docker](../Horto-OS_setup_4_docker.md)
+- [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD)
+- [HORTO-OS_SETUP_4_DOCKER](../HORTO-OS_SETUP_4_DOCKER.MD)

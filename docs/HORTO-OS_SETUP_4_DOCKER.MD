@@ -223,4 +223,4 @@ As the most of the apps on Horto OS are not designed to be exposed to the intern
 
 After the Docker setup is complete, continue with:
 
-- [Horto-OS setup 4 – Docker AI](Horto-OS_setup_4_docker_AI.md)
+- [HORTO-OS_SETUP_4_DOCKER_AI](HORTO-OS_SETUP_4_DOCKER_AI.MD)

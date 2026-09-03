@@ -88,4 +88,4 @@ wget wget https://github.com/Hanzo-Huang/rk3576-home-assistant-voice/releases/do
 tar -xzf piper-rk3576-models.tar.gz -C "$TARGET_DIR"/stacks
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"
-echo "Go back the Docker documentation file `Horto-OS_setup_4_docker`"
+echo "Go back the Docker documentation file `HORTO-OS_SETUP_4_DOCKER`"

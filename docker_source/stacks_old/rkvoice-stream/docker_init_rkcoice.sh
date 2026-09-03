@@ -55,4 +55,4 @@ cp rkvoice-stream/pyproject.toml -t "$TARGET_DIR"/stacks/rkvoice-stream/
 
 
 echo "rkvoice-stream complete: docker source copied and rendered in $TARGET_DIR"
-echo "Go back the Docker documentation file `Horto-OS_setup_4_docker`"
+echo "Go back the Docker documentation file `HORTO-OS_SETUP_4_DOCKER`"

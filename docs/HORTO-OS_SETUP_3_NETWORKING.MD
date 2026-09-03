@@ -247,5 +247,5 @@ The scripted setup can also apply these rules for you in `s7_activate_services.s
 
 After networking is working, continue with:
 
-- [Horto-OS setup 4 – Docker](Horto-OS_setup_4_docker.md)
-- [Homepage (Dashboard)](Homepage%20%28Dashboard%29.md)
+- [HORTO-OS_SETUP_4_DOCKER](HORTO-OS_SETUP_4_DOCKER.MD)
+- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)
