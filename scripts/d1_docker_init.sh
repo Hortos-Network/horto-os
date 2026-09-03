@@ -11,7 +11,7 @@ esac
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
-SOURCE_DIR="$REPO_ROOT/docker_source/"
+SOURCE_DIR="$REPO_ROOT/docker_source/stacks"
 TARGET_DIR="/srv/docker/"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
@@ -34,9 +34,9 @@ else
   exit 1
 fi
 
-mkdir -p "$TARGET_DIR"
-cp -a "$SOURCE_DIR/." "$TARGET_DIR/"
-echo "Copied docker source tree: $SOURCE_DIR -> $TARGET_DIR"
+mkdir -p "$TARGET_DIR/stacks"
+cp -a "$SOURCE_DIR/." "$TARGET_DIR/stacks/"
+echo "Copied docker source tree: $SOURCE_DIR -> $TARGET_DIR/stacks"
 
 # Copy assets (Homepage images, filtered to homepage*)
 ASSETS_SOURCE="$REPO_ROOT/_assets"
@@ -77,19 +77,15 @@ find "$TARGET_DIR" -type f | while IFS= read -r file_path; do
   fi
 done
 
-# Clone rkvoice-stream submodule
-mkdir -p "$TARGET_DIR"/docker_repos/
-cd "$TARGET_DIR"/docker_repos/
-git clone --recurse-submodule https://github.com/suharvest/rkvoice-stream.git
+# Get Piper models
+mkdir -p "$TARGET_DIR"/docker_repos/piper
+cd "$TARGET_DIR"/docker_repos/piper
 
-# Copy rkvoice-stream files to stacks/rkvoice-stream
-cp -r rkvoice-stream/baseline -t "$TARGET_DIR"/stacks/rkvoice-stream/
-cp -r rkvoice-stream/configs -t "$TARGET_DIR"/stacks/rkvoice-stream/
-cp -r rkvoice-stream/docker -t "$TARGET_DIR"/stacks/rkvoice-stream/
-cp -r rkvoice-stream/models -t "$TARGET_DIR"/stacks/rkvoice-stream/
-cp -r rkvoice-stream/rkvoice_stream -t "$TARGET_DIR"/stacks/rkvoice-stream/
-cp rkvoice-stream/pyproject.toml -t "$TARGET_DIR"/stacks/rkvoice-stream/
+# Download the models into the docker_repos directory:
+wget wget https://github.com/Hanzo-Huang/rk3576-home-assistant-voice/releases/download/models-v1/piper-rk3576-models.tar.gz
 
+# Copy Required model files to the Stack Directory
+tar -xzf piper-rk3576-models.tar.gz -C "$TARGET_DIR"/stacks
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"
 echo "Go back the Docker documentation file `Horto-OS_setup_4_docker`"
