@@ -232,5 +232,5 @@ Check:
 
 ## Related topics
 
-- [Horto-OS setup 4 – Docker](Horto-OS_setup_4_docker.md)
-- [Horto-OS setup 4 – Docker AI](Horto-OS_setup_4_docker_AI.md)
+- [HORTO-OS_SETUP_4_DOCKER](HORTO-OS_SETUP_4_DOCKER.MD)
+- [HORTO-OS_SETUP_4_DOCKER_AI](HORTO-OS_SETUP_4_DOCKER_AI.MD)

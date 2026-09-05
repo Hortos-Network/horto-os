@@ -5,7 +5,7 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 ![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
 
 > [!NOTE]
-> This project is in an early stage and not all functionalities are present yet.
+> This project is in an early stage and only basic functionalities are present yet.
 > Nevertheless, it can already be used to run a Homelab focused on Home Energy Management and / or Home Automation.
 
 **List of potential use cases in the current stage of development:**
@@ -20,7 +20,8 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 
 At its core, Horto OS runs on Armbian and integrates a variety of applications, connected through the NEXUS Layer.
 
-More information about Horto OS: [What is Horto OS?](docs/What%20is%20Horto%20OS.md) and [Vision](docs/Vision.md).
+More information about Horto OS: [WHAT IS HORTO OS?](docs/WHAT_IS_HORTO-OS.MD)
+and [VISION](docs/VISION.MD).
 
 ## What you get with Horto OS?
 
@@ -31,7 +32,7 @@ More information about Horto OS: [What is Horto OS?](docs/What%20is%20Horto%20OS
 - A pre-configured Dashboard (Homepage Dasboard) to get easy access to the apps and monitor your Horto-Box.
 - If your Horto-Box has sufficient RAM (16GB) you can also install Home Assistant and Frigate NVR.
 
-![Dashboard](_assets/Screenshot__Homepage-Dashboard_Draft.avif)
+![Dashboard](_assets/Screenshot_Homepage-Dashboard_Draft.avif)
 
 ## Requirements
 
@@ -72,7 +73,7 @@ To deploy Horto OS on a fresh RK3588-based system, follow the setup guides in th
 
 Here's a high-level overview of the main installation phases:
 
-1. **[Horto-OS setup 1](docs/Horto-OS_setup_1.md)**:
+1. **[HORTO-OS_SETUP_1](docs/HORTO-OS_SETUP_1.MD)**:
    
    * Flash and boot Armbian.
    * Optionally move the system to eMMC.
@@ -80,9 +81,9 @@ Here's a high-level overview of the main installation phases:
 
 2. **Choose the setup path**:
    
-   * **[Manual path](docs/Horto-OS_setup_2_manual.md)** for manual editing and copying.
-   * **[Scripted path](docs/Horto-OS_setup_2_scripted.md)** for the tested host setup scripts.
-   * **[Scripted path minimal](docs/Horto-OS_setup_2_scripted_minimal.md)** for the tested host setup scripts.
+   * **[MANUAL PATH](docs/HORTO-OS_SETUP_2_MANUAL.MD)** for manual editing and copying.
+   * **[SCRIPTED PATH](docs/HORTO-OS_SETUP_2_SCRIPTED.MD)** for the tested host setup scripts.
+   * **[SCRIPTED PATH MINIMAL](docs/HORTO-OS_SETUP_2_SCRIPTED_MINIMAL.MD)** for the tested host setup scripts.
 
 3. **Scripted host setup (IOT-LAN) flow**:
    
@@ -96,7 +97,7 @@ Here's a high-level overview of the main installation phases:
 
 4. **Network Configuration reference**:
    
-   * Additional network explanations and NAT examples are in [Horto-OS setup 3 – networking](docs/Horto-OS_setup_3_networking.md).
+   * Additional network explanations and NAT examples are in [HORTO-OS_SETUP_3 NETWORKING](docs/HORTO-OS_SETUP_3_NETWORKING.MD).
 
 5. **Docker and dashboard setup**:
    
@@ -104,7 +105,7 @@ Here's a high-level overview of the main installation phases:
    * Deployment of Dockge for user-friendly management of containerized applications.
    * Docker source/app-data initialization begins with `scripts/d1_docker_init.sh`.
    * Steps to deploy other services like EVCC, Whisper (CV), and MMS (TTS) using Dockge.
-   * **[Detailed Guide: docs/Horto-OS_setup_4_docker.md](docs/Horto-OS_setup_4_docker.md)**
+   * **[HORTO-OS_SETUP_4 DOCKER](docs/HORTO-OS_SETUP_4_DOCKER.MD)**
 
 ## Contributing
 

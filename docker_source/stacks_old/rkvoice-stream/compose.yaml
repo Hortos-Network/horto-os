@@ -1,0 +1,50 @@
+services:
+  rkvoice-stream:
+    build:
+      context: . # Point to your cloned rkvoice-stream repository root
+      dockerfile: docker/Dockerfile
+    image: rkvoice-stream:latest
+    container_name: rkvoice-stream
+    privileged: true
+    init: true
+    network_mode: host
+    mem_limit: 7500m
+    memswap_limit: 7500m
+    volumes:
+      - /dev:/dev
+      - /usr/lib/librknnrt.so:/usr/lib/librknnrt.so:ro
+      # ADJUST THESE PATHS TO MATCH WHERE YOUR MODELS ACTUALLY LIVE ON THE HOST:
+      - ./models/matcha-icefall-zh-en:/opt/tts/models/matcha-icefall-zh-en:ro
+      - ./models/matcha-s64.rknn:/opt/tts/models/matcha-s64.rknn:ro
+      - ./models/vocos-16khz-600.rknn:/opt/tts/models/vocos-16khz-600.rknn:ro
+      - ./models/matcha-split:/opt/tts/models/matcha-split:ro
+      - ./matcha-data:/home/cat/matcha-data:ro
+    restart: unless-stopped
+    environment:
+      - MODEL_DIR=/opt/tts/models
+      - TTS_BACKEND=matcha_rknn
+      - TTS_MODEL_DIR=/opt/tts/models
+      - MATCHA_MAX_PHONEMES=64
+      - MATCHA_MODEL_SEQ_LEN=80
+      - MATCHA_USE_ORT=1
+      - MATCHA_MODEL=matcha-s64.rknn
+      - VOCOS_MODEL=vocos-16khz-600.rknn
+      - VOCOS_FRAMES=600
+      - MATCHA_ONNX_PATH=/home/cat/matcha-data/model-steps-3.onnx
+
+
+# 2. Custom Wyoming wrapper/bridge service talking to it
+  wyoming-tts-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wyoming-tts-bridge
+    restart: unless-stopped
+    ports:
+      - "10200:10200" # Standard Wyoming port for Home Assistant
+    environment:
+      - RKVOICE_HOST=rkvoice-stream
+      - RKVOICE_PORT=8621
+    depends_on:
+      - rkvoice-stream
+networks: {}

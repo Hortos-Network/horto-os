@@ -64,7 +64,7 @@ docker system prune -a --volumes
 
 Uvicorn running on http://MY_HOSTNAME:8001 (Press CTRL+C to quit)
 
-The LLM API is exposed at `127.0.0.1:8001`.
+The LLM API is exposed at `http://192.168.10.1:8001/v1`.
 
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8001/docs`.
 
@@ -166,68 +166,54 @@ The YOLO API is exposed at `127.0.0.1:8002`.
 
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8002/docs`.
 
-## rkvoice-stream / openvoicestream (TTS)
+## Piper (TTS)
 
-For `rkvoice-stream`, the usual path is to create a Dockge stack and then copy the required build context into that stack directory.
+For `piper`, the usual path is to create a Dockge stack and then copy the
+required build context into that stack directory.
 
-Typical compose definition:
+Typical compose definition (for a RK3576 CPU!!!):
 
 ```yaml
 services:
-  rkvoice-stream:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-    image: rkvoice-stream
-    container_name: rkvoice-stream
+  wyoming-piper-rk35xx:
+    image: ghcr.io/hanzo-huang/wyoming-piper-rk3576:sha-d4da453
+    container_name: wyoming-piper-rk35xx
     restart: unless-stopped
-    privileged: true
-    network_mode: host
+    ports:
+      - "10200:10200" # Standard Wyoming port for Home Assistant
     devices:
       - /dev/dri:/dev/dri
       - /dev/dma_heap:/dev/dma_heap
       - /dev/rknpu:/dev/rknpu
       - /dev/mali0:/dev/mali0
+    volumes:
+      - ./model:/app/model:ro # Point this to your local folder containing your Piper RKNN model files
+    command: "python", "/app/wyoming_service.py", "--uri", "tcp://0.0.0.0:10200", "--model-dir", "/app/model"
+
 ```
 
-Git clone the repository into the docker_repos directory:
+Download the models into the docker_repos directory:
 
 ```bash
-cd /srv/docker/docker_repos/
-git clone --recurse-submodule https://github.com/suharvest/rkvoice-stream.git
+mkdir -p /srv/docker/docker_repos/piper
+cd /srv/docker/docker_repos/piper
+wget wget https://github.com/Hanzo-Huang/rk3576-home-assistant-voice/releases/download/models-v1/piper-rk3576-models.tar.gz
 ```
 
-### Copy Required Project Files to the Stack Directory
+### Copy Required model files to the Stack Directory
 
-The Dockerfile for rkvoice-stream expects certain files and directories to be present in the build context (the stack's root directory). You need to manually copy these from the cloned repository (/srv/docker/docker_repos//rkvoice-stream) into your Dockge stack directory (/srv/docker/stacks/rkvoice-stream/).
-
-Navigate to your Dockge stack directory:
+Navigate to your docker_repos/piper directory:
 
 ```bash
-cd /srv/docker/stacks/rkvoice-stream/
+tar -xzf piper-rk3576-models.tar.gz -C /srv/docker/stacks/
 ```
 
-Then, copy the following folders and the pyproject.toml file:
-
-```bash
-cp -r ~/rkvoice-stream/baseline .
-cp -r ~/rkvoice-stream/configs .
-cp -r ~/rkvoice-stream/docker .
-cp -r ~/rkvoice-stream/models .
-cp -r ~/rkvoice-stream/rkvoice_stream .
-cp ~/rkvoice-stream/pyproject.toml .
-```
-
-After these commands, your /srv/docker/stacks/rkvoice-stream/ directory should contain:
+After these commands, your /srv/docker/stacks/piper/model/ directory should contain:
 
 ```tree
-compose.yaml
-baseline/
-configs/
-docker/ (containing Dockerfile)
-models/
-rkvoice_stream/
-pyproject.toml
+config.json
+decoder_rk3576.rknn
+encoder.onnx
 ```
 
 ### Deploy the Stack in Dockge
@@ -235,34 +221,15 @@ pyproject.toml
 Go back to the Dockge web UI for your rkvoice-stream stack. Click the "Deploy"
 or "Update" button. Dockge will now:
 
-Find the Dockerfile in the docker/ subdirectory.
-Locate all the necessary files (pyproject.toml, rkvoice_stream/, etc.) in the build context.
-Build the rkvoice-stream Docker image.
-Start the rkvoice-stream container.
-Access the rkvoice-stream Service:
+
+Build the piper Docker image.
+Start the piper container.
+Access the piper Service:
 
 The Voice Stream API is exposed at `127.0.0.1:8621`.
 
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8621/docs`.
 
-Note: Because network_mode: host is used in the Docker Compose file, the container
-shares the host's network. This means no explicit port mapping (ports:) is
-required in the compose.yaml file, as the container's internal port 8621 is
-directly exposed on the host's port 8621.
-
-
-## Testing
-
-Example local API test for the LLM endpoint:
-
-```bash
-curl http://192.168.10.1:8001/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "DeepSeek-R1-Qwen-1.7B_w8a8_RK3588.rkllm",
-    "messages": [{"role": "user", "content": "Do you know about Holochain, p2p app framework ?"}]
-  }'
-```
 
 ## Homepage integration
 

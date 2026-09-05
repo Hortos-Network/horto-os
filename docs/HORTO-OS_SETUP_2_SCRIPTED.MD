@@ -42,6 +42,10 @@ This installs the required host packages for the IOT-LAN path.
 
 ### 2. Create active variables
 
+> [!NOTE]
+> To allow the script to identify your LAN interface, make sure to attach the
+ethernet cable to the correct port. It chooses the port witch detects an active connection.
+
 ```bash
 sh s2_init_env_vars.sh
 ```
@@ -69,10 +73,10 @@ WIFI_INTERFACE="wlx00xxxxxx"
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
 MY_URL="YourDomainName.net"
+ETH_LAN=en... # LAN interface linked to the router
+ETH_IOT1=en... # IOT interface 1
+ETH_IOT2=en... # IOT interface 2
 ```
-
-> [!NOTE]
-> `WAN_GATEWAY` is no longer managed. The WAN side should receive IP address, DNS, and default route dynamically via DHCP.
 
 ### 3. Create the protected initial backup
 
@@ -195,5 +199,5 @@ This makes the setup more portable for cloned images and less technical users.
 
 After the host-side setup is complete, continue with:
 
-- [Horto-OS setup 4 – Docker](Horto-OS_setup_4_docker.md)
-- [Homepage (Dashboard)](Homepage%20%28Dashboard%29.md)
+- [HORTO-OS_SETUP_4_DOCKER](HORTO-OS_SETUP_4_DOCKER.MD)
+- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)

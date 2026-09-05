@@ -16,7 +16,7 @@ The NanoPi R6S has two USB ports, and supports USB type-C power delivery.
   
 It needs a minimum 20W USB-C PD GaN charger and a M.2 SSD half size drive to run Horto-OS.
 
-You need to install Armbian to set it up. The Horto-OS setup sequence starts here: [Horto-OS setup 1](../Horto-OS_setup_1.md).
+You need to install Armbian to set it up. The Horto-OS setup sequence starts here: [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD).
 ## Related Topics
-- [Horto-OS setup 1](../Horto-OS_setup_1.md)
-- [Horto-OS setup 3 – networking](../Horto-OS_setup_3_networking.md)
+- [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD)
+- [HORTO-OS_SETUP_3_NETWORKING](../HORTO-OS_SETUP_3_NETWORKING.MD)

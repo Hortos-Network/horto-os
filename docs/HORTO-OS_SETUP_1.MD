@@ -16,7 +16,15 @@ We recommend using Armbian Imager.
 
 Reference:
 [docs.armbian.com/User-Guide_Getting-Started](https://docs.armbian.com/User-Guide_Getting-Started/)
-## 2. Install git manually
+
+## 2. Update and install git manually
+
+Armbian upgrade is recommended to run first and acts differently than apt upgrade.
+It will take a while to complete.
+
+```bash
+sudo armbian-upgrade
+```
 
 Before using the Horto-OS setup scripts, install `git` manually.
 Without `git` you cannot clone the repository.
@@ -49,19 +57,22 @@ The resulting layout should look like this:
 
 ## 4. Copy the system from SD card to eMMC
 
-After first boot you can move the installation to the internal eMMC.
+After first reboot you can move the installation to the internal eMMC or SSD.
 
 > [!NOTE]
-> You can do this step later in the process too. If your SD card is large enough (min. 32GB) you can do the full install on the SD card, but we don't reccomend running Horto-OS on SD cards.
+> You can do this step later in the process too. If your SD card is large enough
+(min. 32GB) you can do the full install on the SD card, but we don't reccomend
+running Horto-OS on SD cards.
 
 ```bash
-nand-sata-install
+sudo sudo armbian-install
+# on less recent Armbian versions the command may be called `nand-sata-install`
 ```
-
 
 ![Armbian nand-sata-install screenshot](../_assets/Screenshot_Armbian_nand-sata-install.avif)
 
-**Select Boot from eMMC - system on eMMC** You will be asked to erase and then format the eMMC drive (choose ext4).
+**Select Boot from eMMC - system on eMMC** You will be asked to erase and then
+format the eMMC drive (choose ext4).
 
 If you get storage-related errors, check the visible block devices:
 
@@ -75,9 +86,9 @@ Then reboot the device and remove teh SD card before it boots again. Now it shou
 
 After the repository exists in `/srv/horto-os`, continue with either:
 
-- [Horto-OS setup 2 – manual](Horto-OS_setup_2_manual.md)
-- [Horto-OS setup 2 – scripted](Horto-OS_setup_2_scripted.md)
+- [HORTO-OS_SETUP_2_MANUAL](HORTO-OS_SETUP_2_MANUAL.MD)
+- [HORTO-OS_SETUP_2_SCRIPTED](HORTO-OS_SETUP_2_SCRIPTED.MD)
 
 Or in case you want a scripted setup without IOT-LAN:
 
-- [Horto-OS setup 2 – scripted minimal](Horto-OS_setup_2_scripted_minimal.md)
+- [HORTO-OS_SETUP_2_SCRIPTED_MINIMAL](HORTO-OS_SETUP_2_SCRIPTED_MINIMAL.MD)

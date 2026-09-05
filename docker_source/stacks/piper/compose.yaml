@@ -1,0 +1,15 @@
+services:
+  wyoming-piper-rk35xx:
+    image: ghcr.io/hanzo-huang/wyoming-piper-rk3576:sha-d4da453
+    container_name: wyoming-piper-rk35xx
+    restart: unless-stopped
+    ports:
+      - "10200:10200" # Standard Wyoming port for Home Assistant
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/dma_heap:/dev/dma_heap
+      - /dev/rknpu:/dev/rknpu
+      - /dev/mali0:/dev/mali0
+    volumes:
+      - ./model:/app/model:ro # Point this to your local folder containing your Piper RKNN model files
+    command: "python", "/app/wyoming_service.py", "--uri", "tcp://0.0.0.0:10200", "--model-dir", "/app/model"

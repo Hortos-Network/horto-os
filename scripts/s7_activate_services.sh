@@ -16,12 +16,9 @@ if [ ! -f "$FULL_ACTIVE_FILE" ]; then
 fi
 
 ACTIVE_SETUP_DIR="/srv/active_setup"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
 
 if [ -f "$FULL_ACTIVE_FILE" ]; then
   mode="full"
-elif [ -f "$MINIMAL_ACTIVE_FILE" ]; then
-  mode="minimal"
 else
   echo "Error: no active setup file found in $ACTIVE_SETUP_DIR" >&2
   exit 1
@@ -84,52 +81,18 @@ restart_service_if_present dnsmasq
 restart_service_if_present hostapd
 restart_service_if_present avahi-daemon
 
-case "$mode" in
-  full)
-    printf "Apply NAT / masquerade iptables rules now? [y/N]: " >&2
-    IFS= read -r apply_nat || true
-    case "$apply_nat" in
-      y|Y)
-        apply_nat_rules
-        ;;
-      ""|n|N)
-        echo "Skipping NAT / masquerade rule setup."
-        ;;
-      *)
-        echo "Invalid choice '$apply_nat'. Expected y or n." >&2
-        exit 1
-        ;;
-    esac
+printf "Apply NAT / masquerade iptables rules now? [y/N]: " >&2
+IFS= read -r apply_nat || true
+case "$apply_nat" in
+  y|Y)
+    apply_nat_rules
     ;;
-  minimal)
-    echo "Minimal mode: skipping IoT LAN service activation and NAT setup."
+  ""|n|N)
+    echo "Skipping NAT / masquerade rule setup."
     ;;
-esac
-
-echo "Setting up periodic DHCP lease export for Homepage..."
-OUTPUT_DIR="/srv/docker/assets"
-mkdir -p "$OUTPUT_DIR"
-sh /srv/horto-os/scripts/export_dhcp_leases.sh
-
-SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
-EXPORT_SCRIPT="$SCRIPT_DIR/export_dhcp_leases.sh"
-if [ -f "$EXPORT_SCRIPT" ]; then
-  CRON_JOB="* * * * * $EXPORT_SCRIPT"
-  if crontab -l 2>/dev/null | grep -F "$EXPORT_SCRIPT" >/dev/null 2>&1; then
-    echo "  cron job already installed for export_dhcp_leases.sh"
-  else
-    (crontab -l 2>/dev/null || true; echo "$CRON_JOB") | crontab -
-    echo "  cron job installed: runs every minute"
-  fi
-  sh "$EXPORT_SCRIPT"
-else
-  echo "  skipping: export_dhcp_leases.sh not found"
-fi
-
-echo "Step 7 complete: applied configuration activated. A reboot is recommended, especially after network changes."
-
-# === IoT LAN specific steps (only when full IoT LAN config is present) ===
-if [ -f "$FULL_ACTIVE_FILE" ]; then
+  *)
+    echo "Invalid choice '$apply_nat'. Expected y or n." >&2
+    exit 1
     ;;
 esac
 

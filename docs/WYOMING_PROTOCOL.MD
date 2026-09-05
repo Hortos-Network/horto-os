@@ -20,6 +20,42 @@ Using Wyoming gives you:
   natively around Wyoming. Satellites (like ESPHome voice assistants) stream
   audio straight to Wyoming servers without needing an intermediate transcoding step.
 
+## Wyoming Projects (Officially Supported models)
+
+Other models might work too, but they are not officially supported.
+
+- Audio input/output
+	- [mic-external](https://github.com/rhasspy/wyoming-mic-external)
+		- [snd-external](https://github.com/rhasspy/wyoming-snd-external)
+		- [SDL2](https://github.com/rhasspy/wyoming-sdl2)
+- Wake word detection
+	- [openWakeWord](https://github.com/rhasspy/wyoming-openwakeword)
+		- [porcupine1](https://github.com/rhasspy/wyoming-porcupine1)
+		- [snowboy](https://github.com/rhasspy/wyoming-snowboy)
+		- [microWakeWord](https://github.com/rhasspy/wyoming-microwakeword)
+- Speech-to-text
+	- [Faster Whisper](https://github.com/rhasspy/wyoming-faster-whisper)
+		- [Vosk](https://github.com/rhasspy/wyoming-vosk)
+		- [Whisper.cpp](https://github.com/rhasspy/wyoming-whisper-cpp)
+- Text-to-speech
+	- [Piper](https://github.com/rhasspy/wyoming-piper)
+- Intent handling
+	- [handle-external](https://github.com/rhasspy/wyoming-handle-external)
+
+
+### OpenWakeWord
+
+OpenWakeWord is a lightweight open-source wake word detection model that can be used to detect specific wake words in audio streams.
+
+What other models are built-in?
+
+Apart from ok_nabu, the standard rhasspy/wyoming-openwakeword container includes other default open-source models out of the box, such as:
+
+- hey_jarvis
+- alexa
+- hey_mycroft
+- jarvis
+
 ## Work in Progress
 
 The Wyoming protocol implementation is currently a work in progress.

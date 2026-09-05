@@ -33,24 +33,24 @@
           src: /images/leases.html
 
 - Horto-OS (AI) Services:
-    - Deepseek 1.7b param LLM:
-        href: http://{{MY_HOSTNAME}}:8001/docs
-        icon: deepseek.png
-        description: Accessible through OpenWebUI
-        server: my-docker
-        container: deepseek-npu
-    - rkvoice-stream (TTS):
-        href: http://{{MY_HOSTNAME}}:8621/docs
-        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/laudspeaker.webp
-        description: Rockchip NPU speech engine
-        server: my-docker
-        container: rkvoice-stream
     - Whisper (STT):
         href: http://{{MY_HOSTNAME}}:8000/docs
         icon: /images/homepage_mic_icon.png
         description: Speech recognition model
         server: my-docker
         container: whisper-cv
+    - Deepseek 1.7b param LLM:
+        href: http://{{MY_HOSTNAME}}:8001/docs
+        icon: deepseek.png
+        description: Accessible through OpenWebUI
+        server: my-docker
+        container: deepseek-npu
+    - Piper (TTS):
+        href:
+        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/piper-tts-light.png
+        description: Rockchip NPU speech engine
+        server: my-docker
+        container: piper
     - YOLO RK3588-yolo11n:
         href: http://{{MY_HOSTNAME}}:8002/docs
         icon: https://cdn.simpleicons.org/yolo/111F68

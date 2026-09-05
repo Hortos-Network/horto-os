@@ -5,15 +5,16 @@
 ---
 
 > [!WARNING]
-> This networking layout is currently tested primarily on the [NanoPi R6S](Hardware/NanoPi%20R6S.md).
-If your board has a different interface layout, adjust the config accordingly.
+> This networking layout is currently tested on the
+> [NanoPi R6S](HARDWARE/NANOPi_R6S.md) and [ReComputer RK3588](HARDWARE/RECOMPUTER_RK3588.md).
+> If your board has a different interface layout, adjust the config accordingly.
 
 ## Networking model
 
 Horto-OS uses:
 
 - one WAN interface with DHCP uplink,
-- two bridged LAN ports for the IoT LAN,
+- minimal one bridged LAN ports for the IoT LAN,
 - optional WiFi AP support through `hostapd`,
 - `dnsmasq` for DHCP and DNS on the IoT LAN,
 - `iptables` masquerading for internet access from the IoT LAN.
@@ -30,7 +31,33 @@ via DHCP from the upstream router.
 ## Requirements
 
 - If you intend to use WiFi for the IoT LAN, you will need to attach a Linux compatible WiFi USB
-  stick to the board. Or if your board does have built-in WiFi, you can use this instead.
+  stick to the board. Or if your board does have built-in WiFi, you should use this instead.
+
+## Environment variables
+
+For the full setup with IOT-LAN, it is recommended to manage these variables,
+even they are only used by the scripts:
+
+This command `ip link show` lists the network interfaces on the system. Look for
+the WiFi interface and Ethernet interface you want to use for the IOT-LAN.
+
+```bash
+ip link show
+```
+
+The template for the env variable you find in `config/my_variables.env`
+Copy this file to `/srv/active_setup/my_variables.env` and edit it to your needs.
+
+```env
+MY_HOSTNAME="Horto-OS_xxx"
+WIFI_INTERFACE="wlx00xxxxxx"
+WIFI_SSID="Horto-IoT-LAN"
+WIFI_PASSPHRASE=""
+MY_URL="YourDomainName.net"
+ETH_LAN=en... # LAN interface linked to the router
+ETH_IOT1=en... # IOT interface 1
+ETH_IOT2=en... # IOT interface 2
+```
 
 ## Current managed Netplan config
 
@@ -49,22 +76,22 @@ network:
   version: 2
   renderer: networkd
   ethernets:
-    # WAN interface: Connects to your main home router, gets IP, DNS, and default route via DHCP
-    wan:
+    # LAN interface: Connects to your main home router, gets IP, DNS, and default route via DHCP
+    {{ETH_LAN}}:
       dhcp4: yes
       dhcp6: yes
 
-    # LAN interfaces, which will be part of the bridge
+    # IOT-LAN interfaces, which will be part of the bridge
     # No IP configuration here, as they are enslaved to the bridge
-    lan1: {}
-    lan2: {}
+    {{ETH_IOT1}}: {}
+    # {{ETH_IOT2}}: {} remove comment to add third interface to the bridge
 
   bridges:
-    # Bridge for your IoT LAN (wired and wireless)
+    # Bridge for your IoT LAN (wired only)
     br0:
       interfaces:
-        - lan1
-        - lan2
+        - {{ETH_IOT1}}
+        # - {{ETH_IOT2}}
 
       addresses:
         - 192.168.10.1/24 # Static IP for the NanoPi's IoT LAN interface
@@ -135,7 +162,8 @@ rsn_pairwise=CCMP
 ```
 
 > [!NOTE]
-> This file is templated. The placeholders are rendered by the scripted setup before the file is applied to `/etc`.
+> This file is templated. The placeholders are rendered by the scripted setup
+before the file is applied to `/etc`.
 
 ## Current managed dnsmasq config
 
@@ -247,5 +275,5 @@ The scripted setup can also apply these rules for you in `s7_activate_services.s
 
 After networking is working, continue with:
 
-- [Horto-OS setup 4 – Docker](Horto-OS_setup_4_docker.md)
-- [Homepage (Dashboard)](Homepage%20%28Dashboard%29.md)
+- [HORTO-OS_SETUP_4_DOCKER](HORTO-OS_SETUP_4_DOCKER.MD)
+- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)
