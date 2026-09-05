@@ -45,12 +45,12 @@
         description: Accessible through OpenWebUI
         server: my-docker
         container: deepseek-npu
-    - rkvoice-stream (TTS):
-        href: http://{{MY_HOSTNAME}}:8621/docs
-        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/webp/laudspeaker.webp
+    - Piper (TTS):
+        href:
+        icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/piper-tts-light.png
         description: Rockchip NPU speech engine
         server: my-docker
-        container: rkvoice-stream
+        container: piper
     - YOLO RK3588-yolo11n:
         href: http://{{MY_HOSTNAME}}:8002/docs
         icon: https://cdn.simpleicons.org/yolo/111F68

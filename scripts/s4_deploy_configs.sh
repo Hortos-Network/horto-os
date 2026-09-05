@@ -30,7 +30,7 @@ render_template() {
 
   cp "$template_path" "$output_path"
 
-  for var_name in MY_HOSTNAME WIFI_INTERFACE WIFI_SSID WIFI_PASSPHRASE MY_URL; do
+  for var_name in MY_HOSTNAME WIFI_INTERFACE WIFI_SSID WIFI_PASSPHRASE MY_URL ETH_LAN ETH_IOT1 ETH_IOT2; do
     eval "var_value=\${$var_name-}"
     escaped_value=$(printf '%s' "$var_value" | sed 's/[\\&|]/\\&/g')
     sed -i "s|{{${var_name}}}|$escaped_value|g" "$output_path"
@@ -108,4 +108,5 @@ chmod 640 "$STAGING_ETC_DIR/netplan/99-iot-lan.yaml"
 chmod 640 "$STAGING_ETC_DIR/netplan"/*
 
 echo "Step 4 complete: configuration staged in $STAGING_ETC_DIR using $mode mode."
+echo "Review the changes in $STAGING_ETC_DIR/netplan/99-iot-lan.yaml to adjust the available interfaces."
 echo "!!! Review the staged files there before copying them into /etc. by running s5_apply_configs.sh !!!"

@@ -5,7 +5,7 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 ![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
 
 > [!NOTE]
-> This project is in an early stage and not all functionalities are present yet.
+> This project is in an early stage and only basic functionalities are present yet.
 > Nevertheless, it can already be used to run a Homelab focused on Home Energy Management and / or Home Automation.
 
 **List of potential use cases in the current stage of development:**
@@ -20,7 +20,8 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 
 At its core, Horto OS runs on Armbian and integrates a variety of applications, connected through the NEXUS Layer.
 
-More information about Horto OS: [WHAT IS HORTO OS?](docs/WHAT_IS_HORTO_OS.MD) and [VISION](docs/VISION.MD).
+More information about Horto OS: [WHAT IS HORTO OS?](docs/WHAT_IS_HORTO-OS.MD)
+and [VISION](docs/VISION.MD).
 
 ## What you get with Horto OS?
 

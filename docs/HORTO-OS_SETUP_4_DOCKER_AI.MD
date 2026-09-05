@@ -171,7 +171,7 @@ To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8
 For `piper`, the usual path is to create a Dockge stack and then copy the
 required build context into that stack directory.
 
-Typical compose definition:
+Typical compose definition (for a RK3576 CPU!!!):
 
 ```yaml
 services:
@@ -207,7 +207,6 @@ Navigate to your docker_repos/piper directory:
 ```bash
 tar -xzf piper-rk3576-models.tar.gz -C /srv/docker/stacks/
 ```
-
 
 After these commands, your /srv/docker/stacks/piper/model/ directory should contain:
 

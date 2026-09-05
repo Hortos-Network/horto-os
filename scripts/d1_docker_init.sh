@@ -11,7 +11,7 @@ esac
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
-SOURCE_DIR="$REPO_ROOT/docker_source/stacks"
+SOURCE_DIR="$REPO_ROOT/docker_source"
 TARGET_DIR="/srv/docker/"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
@@ -34,9 +34,9 @@ else
   exit 1
 fi
 
-mkdir -p "$TARGET_DIR/stacks"
-cp -a "$SOURCE_DIR/." "$TARGET_DIR/stacks/"
-echo "Copied docker source tree: $SOURCE_DIR -> $TARGET_DIR/stacks"
+mkdir -p "$TARGET_DIR"
+cp -a "$SOURCE_DIR/." "$TARGET_DIR/"
+echo "Copied docker source tree: $SOURCE_DIR -> $TARGET_DIR"
 
 # Copy assets (Homepage images, filtered to homepage*)
 ASSETS_SOURCE="$REPO_ROOT/_assets"
@@ -82,10 +82,10 @@ mkdir -p "$TARGET_DIR"/docker_repos/piper
 cd "$TARGET_DIR"/docker_repos/piper
 
 # Download the models into the docker_repos directory:
-wget wget https://github.com/Hanzo-Huang/rk3576-home-assistant-voice/releases/download/models-v1/piper-rk3576-models.tar.gz
+wget https://github.com/Hanzo-Huang/rk3576-home-assistant-voice/releases/download/models-v1/piper-rk3576-models.tar.gz
 
 # Copy Required model files to the Stack Directory
-tar -xzf piper-rk3576-models.tar.gz -C "$TARGET_DIR"/stacks
+tar -xzf piper-rk3576-models.tar.gz -C "$TARGET_DIR"/stacks || true
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"
 echo "Go back the Docker documentation file `HORTO-OS_SETUP_4_DOCKER`"

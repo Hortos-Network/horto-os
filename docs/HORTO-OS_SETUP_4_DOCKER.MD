@@ -2,7 +2,6 @@
 
 **Summary**: How to install Docker and basic Docker apps for Horto OS.
 
-
 ---
 
 > [!NOTE]

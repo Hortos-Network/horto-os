@@ -62,7 +62,7 @@ sudo systemctl stop systemd-resolved
 sudo systemctl disable systemd-resolved
 
 echo "Step 5 complete: staged configuration applied from $STAGING_ETC_DIR to $TARGET_ROOT."
-echo ""
+echo "Review the changes in $TARGET_ROOT/netplan to adjust ev. the available interfaces."
 echo "The hostname has been updated. A reboot is required for the changes to take effect."
 echo -n "Do you want to reboot now? [y/N]: " >&2
 IFS= read -r reboot_choice || true
