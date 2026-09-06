@@ -12,3 +12,15 @@ services:
       - /dev/mali0:/dev/mali0
     volumes:
       - /dev:/dev
+
+  llm-flatten-proxy:
+    image: python:3.11-slim
+    container_name: llm-flatten-proxy
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./ha-llm-proxy:/app
+    working_dir: /app
+    command: >
+      sh -c "pip install --no-cache-dir fastapi uvicorn httpx &&
+             uvicorn proxy:app --host 0.0.0.0 --port 8081"

@@ -64,7 +64,14 @@ docker system prune -a --volumes
 
 Uvicorn running on http://MY_HOSTNAME:8001 (Press CTRL+C to quit)
 
-The LLM API is exposed at `http://192.168.10.1:8001/v1`.
+The LLM API is exposed at `http://"MY_HOSTNAME":8001/v1`.
+
+> [!NOTE]
+> To use the LLM API in Home Assistant you need to use the FastAPI LLM API instead
+> of direct HTTP requests to the LLM API. To run the LLM with FastAPI, see the
+> deeepseek-npu container files in the stacks folder.
+
+The FastAPI LLM API is exposed at `http://"MY_HOSTNAME":8081/v1`.
 
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8001/docs`.
 
