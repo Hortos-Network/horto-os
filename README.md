@@ -1,4 +1,4 @@
-[![Discord](https://img.shields.io/discord/887669548969517056?label=Discord&logo=discord&logoColor=white)](https://discord.gg/Hbxd6vv98v)
+[![Discord](https://img.shields.io/badge/Discord-Horto%20OS-5865F2?logo=discord&logoColor=white)](https://discord.gg/Hbxd6vv98v)
 
 # Horto OS
 
