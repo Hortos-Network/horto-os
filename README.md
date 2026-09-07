@@ -114,7 +114,7 @@ We welcome contributions to Horto OS! Please refer to the `CONTRIBUTING.md` file
 ## Known Issues
 
 - The scripted host setup flow may not work on all platforms.
-- The minimal SETUP flow is not extensifly tested,and may need some adjustments.
+- The minimal SETUP flow is not extensifly tested and may need some adjustments.
 - The Docker container 'yolo-detection' has an issue in consuming a high amount
 of CPU power in idle state.
 
@@ -126,7 +126,7 @@ Some subdirectories may be licensed differently; see the local LICENSE files.
 
 ## Acknowledgments
 
-Horto-OS is developed by Hortos Network and uses ideas or app/libraries from:
+Horto-OS is developed by Hortos Network and uses ideas or apps/libraries from:
 
 - Coasys [Github](https://github.com/Coasys)
 - Holochain [Github](https://github.com/holochain)
