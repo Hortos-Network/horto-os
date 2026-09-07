@@ -1,3 +1,5 @@
+[![Discord](https://img.shields.io/discord/887669548969517056?label=Discord&logo=discord&logoColor=white)](https://discord.gg/Hbxd6vv98v)
+
 # Horto OS
 
 Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). This repo contains a set of documentation, scripts, and managed configuration files to deploy a basic Horto OS stack on a fresh Armbian-based RK3588 system.
@@ -46,7 +48,7 @@ For a more capable Horto-BOX we recommend to have 16GB RAM and minimal 128 GB of
 
 This `horto-os` repository contains the core components for deploying and managing Horto OS. When cloned to your target system (e.g., `/srv/horto-os`), it will have the following structure:
 
-```
+```Text
 /srv/
 ├── horto-os/         <-- Git Repository (Pushed/Pulled from GitHub)
 │   ├── config/       <-- Configuration templates (dnsmasq.conf.template, etc.)
