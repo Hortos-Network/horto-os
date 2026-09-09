@@ -191,13 +191,6 @@ decoder_rk3576.rknn
 encoder.onnx
 ```
 
-## YOLO (vision)
-
-YOLO (vision) is a model for object detection, but has been removed from the
-stack, due to perfomance issues. If you intend to install Frigate NVR, you don't
-need it, the version `frigate:stable-rk` deploys a RK vision model out of the box.
-
-
 ### Deploy the Stack in Dockge
 
 Go back to the Dockge web UI for your rkvoice-stream stack. Click the "Deploy"
@@ -212,6 +205,11 @@ The Voice Stream API is exposed at `127.0.0.1:8621`.
 
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8621/docs`.
 
+## YOLO (vision)
+
+YOLO (vision) is a model for object detection, but has been removed from the
+stack, due to perfomance issues. If you intend to install Frigate NVR, you don't
+need it, the version `frigate:stable-rk` deploys a RK vision model out of the box.
 
 ## Homepage integration
 
