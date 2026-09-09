@@ -140,38 +140,6 @@ The Whisper API is exposed at `127.0.0.1:8000`.
 
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8000/docs`.
 
-## YOLO (vision)
-
-```yaml
-services:
-  yolo-detection:
-    image: ghcr.io/seeed-projects/recomputer-rk-cv/rk3588-yolo11:latest
-    container_name: rk3588-yolo11n
-    restart: no # Or 'no' if you only want it to run once and exit
-    privileged: true
-    network_mode: host
-    devices:
-      - /dev/video1:/dev/video1 # For camera input
-      - /dev/dri/renderD129:/dev/dri/renderD129 # For display rendering
-      - /dev/dri:/dev/dri # General DRI access, often needed for display
-      - /dev/dma_heap:/dev/dma_heap # DMA heap for memory management
-      - /dev/rknpu:/dev/rknpu # Access to the Rockchip NPU
-      - /dev/mali0:/dev/mali0 # Access to the Mali GPU (if used for display/pre-processing)
-    environment:
-      - PYTHONUNBUFFERED=1
-      - RKNN_LOG_LEVEL=0
-    volumes:
-      - /proc/device-tree/compatible:/proc/device-tree/compatible:ro
-      # If 'model' and 'video' directories are on the host, you'll need to mount them:
-      # - ./model:/app/model:ro # Assuming models are in a 'model' folder next to compose file
-      # - ./video:/app/video:ro # Assuming videos are in a 'video' folder next to compose file
-    command: python web_detection.py --model_path model/yolo11n.rknn --video video/test.mp4 --port 8002
-networks: {}
-```
-
-The YOLO API is exposed at `127.0.0.1:8002`.
-
-To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8002/docs`.
 
 ## Piper (TTS)
 
@@ -222,6 +190,13 @@ config.json
 decoder_rk3576.rknn
 encoder.onnx
 ```
+
+## YOLO (vision)
+
+YOLO (vision) is a model for object detection, but has been removed from the
+stack, due to perfomance issues. If you intend to install Frigate NVR, you don't
+need it, the version `frigate:stable-rk` deploys a RK vision model out of the box.
+
 
 ### Deploy the Stack in Dockge
 

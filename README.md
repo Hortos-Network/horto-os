@@ -13,7 +13,7 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 **List of potential use cases in the current stage of development:**
 
 - Developers who want to contribute to the project
-- People who are interested in edge computing on RK3588 boards
+- People who are interested in edge computing on RK3576/3588 boards
 - People who want to run Frigate NVR, evcc or Home Assistant on a powerfull ARM CPU with AI capabilites.
 
 ## What is Horto OS?
@@ -30,9 +30,9 @@ and [VISION](docs/VISION.MD).
 - **An IOT LAN**, which means your Horto-Box acts as a local Router and you can separate all your Smart Home devices from the rest of the your local network.
 - An easy to manage Docker stack with a graphical UI (Dockge).
 - All the necessary scripts and Docker compose files to install for instance evcc (evcc.io)
-- All the necessary scripts and Docker compose files to install several AI models, as LLM, STT, TTS, YOLO
+- All the necessary scripts and Docker compose files to install several AI models, as LLM, STT, TTS
 - A pre-configured Dashboard (Homepage Dasboard) to get easy access to the apps and monitor your Horto-Box.
-- If your Horto-Box has sufficient RAM (16GB) you can also install Home Assistant and Frigate NVR.
+- If your Horto-Box has sufficient RAM (16GB) you can also run larger AI models, as the provided DeepSeek 1.7b model.
 
 ![Dashboard](_assets/Screenshot_Homepage-Dashboard_Draft.avif)
 
@@ -117,8 +117,7 @@ We welcome contributions to Horto OS! Please refer to the `CONTRIBUTING.md` file
 
 - The scripted host setup flow may not work on all platforms.
 - The minimal SETUP flow is not extensifly tested and may need some adjustments.
-- The Docker container 'yolo-detection' has an issue in consuming a high amount
-of CPU power in idle state.
+- The Docker container 'yolo-detection' has been removed, due to performance issues.
 
 
 ## License

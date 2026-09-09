@@ -51,12 +51,6 @@
         description: Rockchip NPU speech engine
         server: my-docker
         container: piper
-    - YOLO RK3588-yolo11n:
-        href: http://{{MY_HOSTNAME}}:8002/docs
-        icon: https://cdn.simpleicons.org/yolo/111F68
-        description: Object Detection for RK3588
-        server: my-docker
-        container: rk3588-yolo11n
     - Cloudflared:
         icon: cloudflared.png
         description: Tunnel to the Hortos OS services
