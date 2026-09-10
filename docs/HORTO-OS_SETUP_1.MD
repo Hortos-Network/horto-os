@@ -12,7 +12,7 @@ Before you start, make sure you have:
 - a reliable SD card,
 - a way to flash the card from another computer.
 
-We recommend using Armbian Imager.
+We recommend using Armbian Imager. Use the minimal CLI image for your board. 
 
 Reference:
 [docs.armbian.com/User-Guide_Getting-Started](https://docs.armbian.com/User-Guide_Getting-Started/)
@@ -38,7 +38,7 @@ sudo apt install -y git
 
 ```bash
 cd /srv
-git clone https://github.com/Hortos-Network/horto-os.git
+git clone https://github.com/Hortos-Network/horto-os
 ```
 
 The resulting layout should look like this:
