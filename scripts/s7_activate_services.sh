@@ -37,14 +37,23 @@ restart_service_if_present() {
 }
 
 apply_nat_rules() {
-  echo "Applying NAT / masquerade rules for interface 'wan'..."
+  if [ -f "$FULL_ACTIVE_FILE" ]; then
+    echo "Loading variables from $FULL_ACTIVE_FILE"
+    sed -i -e 's/\r$//' "$FULL_ACTIVE_FILE"
+    . "$FULL_ACTIVE_FILE"
+  else
+    echo "Warning: Env file not found at $FULL_ACTIVE_FILE, falling back to auto-detection."
+  fi
 
-  iptables -t nat -C POSTROUTING -o wan -j MASQUERADE 2>/dev/null || \
-    iptables -t nat -A POSTROUTING -o wan -j MASQUERADE
-  iptables -C FORWARD -i br0 -o wan -j ACCEPT 2>/dev/null || \
-    iptables -A FORWARD -i br0 -o wan -j ACCEPT
-  iptables -C FORWARD -i wan -o br0 -m state --state RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || \
-    iptables -A FORWARD -i wan -o br0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+  WAN_IF="${ETH_LAN:-$(ip route show default | awk '/default/ {print $5}' | head -n1)}"
+  echo "Applying NAT / masquerade rules for interface '$WAN_IF'..."
+
+  iptables -t nat -C POSTROUTING -o "$WAN_IF" -j MASQUERADE 2>/dev/null || \
+    iptables -t nat -A POSTROUTING -o "$WAN_IF" -j MASQUERADE
+  iptables -C FORWARD -i br0 -o "$WAN_IF" -j ACCEPT 2>/dev/null || \
+    iptables -A FORWARD -i br0 -o "$WAN_IF" -j ACCEPT
+  iptables -C FORWARD -i "$WAN_IF" -o br0 -m state --state RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || \
+    iptables -A FORWARD -i "$WAN_IF" -o br0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 
   echo "Applied NAT / masquerade rules."
 

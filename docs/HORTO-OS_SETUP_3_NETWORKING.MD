@@ -5,9 +5,10 @@
 ---
 
 > [!WARNING]
-> This networking layout is currently tested on the
+> This networking layout is currently tested with the scripted setup on the
 > [NanoPi R6S](HARDWARE/NANOPi_R6S.md) and [ReComputer RK3588](HARDWARE/RECOMPUTER_RK3588.md).
 > If your board has a different interface layout, adjust the config accordingly.
+> We strongly recommend using the scripted setup for configuring networking.
 
 ## Networking model
 
@@ -231,7 +232,8 @@ nameserver 9.9.9.9
 ```
 
 This assumes the host resolver should use the local `dnsmasq` instance first and a public fallback second.
-Do not point `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`) in this setup, because that conflicts with the local DNS service design.
+Do not point `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`)
+in this setup, because that conflicts with the local DNS service design.
 
 ## Enable IPv4 forwarding
 
@@ -255,12 +257,32 @@ sudo sysctl --system
 
 ## NAT / masquerading
 
+
+The topology is:
+
+```Text
+WAN (eth0/wan/etc.)
+        │
+        ▼
+      br0  ← AVAI binds here
+   ┌──────┴──────┐
+   ▼             ▼
+IoT LAN      Wi-Fi IoT LAN
+(ETH_IOT1)   (WIFI_INTERFACE)
+```
+
+All IoT LAN traffic — wired and wireless — is bridged through `br0`. AVAI only
+needs to listen on `br0` to serve mDNS/Avahi to the entire IoT LAN. The WAN
+interface itself doesn't need to be listed because AVAI isn't serving the WAN
+side; it's serving the LAN side, which all flows through the bridge.
+
 To allow the IoT LAN to reach the internet through the WAN uplink:
+You need to replace {{ETH_LAN}} with the correct interface name.
 
 ```bash
-sudo iptables -t nat -A POSTROUTING -o wan -j MASQUERADE
-sudo iptables -A FORWARD -i br0 -o wan -j ACCEPT
-sudo iptables -A FORWARD -i wan -o br0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -t nat -A POSTROUTING -o {{ETH_LAN}} -j MASQUERADE
+sudo iptables -A FORWARD -i br0 -o {{ETH_LAN}} -j ACCEPT
+sudo iptables -A FORWARD -i {{ETH_LAN}} -o br0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 ```
 
 To persist these rules across reboot, you can install:

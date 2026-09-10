@@ -71,18 +71,24 @@ sudo sudo armbian-install
 
 ![Armbian nand-sata-install screenshot](../_assets/Screenshot_Armbian_nand-sata-install.avif)
 
-**Select Boot from eMMC - system on eMMC** You will be asked to erase and then
-format the eMMC drive (choose ext4).
+**Select Boot from eMMC - system on eMMC** or **Select Boot from SSD - system on SSD**
 
-If you get storage-related errors, check the visible block devices:
+You will be asked to erase and then format the eMMC/SSD drive (choose ext4).
+
+Then reboot the device and remove the SD card before it boots again.
+Now it should automatically boot from the eMMC/SSD.
+
+## 5. Install rktop (optional)
+
+RKtop is a system monitoring tool that will be used to monitor the device
+including the NPU load.
 
 ```bash
-lsblk
+apt install cargo
+sudo cargo install rktop --locked
 ```
 
-Then reboot the device and remove teh SD card before it boots again. Now it should automatically boot from the eMMC.
-
-## 5. Choose the next setup path
+## 6. Choose the next setup path
 
 After the repository exists in `/srv/horto-os`, continue with either:
 
