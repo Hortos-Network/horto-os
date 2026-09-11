@@ -2,7 +2,7 @@
 
 # Horto OS
 
-Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). This repo contains a set of documentation, scripts, and managed configuration files to deploy a basic Horto OS stack on a fresh Armbian-based RK3588 system.
+Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). This repo contains a set of documentation, scripts, and managed configuration files to deploy a basic Horto OS stack on a fresh Armbian-based RK3576/3588 system.
 
 ![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
 
@@ -14,7 +14,10 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 
 - Developers who want to contribute to the project
 - People who are interested in edge computing on RK3576/3588 boards
-- People who want to run Frigate NVR, evcc or Home Assistant on a powerfull ARM CPU with AI capabilites.
+- People who want to run [Frigate NVR](docs/apps/FRIGATE_NVR.md), evcc or Home
+  Assistant on a powerfull ARM CPU with AI capabilites.
+- Horto OS comes with a fullly Home Assistant compatible local AI stack (voice
+  pipeline, AI inference)
 
 ## What is Horto OS?
 

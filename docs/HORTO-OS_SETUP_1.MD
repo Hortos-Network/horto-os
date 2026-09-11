@@ -86,6 +86,8 @@ including the NPU load.
 ```bash
 apt install cargo
 sudo cargo install rktop --locked
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ## 6. Choose the next setup path

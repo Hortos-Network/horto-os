@@ -6,7 +6,7 @@
 
 > [!WARNING]
 > This networking layout is currently tested with the scripted setup on the
-> [NanoPi R6S](HARDWARE/NANOPi_R6S.md) and [ReComputer RK3588](HARDWARE/RECOMPUTER_RK3588.md).
+> [NanoPi R6S](hardware/NANOPi_R6S.md) and [ReComputer RK3588](hardware/RECOMPUTER_RK3588.md).
 > If your board has a different interface layout, adjust the config accordingly.
 > We strongly recommend using the scripted setup for configuring networking.
 
@@ -261,10 +261,10 @@ sudo sysctl --system
 The topology is:
 
 ```Text
-WAN (eth0/wan/etc.)
-        │
-        ▼
-      br0  ← AVAI binds here
+         WAN (eth0/wan/etc.)
+          │
+          ▼
+         br0  ← AVAI binds here
    ┌──────┴──────┐
    ▼             ▼
 IoT LAN      Wi-Fi IoT LAN
