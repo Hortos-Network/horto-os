@@ -21,7 +21,7 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 
 ## What is Horto OS?
 
-Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). It's built upon a fork of the technical substrate provided by [Coasys](https://coasys.org/), aiming to resolve the fundamental tension between coherence and sovereignty in networked systems.
+Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). It's built upon a compatible (soft) fork of the technical substrate provided by [Coasys](https://coasys.org/), aiming to resolve the fundamental tension between coherence and sovereignty in networked systems.
 
 At its core, Horto OS runs on Armbian and integrates a variety of applications, connected through the NEXUS Layer.
 
