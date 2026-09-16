@@ -103,15 +103,6 @@ find "$TARGET_DIR" -type f | while IFS= read -r file_path; do
   fi
 done
 
-# Get Piper models
-mkdir -p "$TARGET_DIR"/docker_repos/piper
-cd "$TARGET_DIR"/docker_repos/piper
-
-# Download the models into the docker_repos directory:
-wget https://github.com/Hanzo-Huang/rk3576-home-assistant-voice/releases/download/models-v1/piper-rk3576-models.tar.gz
-
-# Copy Required model files to the Stack Directory
-tar -xzf piper-rk3576-models.tar.gz -C "$TARGET_DIR"/stacks || true
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"
 echo "Go back the Docker documentation file `HORTO-OS_SETUP_4_DOCKER`"
