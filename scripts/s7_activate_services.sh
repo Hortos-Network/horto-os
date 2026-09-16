@@ -108,21 +108,29 @@ esac
 echo "Setting up periodic DHCP lease export for Homepage..."
 OUTPUT_DIR="/srv/docker/assets"
 mkdir -p "$OUTPUT_DIR"
-sh /srv/horto-os/scripts/export_dhcp_leases.sh
 
-SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
-EXPORT_SCRIPT="$SCRIPT_DIR/export_dhcp_leases.sh"
+# Use absolute path based on the repository structure
+EXPORT_SCRIPT="/srv/horto-os/scripts/export_dhcp_leases.sh"
+
+CRON_FILE="/etc/cron.d/export_dhcp_leases"
+
 if [ -f "$EXPORT_SCRIPT" ]; then
-  CRON_JOB="* * * * * $EXPORT_SCRIPT"
-  if crontab -l 2>/dev/null | grep -F "$EXPORT_SCRIPT" >/dev/null 2>&1; then
-    echo "  cron job already installed for export_dhcp_leases.sh"
-  else
-    (crontab -l 2>/dev/null || true; echo "$CRON_JOB") | crontab -
-    echo "  cron job installed: runs every minute"
-  fi
+  chmod +x "$EXPORT_SCRIPT"
   sh "$EXPORT_SCRIPT"
+
+  # Ensure cron package is installed
+  if ! dpkg -l | grep -qE '^ii\s+cron'; then
+    echo "Installing cron service..."
+    apt-get update && apt-get install -y cron
+  fi
+
+  # Write directly to /etc/cron.d specifying the 'root' user context
+  echo "* * * * * root sh $EXPORT_SCRIPT >/dev/null 2>&1" > "$CRON_FILE"
+  chmod 644 "$CRON_FILE"
+  systemctl enable --now cron
+  echo "  cron job installed in $CRON_FILE"
 else
-  echo "  skipping: export_dhcp_leases.sh not found"
+  echo "  skipping: export_dhcp_leases.sh not found at $EXPORT_SCRIPT"
 fi
 
 echo "Step 7 complete: applied configuration activated. A reboot is recommended, especially after network changes."
