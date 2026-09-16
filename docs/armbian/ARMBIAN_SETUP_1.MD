@@ -65,4 +65,4 @@ source ~/.bashrc
 
 After the basic steps continue:
 
-- [HORTO-OS_SETUP_1](./HORTO-OS_SETUP_1.MD)
+- [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD)
