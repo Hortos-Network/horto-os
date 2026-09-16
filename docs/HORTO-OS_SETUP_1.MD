@@ -1,30 +1,15 @@
 # Horto-OS setup 1
 
-**Summary**: Prepare the RK3588 board, install the base OS, and clone the Horto-OS repository into `/srv/horto-os`.
+**Summary**: Choose your setup path, clone the Horto-OS repository into `/srv/horto-os`.
 
 ---
 
-## 1. Flash and boot Armbian
+## 1. Choose your setup path
 
-Before you start, make sure you have:
+If you have a Armbian based board start with [ARMBIAN_SETUP_1](docs/ARMBIAN_SETUP_1.MD)
+For X86/AMD64 boards with Debian or Ubuntu continue here.
 
-- a suitable power supply for the board,
-- a reliable SD card,
-- a way to flash the card from another computer.
-
-We recommend using Armbian Imager. Use the minimal CLI image for your board. 
-
-Reference:
-[docs.armbian.com/User-Guide_Getting-Started](https://docs.armbian.com/User-Guide_Getting-Started/)
-
-## 2. Update and install git manually
-
-Armbian upgrade is recommended to run first and acts differently than apt upgrade.
-It will take a while to complete.
-
-```bash
-sudo armbian-upgrade
-```
+## 2. Install git
 
 Before using the Horto-OS setup scripts, install `git` manually.
 Without `git` you cannot clone the repository.
@@ -52,42 +37,6 @@ The resulting layout should look like this:
 │   └── scripts/      <-- Setup and deployment scripts
 ├── active_setup/     <-- Machine-specific active configuration (created later)
 └── backup/           <-- Local safety backups (created later)
-```
-
-
-## 4. Copy the system from SD card to eMMC
-
-After first reboot you can move the installation to the internal eMMC or SSD.
-
-> [!NOTE]
-> You can do this step later in the process too. If your SD card is large enough
-(min. 32GB) you can do the full install on the SD card, but we don't reccomend
-running Horto-OS on SD cards.
-
-```bash
-sudo sudo armbian-install
-# on less recent Armbian versions the command may be called `nand-sata-install`
-```
-
-![Armbian nand-sata-install screenshot](../_assets/Screenshot_Armbian_nand-sata-install.avif)
-
-**Select Boot from eMMC - system on eMMC** or **Select Boot from SSD - system on SSD**
-
-You will be asked to erase and then format the eMMC/SSD drive (choose ext4).
-
-Then reboot the device and remove the SD card before it boots again.
-Now it should automatically boot from the eMMC/SSD.
-
-## 5. Install rktop (optional)
-
-RKtop is a system monitoring tool that will be used to monitor the device
-including the NPU load.
-
-```bash
-apt install cargo
-sudo cargo install rktop --locked
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
 ```
 
 ## 6. Choose the next setup path
