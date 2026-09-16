@@ -6,7 +6,7 @@
 
 ## 1. Choose your setup path
 
-If you have a Armbian based board start with [ARMBIAN_SETUP_1](docs/ARMBIAN_SETUP_1.MD)
+If you have a Armbian based board start with [ARMBIAN_SETUP_1](armbian/ARMBIAN_SETUP_1.MD)
 For X86/AMD64 boards with Debian or Ubuntu continue here.
 
 ## 2. Install git

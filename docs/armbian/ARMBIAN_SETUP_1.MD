@@ -1,6 +1,6 @@
 # Horto-OS setup 1
 
-**Summary**: Prepare the RK3588 board, install the base OS, and clone the Horto-OS repository into `/srv/horto-os`.
+**Summary**: Prepare the RK3588 board, install the base OS.
 
 ---
 
@@ -65,4 +65,4 @@ source ~/.bashrc
 
 After the basic steps continue:
 
-- [HORTO-OS_SETUP_1](docs/HORTO-OS_SETUP_1.MD)
+- [HORTO-OS_SETUP_1](./HORTO-OS_SETUP_1.MD)
