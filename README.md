@@ -2,7 +2,20 @@
 
 # Horto OS
 
-Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). This repo contains a set of documentation, scripts, and managed configuration files to deploy a basic Horto OS stack on a fresh Armbian-based RK3576/3588 system.
+**Horto OS** is a decentralised, privacy-focused operating system designed for HORTEX nodes or **Home Hubs** (the **Horto Box**), primarily built upon a fork of the technical substrate provided by [**Coasys**](https://coasys.org/). The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
+
+The underlying Operation System can be any Debian/Ubuntu or Armbian OS. The apps
+either run on the Holochain, peer to peer architecture, the Horto Nexus (Coasys
+Adam Layer), or as Docker apps.
+
+Basically HORTO-OS can be deployed in different flavors, corresponding to the different use cases. There are three main use cases:
+
+|     | Use Case                  | Managed   | Remark                                       |
+| --- | ------------------------- | --------- | -------------------------------------------- |
+| 1st | HORTEX node               | yes       | Industrial Mini Server in the HORTEX network |
+| 2rd | Horto Boxes as sattelites | yes       | Sattelites connected to a HORTEX node        |
+| 3nd | Horto Boxes for homes     | partially | HEMS system for households or SME's          |
+
 
 ![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
 
@@ -13,22 +26,20 @@ Horto OS is a decentralised, privacy-focused operating system designed for **Hom
 **List of potential use cases in the current stage of development:**
 
 - Developers who want to contribute to the project
+
+This use cases are related on using RK3576/3588 boards!
+
 - People who are interested in edge computing on RK3576/3588 boards
 - People who want to run [Frigate NVR](docs/apps/FRIGATE_NVR.md), evcc or Home
   Assistant on a powerfull ARM CPU with AI capabilites.
 - Horto OS comes with a fullly Home Assistant compatible local AI stack (voice
   pipeline, AI inference)
 
-## What is Horto OS?
-
-Horto OS is a decentralised, privacy-focused operating system designed for **Home Hubs** (the **Horto Box**). It's built upon a compatible (soft) fork of the technical substrate provided by [Coasys](https://coasys.org/), aiming to resolve the fundamental tension between coherence and sovereignty in networked systems.
-
-At its core, Horto OS runs on Armbian and integrates a variety of applications, connected through the NEXUS Layer.
 
 More information about Horto OS: [WHAT IS HORTO OS?](docs/WHAT_IS_HORTO-OS.MD)
 and [VISION](docs/VISION.MD).
 
-## What you get with Horto OS?
+## What can you get with Horto OS?
 
 - **An IOT LAN**, which means your Horto-Box acts as a local Router and you can separate all your Smart Home devices from the rest of the your local network.
 - An easy to manage Docker stack with a graphical UI (Dockge).
@@ -39,7 +50,7 @@ and [VISION](docs/VISION.MD).
 
 ![Dashboard](_assets/Screenshot_Homepage-Dashboard_Draft.avif)
 
-## Requirements
+## Requirements for RK3576/3588 boards
 
 - A RK3588 board with minimal 8 GB RAM.
 - Minimum of 32GB of storage on the RK3588 board, eMMC or SSD
