@@ -10,14 +10,14 @@ case "${0##*/}" in
 esac
 
 FULL_ACTIVE_FILE="/srv/active_setup/my_variables.env"
-if [ ! -f "$FULL_ACTIVE_FILE" ]; then
+if [ ! -f "$IOT-LAN_ACTIVE_FILE" ]; then
   echo "This script is only needed for a IOT-LAN Setup"
   exit 0
 fi
 
 ACTIVE_SETUP_DIR="/srv/active_setup"
 
-if [ -f "$FULL_ACTIVE_FILE" ]; then
+if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
   mode="full"
 else
   echo "Error: no active setup file found in $ACTIVE_SETUP_DIR" >&2
@@ -37,10 +37,10 @@ restart_service_if_present() {
 }
 
 apply_nat_rules() {
-  if [ -f "$FULL_ACTIVE_FILE" ]; then
+  if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
     echo "Loading variables from $FULL_ACTIVE_FILE"
-    sed -i -e 's/\r$//' "$FULL_ACTIVE_FILE"
-    . "$FULL_ACTIVE_FILE"
+    sed -i -e 's/\r$//' "$IOT-LAN_ACTIVE_FILE"
+    . "$IOT-LAN_ACTIVE_FILE"
   else
     echo "Warning: Env file not found at $FULL_ACTIVE_FILE, falling back to auto-detection."
   fi

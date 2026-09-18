@@ -24,9 +24,9 @@ if [ ! -d "$SOURCE_DIR" ]; then
   exit 1
 fi
 
-if [ -f "$FULL_ACTIVE_FILE" ]; then
+if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
   # shellcheck disable=SC1090
-  . "$FULL_ACTIVE_FILE"
+  . "$IOT-LAN_ACTIVE_FILE"
 elif [ -f "$MINIMAL_ACTIVE_FILE" ]; then
   # shellcheck disable=SC1090
   . "$MINIMAL_ACTIVE_FILE"

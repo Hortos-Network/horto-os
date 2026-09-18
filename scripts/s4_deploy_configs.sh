@@ -57,10 +57,10 @@ render_and_stage_file() {
   echo "Rendered and staged file: $src -> $dest"
 }
 
-if [ -f "$FULL_ACTIVE_FILE" ]; then
+if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
   mode="full"
   # shellcheck disable=SC1090
-  . "$FULL_ACTIVE_FILE"
+  . "$IOT-LAN_ACTIVE_FILE"
 elif [ -f "$MINIMAL_ACTIVE_FILE" ]; then
   mode="minimal"
   # shellcheck disable=SC1090
