@@ -15,9 +15,8 @@ if [ ! -f "$FULL_ACTIVE_FILE" ]; then
   exit 0
 fi
 
-# shellcheck disable=SC1090
-. "$FULL_ACTIVE_FILE"
-
+ACTIVE_SETUP_DIR="/srv/active_setup"
+WIFI_INTERFACE=$(sed -n 's/^WIFI_INTERFACE="//p' "$FULL_ACTIVE_FILE" | sed 's/"$//')
 TARGET_ROOT="/etc"
 FAILED=0
 
