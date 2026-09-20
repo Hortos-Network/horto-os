@@ -39,7 +39,11 @@ fi
 # shellcheck disable=SC1090
 . "$active_file"
 
-required_vars="MY_HOSTNAME WIFI_INTERFACE WIFI_SSID"
+required_vars="MY_HOSTNAME WIFI_INTERFACE"
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') ;;
+  *) required_vars="$required_vars WIFI_SSID" ;;
+esac
 for var_name in $required_vars; do
   eval "var_value=\${$var_name-}"
   if [ -z "$var_value" ]; then
@@ -51,7 +55,7 @@ done
 echo "Loaded full deployment variables from $active_file"
 echo "  MY_HOSTNAME=$MY_HOSTNAME"
 echo "  WIFI_INTERFACE=$WIFI_INTERFACE"
-echo "  WIFI_SSID=$WIFI_SSID"
+echo "  WIFI_SSID=${WIFI_SSID:-}"
 if [ -n "${WIFI_PASSPHRASE:-}" ]; then
   echo "  WIFI_PASSPHRASE is set"
 else
@@ -59,20 +63,20 @@ else
 fi
 
 # Automatically discover physical ethernet interfaces based on connection state
-ACTIVE_ETH=$(ip -o link show | awk -F': ' '$2 ~ /^en/ && /LOWER_UP/ {print $2}')
+ACTIVE_ETH=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ && /LOWER_UP/ {print $2}')
 
 # Fallback: if none are actively linked, grab the first three 'en' interfaces alphabetically
 if [ -z "$ACTIVE_ETH" ]; then
-    ETH0=$(ip -o link show | awk -F': ' '$2 ~ /^en/ {print $2}' | head -n 1)
-    ETH1=$(ip -o link show | awk -F': ' '$2 ~ /^en/ {print $2}' | tail -n +2 | head -n 1)
-    ETH2=$(ip -o link show | awk -F': ' '$2 ~ /^en/ {print $2}' | tail -n +3 | head -n 1)
+    ETH0=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ {print $2}' | head -n 1)
+    ETH1=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ {print $2}' | tail -n +2 | head -n 1)
+    ETH2=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ {print $2}' | tail -n +3 | head -n 1)
     : "${ETH0:=wan}"
     : "${ETH1:=lan1}"
     # ETH2 stays empty if not found — no default
 else
     ETH0="$ACTIVE_ETH"
-    ETH1=$(ip -o link show | awk -F': ' '$2 ~ /^en/ && $2 != "'"$ETH0"'" {print $2}' | head -n 1)
-    ETH2=$(ip -o link show | awk -F': ' '$2 ~ /^en/ && $2 != "'"$ETH0"'" && $2 != "'"$ETH1"'" {print $2}' | head -n 1)
+    ETH1=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ && $2 != "'"$ETH0"'" {print $2}' | head -n 1)
+    ETH2=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ && $2 != "'"$ETH0"'" && $2 != "'"$ETH1"'" {print $2}' | head -n 1)
 fi
 
 # Write discovered interfaces to the active variables file
@@ -98,5 +102,5 @@ fi
 echo "Discovered and saved: ETH_LAN=$ETH0, ETH_IOT1=$ETH1, ETH_IOT2=${ETH2:-not-set} to $active_file"
 
 echo "Step 2 complete: active variables are ready to check."
-echo "Check file $active_file", especially the active ethernet interface names."
+echo "Check file $active_file, especially the active ethernet interface names."
 echo "Next step: run scripts/s3_backup_etc_configs.sh before deploying managed files from $REPO_ROOT/config into /etc."

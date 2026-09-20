@@ -51,7 +51,7 @@ Copy this file to `/srv/active_setup/my_variables.env` and edit it to your needs
 
 ```env
 MY_HOSTNAME="Horto-OS_xxx"
-WIFI_INTERFACE="wlx00xxxxxx"
+WIFI_INTERFACE="none"
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
 MY_URL="YourDomainName.net"

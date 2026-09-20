@@ -48,9 +48,14 @@ escape_double_quotes() {
 }
 
 MY_HOSTNAME=$(prompt_value "${MY_HOSTNAME:-Horto-OS_xxx}" "Device hostname")
-WIFI_INTERFACE=$(prompt_value "${WIFI_INTERFACE:-wlx0_xxxxx}" "WiFi interface")
-WIFI_SSID=$(prompt_value "${WIFI_SSID:-Horto-IoT-LAN}" "WiFi SSID")
-WIFI_PASSPHRASE=$(prompt_value "${WIFI_PASSPHRASE:-}" "WiFi passphrase")
+WIFI_INTERFACE=$(prompt_value "${WIFI_INTERFACE:-none}" "WiFi interface (none = Ethernet-only)")
+case "$(printf '%s' "$WIFI_INTERFACE" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') WIFI_INTERFACE="none"; WIFI_SSID=""; WIFI_PASSPHRASE="" ;;
+  *)
+    WIFI_SSID=$(prompt_value "${WIFI_SSID:-Horto-IoT-LAN}" "WiFi SSID")
+    WIFI_PASSPHRASE=$(prompt_value "${WIFI_PASSPHRASE:-}" "WiFi passphrase")
+    ;;
+esac
 MY_URL=$(prompt_value "${MY_URL:-YourDomainName.net}" "Public URL / domain")
 
 cat > "$ACTIVE_FILE" <<EOF

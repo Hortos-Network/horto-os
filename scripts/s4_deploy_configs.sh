@@ -72,7 +72,11 @@ fi
 
 case "$mode" in
   full)
-    required_vars="MY_HOSTNAME WIFI_INTERFACE WIFI_SSID"
+    required_vars="MY_HOSTNAME WIFI_INTERFACE"
+    case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+      none|-|n|no|'') ;;
+      *) required_vars="$required_vars WIFI_SSID" ;;
+    esac
     for var_name in $required_vars; do
       eval "var_value=\${$var_name-}"
       if [ -z "$var_value" ]; then
@@ -83,7 +87,10 @@ case "$mode" in
 
     render_and_stage_file "hosts"
     render_and_stage_file "hostname"
-    render_and_stage_file "hostapd/hostapd.conf"
+    case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+      none|-|n|no|'') echo "WIFI_INTERFACE=none; skipping hostapd staging" ;;
+      *) render_and_stage_file "hostapd/hostapd.conf" ;;
+    esac
     render_and_stage_file "netplan/99-iot-lan.yaml"
 
     stage_static_file "resolv.conf"

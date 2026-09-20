@@ -57,6 +57,7 @@ This creates this file in `/srv/active_setup/`:
 > [!NOTE]
 > In case you want to use a WiFi Adapter for the IOT-LAN you need to define
 `WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+> For Ethernet-only, set `WIFI_INTERFACE=none`.
 
 This command `ip link show` lists the network interfaces on the system. Look for
 the WiFi interface you want to use for the IOT-LAN.
@@ -69,7 +70,7 @@ For the full setup, the script currently manages these variables:
 
 ```env
 MY_HOSTNAME="Horto-OS_xxx"
-WIFI_INTERFACE="wlx00xxxxxx"
+WIFI_INTERFACE="none"
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
 MY_URL="YourDomainName.net"
