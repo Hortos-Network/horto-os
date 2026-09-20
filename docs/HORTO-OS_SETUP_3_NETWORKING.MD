@@ -51,7 +51,7 @@ Copy this file to `/srv/active_setup/my_variables.env` and edit it to your needs
 
 ```env
 MY_HOSTNAME="Horto-OS_xxx"
-WIFI_INTERFACE="none"
+WIFI_INTERFACE="wlx00xxxxxx"
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
 MY_URL="YourDomainName.net"
@@ -59,6 +59,8 @@ ETH_LAN=en... # LAN interface linked to the router
 ETH_IOT1=en... # IOT interface 1
 ETH_IOT2=en... # IOT interface 2
 ```
+
+For Ethernet-only (no WiFi AP), set `WIFI_INTERFACE=none` instead of leaving it empty.
 
 ## Current managed Netplan config
 

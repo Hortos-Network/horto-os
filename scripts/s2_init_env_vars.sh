@@ -39,9 +39,14 @@ fi
 # shellcheck disable=SC1090
 . "$active_file"
 
+# Empty / n / - mean Ethernet-only; persist as none so require_keys stays happy
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  ''|-|n|no) WIFI_INTERFACE="none" ;;
+esac
+
 required_vars="MY_HOSTNAME WIFI_INTERFACE"
 case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
-  none|-|n|no|'') ;;
+  none) ;;
   *) required_vars="$required_vars WIFI_SSID" ;;
 esac
 for var_name in $required_vars; do
