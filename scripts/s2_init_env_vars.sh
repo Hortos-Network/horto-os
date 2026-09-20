@@ -63,20 +63,21 @@ else
 fi
 
 # Automatically discover physical ethernet interfaces based on connection state
-ACTIVE_ETH=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ && /LOWER_UP/ {print $2}')
+ETH_RE='^(en|eth|wan|lan)'
+ACTIVE_ETH=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re && /LOWER_UP/ {print $2}')
 
 # Fallback: if none are actively linked, grab the first three 'en' interfaces alphabetically
 if [ -z "$ACTIVE_ETH" ]; then
-    ETH0=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ {print $2}' | head -n 1)
-    ETH1=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ {print $2}' | tail -n +2 | head -n 1)
-    ETH2=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ {print $2}' | tail -n +3 | head -n 1)
+    ETH0=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re {print $2}' | head -n 1)
+    ETH1=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re {print $2}' | tail -n +2 | head -n 1)
+    ETH2=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re {print $2}' | tail -n +3 | head -n 1)
     : "${ETH0:=wan}"
     : "${ETH1:=lan1}"
     # ETH2 stays empty if not found — no default
 else
     ETH0="$ACTIVE_ETH"
-    ETH1=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ && $2 != "'"$ETH0"'" {print $2}' | head -n 1)
-    ETH2=$(ip -o link show | awk -F': ' '$2 ~ /^(en|eth|wan|lan)/ && $2 != "'"$ETH0"'" && $2 != "'"$ETH1"'" {print $2}' | head -n 1)
+    ETH1=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re && $2 != "'"$ETH0"'" {print $2}' | head -n 1)
+    ETH2=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re && $2 != "'"$ETH0"'" && $2 != "'"$ETH1"'" {print $2}' | head -n 1)
 fi
 
 # Write discovered interfaces to the active variables file
