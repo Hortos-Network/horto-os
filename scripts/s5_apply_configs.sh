@@ -48,7 +48,10 @@ apply_file() {
   cp "$staged_file" "$target_file"
   # Set proper ownership and permissions
   sudo chown root:root "$target_file"
-  sudo chmod 644 "$target_file"
+  case "$target_file" in
+    */netplan/*) sudo chmod 640 "$target_file" ;;
+    *) sudo chmod 644 "$target_file" ;;
+  esac
   echo "Applied file: $staged_file -> $target_file"
 }
 
