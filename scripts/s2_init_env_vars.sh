@@ -39,7 +39,6 @@ fi
 # shellcheck disable=SC1090
 . "$active_file"
 
-# Empty / n / - mean Ethernet-only; persist as none so require_keys stays happy
 case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
   ''|-|n|no) WIFI_INTERFACE="none" ;;
 esac
