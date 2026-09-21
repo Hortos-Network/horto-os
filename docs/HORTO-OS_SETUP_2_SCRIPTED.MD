@@ -52,7 +52,24 @@ sh s2_init_env_vars.sh
 
 This creates this file in `/srv/active_setup/`:
 
-- `/srv/active_setup/my_variables.env` for the full IoT LAN setup
+- `/srv/active_setup/os-configuration.env` for the full IoT LAN setup
+
+
+For the basic setup, the script currently manages these variables:
+
+```env
+# Those Variables get copied to active_setup used by setup scripts
+OS_TYPE="debian" # debian/armbian select
+# Read in the docs, how to identify which NPU or GPU type you can use for AI models
+NPU_TYPE="rkRK3588" # rkRK3576/rkRK3588/ select
+RAM_SYZE="8gb"
+# There are 3 different flavours to install Horto OS. (home,satellite,hortex)
+INSTALL_TYP="home"
+IOT_LAN="y/n" # if Yes the setup will create an independend IOT_LAN
+MY_HOSTNAME="Horto-OS_xxx"
+MY_URL="YourDomainName.net"
+MY_CLOUDFLARE_TOKEN=""
+```
 
 > [!NOTE]
 > In case you want to use a WiFi Adapter for the IOT-LAN you need to define
@@ -65,17 +82,16 @@ the WiFi interface you want to use for the IOT-LAN.
 ip link show
 ```
 
-For the full setup, the script currently manages these variables:
+This creates this file in `/srv/active_setup/`:
+
+- `/srv/active_setup/iot-lan_conf.env` for the full IoT LAN setup
 
 ```env
-MY_HOSTNAME="Horto-OS_xxx"
+# Read in the docs, how to get the WIFI_INTERFACE name
 WIFI_INTERFACE="wlx00xxxxxx"
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
-MY_URL="YourDomainName.net"
-ETH_LAN=en... # LAN interface linked to the router
-ETH_IOT1=en... # IOT interface 1
-ETH_IOT2=en... # IOT interface 2
+# Additonal variables get added during the setup here.
 ```
 
 ### 3. Create the protected initial backup
@@ -109,7 +125,7 @@ Use this before later changes or repeated testing.
 ### 5. Stage the rendered configuration
 
 ```bash
-sh s4_deploy_configs.sh
+sh networking/s4_deploy_configs.sh
 ```
 
 This does **not** write directly into `/etc`.
@@ -124,7 +140,7 @@ Review the staged files before applying them.
 ### 6. Apply the staged configuration
 
 ```bash
-sh s5_apply_configs.sh
+sh networking/s5_apply_configs.sh
 ```
 
 This copies the staged files from `/srv/active_setup/etc` into `/etc`.
@@ -132,7 +148,7 @@ This copies the staged files from `/srv/active_setup/etc` into `/etc`.
 ### 7. Validate the applied configuration
 
 ```bash
-sh s6_validate_configs.sh
+sh networking/s6_validate_configs.sh
 ```
 
 This checks:
@@ -144,7 +160,7 @@ This checks:
 ### 8. Activate services and optional NAT rules
 
 ```bash
-sh s7_activate_services.sh
+sh networking/s7_activate_services.sh
 ```
 
 This step:

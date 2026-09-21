@@ -22,12 +22,12 @@ Run the scripts from `/srv/horto-os/scripts`.
 
 > [!NOTE]
 > The scripts are run in the order shown below.
-There is a difference between the full IoT LAN setup and the minimal hostname-only setup.
+There is a difference between the full IoT LAN setup and the basic hostname-only setup.
 For the IoT-LAN setup go to
 [Horto-OS_setup_2_scripted.md](Horto-OS_setup_2_scripted.md) and follow the guide.
 
 
-### 1. Installs required packages and sets up the minimal hostname-only setup
+### 1. Installs required packages and sets up the basic hostname-only setup
 
 ```bash
 sh m1_minimal_setup_run.sh
@@ -40,12 +40,22 @@ sh m1_minimal_setup_run.sh
 
 This creates a file in `/srv/active_setup/`:
 
-- `/srv/active_setup/minimal_setup_vars.env` for the minimal hostname-only setup
+- `/srv/active_setup/os-configuration.env` for the basic setup
 
 For the minimal setup, the script currently manages these variables:
 
 ```env
+# Those Variables get copied to active_setup used by setup scripts
+OS_TYPE="debian" # debian/armbian select
+# Read in the docs, how to identify which NPU or GPU type you can use for AI models
+NPU_TYPE="rkRK3588" # rkRK3576/rkRK3588/ select
+RAM_SYZE="8gb"
+# There are 3 different flavours to install Horto OS. (home,satellite,hortex)
+INSTALL_TYP="home"
+IOT_LAN="y/n" # if Yes the setup will create an independend IOT_LAN
 MY_HOSTNAME="Horto-OS_xxx"
+MY_URL="YourDomainName.net"
+MY_CLOUDFLARE_TOKEN=""
 ```
 
 #### 1.3 Creates the protected initial backup
@@ -56,7 +66,7 @@ Finally it runs the script to create a protected initial backup of `/etc` under 
 ### 2. Stage the rendered configuration
 
 ```bash
-sh s4_deploy_configs.sh
+sh networking/s4_deploy_configs.sh
 ```
 
 This does **not** write directly into `/etc`.

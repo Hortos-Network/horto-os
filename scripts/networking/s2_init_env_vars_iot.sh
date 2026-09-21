@@ -24,7 +24,7 @@ IOT-LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
 OS_CONF_TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
 OS_CONF_ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
 
-SETUP_SCRIPT="$SCRIPT_DIR/s2_helper_script.sh"
+SETUP_SCRIPT="$SCRIPT_DIR/helpers/s2_helper_script_iot.sh"
 
 mkdir -p "$ACTIVE_SETUP_DIR"
 

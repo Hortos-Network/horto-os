@@ -10,9 +10,9 @@ esac
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
-TEMPLATE_FILE="$REPO_ROOT/config/my_variables.env"
+TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
 ACTIVE_SETUP_DIR="/srv/active_setup"
-ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
+ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
 
 if [ ! -f "$TEMPLATE_FILE" ]; then
   echo "Error: template file not found: $TEMPLATE_FILE" >&2
@@ -47,17 +47,19 @@ escape_double_quotes() {
   printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'
 }
 
+OS_TYPE=$(prompt_value "${OS_TYPE:-debian}" "debian/armbian select")
+NPU_TYPE=$(prompt_value "${NPU_TYPE:-rk3588}" "NPU or GPU type ")
+INSTALL_TYPE=$(prompt_value "${INSTALL_TYPE:-home}" "home/sat/hortex select")
+IOT_LAN=$(prompt_value "${IOT_LAN:-y}" "# y/n: if Yes the setup will create an independend IOT_LAN")
 MY_HOSTNAME=$(prompt_value "${MY_HOSTNAME:-Horto-OS_xxx}" "Device hostname")
-WIFI_INTERFACE=$(prompt_value "${WIFI_INTERFACE:-wlx0_xxxxx}" "WiFi interface")
-WIFI_SSID=$(prompt_value "${WIFI_SSID:-Horto-IoT-LAN}" "WiFi SSID")
-WIFI_PASSPHRASE=$(prompt_value "${WIFI_PASSPHRASE:-}" "WiFi passphrase")
 MY_URL=$(prompt_value "${MY_URL:-YourDomainName.net}" "Public URL / domain")
 
 cat > "$ACTIVE_FILE" <<EOF
+OS_TYPE="$(escape_double_quotes "$OS_TYPE")"
+NPU_TYPE="$(escape_double_quotes "$NPU_TYPE")"
+INSTALL_TYPE="$(escape_double_quotes "$INSTALL_TYPE")"
+IOT_LAN="$(escape_double_quotes "$IOT_LAN")"
 MY_HOSTNAME="$(escape_double_quotes "$MY_HOSTNAME")"
-WIFI_INTERFACE="$(escape_double_quotes "$WIFI_INTERFACE")"
-WIFI_SSID="$(escape_double_quotes "$WIFI_SSID")"
-WIFI_PASSPHRASE="$(escape_double_quotes "$WIFI_PASSPHRASE")"
 MY_URL="$(escape_double_quotes "$MY_URL")"
 EOF
 

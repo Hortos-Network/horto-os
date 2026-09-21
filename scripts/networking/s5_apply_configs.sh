@@ -9,7 +9,8 @@ case "${0##*/}" in
     ;;
 esac
 
-FULL_ACTIVE_FILE="/srv/active_setup/my_variables.env"
+IOT-LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
+
 if [ ! -f "$IOT-LAN_ACTIVE_FILE" ]; then
   echo "This script is only needed for a IOT-LAN Setup"
   exit 0
@@ -21,7 +22,7 @@ TARGET_ROOT="/etc"
 
 if [ ! -d "$STAGING_ETC_DIR" ]; then
   echo "Error: staging directory not found: $STAGING_ETC_DIR" >&2
-  echo "Run s4_deploy_configs.sh first." >&2
+  echo "Run networking/s4_deploy_configs.sh first." >&2
   exit 1
 fi
 

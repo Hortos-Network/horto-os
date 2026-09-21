@@ -14,8 +14,8 @@ REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 CONFIG_DIR="$REPO_ROOT/config"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 STAGING_ETC_DIR="$ACTIVE_SETUP_DIR/etc"
-OS_CONF_TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
-OS_CONF_ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
+IOT-LAN_TEMPLATE_FILE="$REPO_ROOT/config/iot-lan_conf.env"
+IOT-LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
 
 if [ ! -d "$CONFIG_DIR" ]; then
   echo "Error: config directory not found: $CONFIG_DIR" >&2
@@ -30,6 +30,12 @@ render_template() {
 
   cp "$template_path" "$output_path"
 
+  for var_name in WIFI_INTERFACE WIFI_SSID WIFI_PASSPHRASE ETH_LAN ETH_IOT1 ETH_IOT2; do
+    eval "var_value=\${$var_name-}"
+    escaped_value=$(printf '%s' "$var_value" | sed 's/[\\&|]/\\&/g')
+    sed -i "s|{{${var_name}}}|$escaped_value|g" "$output_path"
+  done
+}
 
 stage_static_file() {
   rel_path="$1"
@@ -51,38 +57,42 @@ render_and_stage_file() {
   echo "Rendered and staged file: $src -> $dest"
 }
 
-if [ -f "$OS_CONF_ACTIVE_FILE" ]; then
-  . "$OS_CONF_ACTIVE_FILE"
+if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
+  mode="full"
   # shellcheck disable=SC1090
-else
-  echo "Error: no active setup file found. Run s2_init_env_vars.sh first." >&2
-  exit 1
-fi
+  . "$IOT-LAN_ACTIVE_FILE"
+  else
+    echo "Error: no active setup file found. Run s2_init_env_vars.sh first." >&2
+    exit 1
+  fi
 
-
-    required_vars="MY_HOSTNAME"
+case "$mode" in
+  full)
+    required_vars="MY_HOSTNAME WIFI_INTERFACE WIFI_SSID"
     for var_name in $required_vars; do
       eval "var_value=\${$var_name-}"
       if [ -z "$var_value" ]; then
-        echo "Error: required variable $var_name is empty in $OS_CONF_ACTIVE_FILE" >&2
+        echo "Error: required variable $var_name is empty in $FULL_ACTIVE_FILE" >&2
         exit 1
       fi
     done
 
-    render_and_stage_file "hosts"
-    render_and_stage_file "hostname"
+    render_and_stage_file "hostapd/hostapd.conf"
+    render_and_stage_file "netplan/99-iot-lan.yaml"
+
+    stage_static_file "resolv.conf"
+    stage_static_file "dnsmasq.d/iot-lan.conf"
+    stage_static_file "sysctl.d/packet_forwarding.conf"
+    stage_static_file "avahi/avahi-daemon.conf"
+    stage_static_file "avahi/hosts"
 
 
-    if [ -z "${MY_HOSTNAME:-}" ]; then
-      echo "Error: MY_HOSTNAME is empty in $OS_CONF_ACTIVE_FILE" >&2
-      exit 1
-    fi
+esac
 
-    render_and_stage_file "hosts"
-    render_and_stage_file "hostname"
-
-
+# Set minimlal permissions for netplan files
+chmod 640 "$STAGING_ETC_DIR/netplan/99-iot-lan.yaml"
+chmod 640 "$STAGING_ETC_DIR/netplan"/*
 
 echo "Step 4 complete: configuration staged in $STAGING_ETC_DIR using $mode mode."
-echo "Your basic setup is done."
-echo "Step 4 complete: applied configuration activated. A reboot is recommended, especially after network changes."
+echo "Review the changes in $STAGING_ETC_DIR/netplan/99-iot-lan.yaml to adjust the available interfaces."
+echo "!!! Review the staged files there before copying them into /etc. by running networking/s5_apply_configs.sh !!!"

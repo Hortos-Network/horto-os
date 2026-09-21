@@ -81,7 +81,7 @@ This `horto-os` repository contains the core components for deploying and managi
 - `config/`: Configuration templates (e.g., `dnsmasq.conf.template`, etc.).
 - `docker_source/`: Full Docker stack definitions and application data intended to be copied to your machine-specific Docker directory.
 - `docs/`: Comprehensive documentation and detailed step-by-step guides for installation and setup.
-- `scripts/`: Setup and deployment scripts. The current scripted host setup sequence is `s1_init_horto_os.sh` → `s2_init_env_vars.sh` → `s3_backup_etc_configs.sh` → `s4_deploy_configs.sh` → `s5_apply_configs.sh` → `s6_validate_configs.sh` → `s7_activate_services.sh`. Docker app-data initialization currently begins with `d1_docker_init.sh`.
+- `scripts/`: Setup and deployment scripts. The current scripted host setup sequence is `s1_init_horto_os.sh` → `s2_init_env_vars.sh` → `s3_backup_etc_configs.sh` → `networking/s4_deploy_configs.sh` → `networking/s5_apply_configs.sh` → `networking/s6_validate_configs.sh` → `networking/s7_activate_services.sh`. Docker app-data initialization currently begins with `d1_docker_init.sh`.
 
 ## Getting Started
 
@@ -106,10 +106,10 @@ Here's a high-level overview of the main installation phases:
    * `scripts/s1_init_horto_os.sh`
    * `scripts/s2_init_env_vars.sh`
    * `scripts/s3_backup_etc_configs.sh`
-   * `scripts/s4_deploy_configs.sh`
-   * `scripts/s5_apply_configs.sh`
-   * `scripts/s6_validate_configs.sh`
-   * `scripts/s7_activate_services.sh`
+   * `scripts/networking/s4_deploy_configs.sh`
+   * `scripts/networking/s5_apply_configs.sh`
+   * `scripts/networking/s6_validate_configs.sh`
+   * `scripts/networking/s7_activate_services.sh`
 
 4. **Network Configuration reference**:
    

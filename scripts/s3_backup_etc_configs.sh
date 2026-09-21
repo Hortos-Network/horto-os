@@ -63,4 +63,6 @@ for path in "$CONFIG_DIR"/*; do
   copy_path "$rel_path"
 done
 
-echo "Step 3 complete: protected initial backup completed from $SOURCE_ROOT to $BACKUP_ROOT using entries listed in $CONFIG_DIR"
+echo "Step 3 complete: protected initial backup completed from $SOURCE_ROOT to $BACKUP_ROOT
+using entries listed in $CONFIG_DIR"
+echo "Step 3 complete: continuing with next step 4, or with /networking/s4_deploy_config.sh in case of IOT LAN."

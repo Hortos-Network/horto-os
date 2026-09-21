@@ -10,13 +10,13 @@ case "${0##*/}" in
     ;;
 esac
 
-# For a minimal non-IoT-LAN setup, store only the hostname in "/srv/active_setup/minimal_setup_vars.env".
+# For a minimal non-IoT-LAN setup, store only the hostname in "/srv/active_setup/os-configuration.env".
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 ACTIVE_SETUP_DIR="/srv/active_setup"
-MINIMAL_TEMPLATE_FILE="$REPO_ROOT/config/minimal_setup_vars.env"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
+MINIMAL_TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
+MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
 
 # Ensure the active-setup directory exists
 mkdir -p "$ACTIVE_SETUP_DIR"
@@ -65,4 +65,4 @@ echo "Step 2 complete: active variables are ready."
 echo "Step 2 started: s3_backup_etc_configs"
 sh "$SCRIPT_DIR/s3_backup_etc_configs.sh"
 
-echo "Next step: check active_setup/minimal_setup_vars.env and run scripts/s4_deploy_managed_files.sh to deploy managed files"
+echo "Next step: check active_setup/os-configuration.env and run scripts/networking/s4_deploy_configs.sh to deploy managed files"

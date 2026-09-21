@@ -9,7 +9,7 @@ case "${0##*/}" in
     ;;
 esac
 
-FULL_ACTIVE_FILE="/srv/active_setup/my_variables.env"
+IOT-LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
 if [ ! -f "$IOT-LAN_ACTIVE_FILE" ]; then
   echo "This script is only needed for a IOT-LAN Setup"
   exit 0
@@ -38,11 +38,11 @@ restart_service_if_present() {
 
 apply_nat_rules() {
   if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
-    echo "Loading variables from $FULL_ACTIVE_FILE"
+    echo "Loading variables from $IOT-LAN_ACTIVE_FILE"
     sed -i -e 's/\r$//' "$IOT-LAN_ACTIVE_FILE"
     . "$IOT-LAN_ACTIVE_FILE"
   else
-    echo "Warning: Env file not found at $FULL_ACTIVE_FILE, falling back to auto-detection."
+    echo "Warning: Env file not found at $IOT-LAN_ACTIVE_FILE, falling back to auto-detection."
   fi
 
   WAN_IF="${ETH_LAN:-$(ip route show default | awk '/default/ {print $5}' | head -n1)}"
@@ -110,7 +110,7 @@ OUTPUT_DIR="/srv/docker/assets"
 mkdir -p "$OUTPUT_DIR"
 
 # Use absolute path based on the repository structure
-EXPORT_SCRIPT="/srv/horto-os/scripts/export_dhcp_leases.sh"
+EXPORT_SCRIPT="/srv/horto-os/scripts/networking/export_dhcp_leases.sh"
 
 CRON_FILE="/etc/cron.d/export_dhcp_leases"
 

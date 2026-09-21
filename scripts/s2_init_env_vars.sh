@@ -16,7 +16,7 @@ ACTIVE_SETUP_DIR="/srv/active_setup"
 OS_CONF_TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
 OS_CONF_ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
 
-SETUP_SCRIPT="$SCRIPT_DIR/s2_helper_script.sh"
+SETUP_SCRIPT="$SCRIPT_DIR/helpers/s2_helper_script.sh"
 
 mkdir -p "$ACTIVE_SETUP_DIR"
 
@@ -66,7 +66,7 @@ echo "  MY_URL=$MY_URL"
 # If IOT-LAN is set to yes run s2_init_env_vars_iot.sh
 if [ "$IOT_LAN" = "y" ]; then
   echo "IOT-LAN setup is next"
-  sh "$SCRIPT_DIR/s2_init_env_vars_iot.sh"
+  sh "$SCRIPT_DIR/networking/s2_init_env_vars_iot.sh"
 else
   echo "setup without IOT_LAN detected"
 fi

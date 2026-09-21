@@ -17,7 +17,7 @@ TARGET_DIR="/srv/docker/"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
 OS_CONF_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
+MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
 
 if [ ! -d "$SOURCE_DIR" ]; then
   echo "Error: source directory not found: $SOURCE_DIR" >&2
