@@ -9,13 +9,14 @@ case "${0##*/}" in
     ;;
 esac
 
-IOT-LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
-if [ ! -f "$IOT-LAN_ACTIVE_FILE" ]; then
+ACTIVE_SETUP_DIR="/srv/active_setup"
+IOT_LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
+
+if [ ! -f "$IOT_LAN_ACTIVE_FILE" ]; then
   echo "This script is only needed for a IOT-LAN Setup"
   exit 0
 fi
 
-ACTIVE_SETUP_DIR="/srv/active_setup"
 TARGET_ROOT="/etc"
 FAILED=0
 

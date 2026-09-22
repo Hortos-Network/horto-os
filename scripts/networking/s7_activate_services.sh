@@ -9,15 +9,17 @@ case "${0##*/}" in
     ;;
 esac
 
-IOT-LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
-if [ ! -f "$IOT-LAN_ACTIVE_FILE" ]; then
+
+ACTIVE_SETUP_DIR="/srv/active_setup"
+IOT_LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
+
+if [ ! -f "$IOT_LAN_ACTIVE_FILE" ]; then
   echo "This script is only needed for a IOT-LAN Setup"
   exit 0
 fi
 
-ACTIVE_SETUP_DIR="/srv/active_setup"
 
-if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
+if [ -f "$IOT_LAN_ACTIVE_FILE" ]; then
   mode="full"
 else
   echo "Error: no active setup file found in $ACTIVE_SETUP_DIR" >&2
@@ -37,12 +39,12 @@ restart_service_if_present() {
 }
 
 apply_nat_rules() {
-  if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
-    echo "Loading variables from $IOT-LAN_ACTIVE_FILE"
-    sed -i -e 's/\r$//' "$IOT-LAN_ACTIVE_FILE"
-    . "$IOT-LAN_ACTIVE_FILE"
+  if [ -f "$IOT_LAN_ACTIVE_FILE" ]; then
+    echo "Loading variables from $IOT_LAN_ACTIVE_FILE"
+    sed -i -e 's/\r$//' "$IOT_LAN_ACTIVE_FILE"
+    . "$IOT_LAN_ACTIVE_FILE"
   else
-    echo "Warning: Env file not found at $IOT-LAN_ACTIVE_FILE, falling back to auto-detection."
+    echo "Warning: Env file not found at $IOT_LAN_ACTIVE_FILE, falling back to auto-detection."
   fi
 
   WAN_IF="${ETH_LAN:-$(ip route show default | awk '/default/ {print $5}' | head -n1)}"
