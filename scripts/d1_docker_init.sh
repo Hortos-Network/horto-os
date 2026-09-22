@@ -15,21 +15,16 @@ SOURCE_DIR="$REPO_ROOT/docker_source"
 SOURCE_DIR_STACK="$REPO_ROOT/docker_source/stacks"
 TARGET_DIR="/srv/docker/"
 ACTIVE_SETUP_DIR="/srv/active_setup"
-FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
 OS_CONF_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
 
 if [ ! -d "$SOURCE_DIR" ]; then
   echo "Error: source directory not found: $SOURCE_DIR" >&2
   exit 1
 fi
 
-if [ -f "$IOT-LAN_ACTIVE_FILE" ]; then
+if [ -f "$OS_CONF_FILE" ]; then
   # shellcheck disable=SC1090
-  . "$IOT-LAN_ACTIVE_FILE"
-elif [ -f "$MINIMAL_ACTIVE_FILE" ]; then
-  # shellcheck disable=SC1090
-  . "$MINIMAL_ACTIVE_FILE"
+  . "$OS_CONF_FILE"
 else
   echo "Error: no active setup file found in $ACTIVE_SETUP_DIR" >&2
   echo "Run s2_init_env_vars.sh first." >&2

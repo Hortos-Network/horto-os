@@ -15,11 +15,11 @@ sudo apt install -y hostapd dnsmasq iptables avahi-daemon
 
 echo "Base packages for IOT-LAN installed."
 
-SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
-REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+SCRIPT_DIR="/srv/horto-os/scripts"
+REPO_ROOT="/srv/horto-os"
 ACTIVE_SETUP_DIR="/srv/active_setup"
-IOT-LAN_TEMPLATE_FILE="$REPO_ROOT/config/iot-lan_conf.env"
-IOT-LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
+IOT_LAN_TEMPLATE_FILE="$REPO_ROOT/config/iot-lan_conf.env"
+IOT_LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
 
 OS_CONF_TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
 OS_CONF_ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
@@ -28,8 +28,8 @@ SETUP_SCRIPT="$SCRIPT_DIR/helpers/s2_helper_script_iot.sh"
 
 mkdir -p "$ACTIVE_SETUP_DIR"
 
-active_file="$IOT-LAN_ACTIVE_FILE"
-template_file="$IOT-LAN_TEMPLATE_FILE"
+active_file="$IOT_LAN_ACTIVE_FILE"
+template_file="$IOT_LAN_TEMPLATE_FILE"
 
 if [ ! -f "$template_file" ]; then
   echo "Error: template file not found: $template_file" >&2
@@ -107,5 +107,5 @@ fi
 echo "Discovered and saved: ETH_LAN=$ETH0, ETH_IOT1=$ETH1, ETH_IOT2=${ETH2:-not-set} to $active_file"
 
 echo "Step 2 complete: active variables are ready to check."
-echo "Check file $active_file", especially the active ethernet interface names."
+echo "Check file $active_file, especially the active ethernet interface names."
 echo "Next step: run scripts/s3_backup_etc_configs.sh before deploying managed files from $REPO_ROOT/config into /etc."

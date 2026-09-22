@@ -8,8 +8,8 @@ case "${0##*/}" in
     ;;
 esac
 
-SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
-REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+SCRIPT_DIR="/srv/horto-os/scripts"
+REPO_ROOT="/srv/horto-os"
 TEMPLATE_FILE="$REPO_ROOT/config/iot-lan_conf.env"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"

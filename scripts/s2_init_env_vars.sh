@@ -9,8 +9,8 @@ case "${0##*/}" in
     ;;
 esac
 
-SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
-REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+SCRIPT_DIR="/srv/horto-os/scripts"
+REPO_ROOT="/srv/horto-os"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 
 OS_CONF_TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
@@ -41,7 +41,7 @@ fi
 # shellcheck disable=SC1090
 . "$active_file"
 
-required_vars="MY_HOSTNAME OS_TYPE NPU_TYPE INSTALL_TYP IOT_LAN"
+required_vars="MY_HOSTNAME OS_TYPE NPU_TYPE INSTALL_TYPE IOT_LAN MY_URL"
 for var_name in $required_vars; do
   eval "var_value=\${$var_name-}"
   if [ -z "$var_value" ]; then
@@ -59,7 +59,7 @@ if [ -n "${RAM_SYZE:-}" ]; then
 else
   echo "  RAM_SYZE is empty"
 fi
-echo "  INSTALL_TYP=$INSTALL_TYP"
+echo "  INSTALL_TYPE=$INSTALL_TYPE"
 echo "  IOT_LAN=$IOT_LAN"
 echo "  MY_URL=$MY_URL"
 
@@ -72,5 +72,5 @@ else
 fi
 
 echo "Step 2 complete: active variables are ready to check."
-echo "Check file $active_file", especially the active ethernet interface names."
+echo "Check file $active_file, especially the active ethernet interface names."
 echo "Next step: run scripts/s3_backup_etc_configs.sh before deploying managed files from $REPO_ROOT/config into /etc."

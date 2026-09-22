@@ -46,15 +46,13 @@ the WiFi interface and Ethernet interface you want to use for the IOT-LAN.
 ip link show
 ```
 
-The template for the env variable you find in `config/my_variables.env`
-Copy this file to `/srv/active_setup/my_variables.env` and edit it to your needs.
+The template for the env variable you find in `config/iot-lan_conf.env`
+Copy this file to `/srv/active_setup/iot-lan_conf.env` and edit it to your needs.
 
 ```env
-MY_HOSTNAME="Horto-OS_xxx"
 WIFI_INTERFACE="wlx00xxxxxx"
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
-MY_URL="YourDomainName.net"
 ETH_LAN=en... # LAN interface linked to the router
 ETH_IOT1=en... # IOT interface 1
 ETH_IOT2=en... # IOT interface 2
