@@ -23,11 +23,30 @@ Run the scripts from `/srv/horto-os/scripts`.
 > [!NOTE]
 > The scripts are run in the order shown below.
 There is a difference between the full IoT LAN setup and the minimal hostname-only setup.
-For the minimal setup, only the hostname is configured, go to
-[Horto-OS_setup_2_scripted_minimal.md](Horto-OS_setup_2_scripted_minimal.md) and follow the guide.
-In the full IoT LAN setup below, the hostname is configured along with the WiFi
+For the minimal setup, only the hostname is configured, you will define to have
+a IOT-LAN in the `s2_init_env_vars.sh` script.
+In the full IoT LAN setup, the hostname is configured along with the WiFi
 credentials and a DHCP server is installed.
 
+
+Steps for basic setup:
+
+* `scripts/s1_init_horto_os.sh`
+* `scripts/s2_init_env_vars.sh`
+* `scripts/s3_backup_etc_configs.sh`
+* `scripts/s4_deploy_configs.sh`
+* `scripts/s5_apply_configs.sh`
+
+Steps for full IoT LAN setup:
+
+* `scripts/s1_init_horto_os.sh`
+* `scripts/s2_init_env_vars.sh`
+* `scripts/networking/s2_init_env_vars_iot.sh`
+* `scripts/s3_backup_etc_configs.sh`
+* `scripts/networking/s4_deploy_configs.sh`
+* `scripts/networking/s5_apply_configs.sh`
+* `scripts/networking/s6_validate_configs.sh`
+* `scripts/networking/s7_activate_services.sh`
 
 ### 1. Install required packages for IOT-LAN setup
 
@@ -72,8 +91,8 @@ MY_CLOUDFLARE_TOKEN=""
 ```
 
 > [!NOTE]
-> In case you want to use a WiFi Adapter for the IOT-LAN you need to define
-`WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+> In case you want to use a WiFi Adapter for the IOT-LAN you need to identify
+> `WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
 
 This command `ip link show` lists the network interfaces on the system. Look for
 the WiFi interface you want to use for the IOT-LAN.

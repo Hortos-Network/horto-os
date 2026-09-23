@@ -8,14 +8,14 @@ The underlying Operation System can be any Debian/Ubuntu or Armbian OS. The apps
 either run on the Holochain, peer to peer architecture, the Horto Nexus (Coasys
 Adam Layer), or as Docker apps.
 
-Basically HORTO-OS can be deployed in different flavors, corresponding to the different use cases. There are three main use cases:
+Basically HORTO-OS can be deployed in different "flavors", corresponding to the
+different use cases. There are three main use cases or deployment profiles:
 
-|     | Use Case                  | Managed   | Remark                                       |
-| --- | ------------------------- | --------- | -------------------------------------------- |
-| 1st | HORTEX node               | yes       | Industrial Mini Server in the HORTEX network |
-| 2rd | Horto Boxes as sattelites | yes       | Sattelites connected to a HORTEX node        |
-| 3nd | Horto Boxes for homes     | partially | HEMS system for households or SME's          |
-
+|     | Deployment Profile | Managed Status | Description & Role |
+| --- | ------------------ | -------------- | ------------------------------------------------------------- |
+| 1st | **Core Node** *(HORTEX Server)* | Fully Managed | Industrial Mini Server anchoring the wider HORTEX network. |
+| 2nd | **Satellite Node** *(Horto Satellite)* | Fully Managed | Edge nodes deployed as satellites connected upstream to a Core Node. |
+| 3rd | **Horto Box** *(HEMS)* | Partially Managed | Residential or SME deployment acting as an independent Home Energy Management System (HEMS). |
 
 ![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
 
@@ -32,7 +32,7 @@ This use cases are related on using RK3576/3588 boards!
 - People who are interested in edge computing on RK3576/3588 boards
 - People who want to run [Frigate NVR](docs/apps/FRIGATE_NVR.md), evcc or Home
   Assistant on a powerfull ARM CPU with AI capabilites.
-- Horto OS comes with a fullly Home Assistant compatible local AI stack (voice
+- Horto OS comes with a fully Home Assistant compatible local AI stack (voice
   pipeline, AI inference)
 
 
@@ -53,7 +53,7 @@ and [VISION](docs/VISION.MD).
 ## Requirements for RK3576/3588 boards
 
 - A RK3588 board with minimal 8 GB RAM.
-- Minimum of 32GB of storage on the RK3588 board, eMMC or SSD
+- Minimum of 64GB of storage on the RK3588 board, eMMC or SSD
 - The tools to flash a SD card.
 
 For a more capable Horto-BOX we recommend to have 16GB RAM and minimal 128 GB of storage.
@@ -90,32 +90,22 @@ To deploy Horto OS on a fresh RK3588-based system, follow the setup guides in th
 Here's a high-level overview of the main installation phases:
 
 1. **[HORTO-OS_SETUP_1](docs/HORTO-OS_SETUP_1.MD)**:
-   
+
    * Flash and boot Armbian.
    * Optionally move the system to eMMC.
    * Install `git` and clone the repository into `/srv/horto-os`.
 
 2. **Choose the setup path**:
-   
+
    * **[MANUAL PATH](docs/HORTO-OS_SETUP_2_MANUAL.MD)** for manual editing and copying.
    * **[SCRIPTED PATH](docs/HORTO-OS_SETUP_2_SCRIPTED.MD)** for the tested host setup scripts.
-   * **[SCRIPTED PATH MINIMAL](docs/HORTO-OS_SETUP_2_SCRIPTED_MINIMAL.MD)** for the tested host setup scripts.
 
-3. **Scripted host setup (IOT-LAN) flow**:
-   
-   * `scripts/s1_init_horto_os.sh`
-   * `scripts/s2_init_env_vars.sh`
-   * `scripts/s3_backup_etc_configs.sh`
-   * `scripts/networking/s4_deploy_configs.sh`
-   * `scripts/networking/s5_apply_configs.sh`
-   * `scripts/networking/s6_validate_configs.sh`
-   * `scripts/networking/s7_activate_services.sh`
 
-4. **Network Configuration reference**:
+3. **Network Configuration reference**:
    
    * Additional network explanations and NAT examples are in [HORTO-OS_SETUP_3 NETWORKING](docs/HORTO-OS_SETUP_3_NETWORKING.MD).
 
-5. **Docker and dashboard setup**:
+4. **Docker and dashboard setup**:
    
    * How to install the full Docker stack.
    * Deployment of Dockge for user-friendly management of containerized applications.

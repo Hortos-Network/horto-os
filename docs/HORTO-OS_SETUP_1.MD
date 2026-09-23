@@ -45,7 +45,3 @@ After the repository exists in `/srv/horto-os`, continue with either:
 
 - [HORTO-OS_SETUP_2_MANUAL](HORTO-OS_SETUP_2_MANUAL.MD)
 - [HORTO-OS_SETUP_2_SCRIPTED](HORTO-OS_SETUP_2_SCRIPTED.MD)
-
-Or in case you want a scripted setup without IOT-LAN:
-
-- [HORTO-OS_SETUP_2_SCRIPTED_MINIMAL](HORTO-OS_SETUP_2_SCRIPTED_MINIMAL.MD)

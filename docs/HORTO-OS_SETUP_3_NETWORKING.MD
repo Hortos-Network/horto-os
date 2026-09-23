@@ -34,6 +34,12 @@ via DHCP from the upstream router.
 - If you intend to use WiFi for the IoT LAN, you will need to attach a Linux compatible WiFi USB
   stick to the board. Or if your board does have built-in WiFi, you should use this instead.
 
+```bash
+# Install additional packages used by the Horto OS setup for IoT LAN components.
+echo "Installing IoT LAN components..."
+sudo apt install -y hostapd dnsmasq iptables avahi-daemon
+```
+
 ## Environment variables
 
 For the full setup with IOT-LAN, it is recommended to manage these variables,
