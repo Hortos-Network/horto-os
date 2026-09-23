@@ -2,7 +2,7 @@
 
 # Horto OS
 
-**Horto OS** is a decentralised, privacy-focused operating system designed for HORTEX nodes or **Home Hubs** (the **Horto Box**), primarily built upon a fork of the technical substrate provided by [**Coasys**](https://coasys.org/). The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
+**Horto OS** is a decentralised, privacy-focused operating system designed for **HORTEX nodes** or **Home Hubs** (the **Horto Box**), primarily built upon a fork of the technical substrate provided by [**Coasys**](https://coasys.org/). The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
 
 The underlying Operation System can be any Debian/Ubuntu or Armbian OS. The apps
 either run on the Holochain, peer to peer architecture, the Horto Nexus (Coasys
