@@ -89,7 +89,11 @@ else
 fi
 
 restart_service_if_present dnsmasq
-restart_service_if_present hostapd
+WIFI_INTERFACE=$(sed -n 's/^WIFI_INTERFACE="//p' "$IOT_LAN_ACTIVE_FILE" | sed 's/"$//')
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') echo "WIFI_INTERFACE=none; skipping hostapd restart" ;;
+  *) restart_service_if_present hostapd ;;
+esac
 restart_service_if_present avahi-daemon
 
 printf "Apply NAT / masquerade iptables rules now? [y/N]: " >&2

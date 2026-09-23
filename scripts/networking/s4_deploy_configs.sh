@@ -14,7 +14,6 @@ REPO_ROOT="/srv/horto-os"
 CONFIG_DIR="$REPO_ROOT/config"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 STAGING_ETC_DIR="$ACTIVE_SETUP_DIR/etc"
-IOT_LAN_TEMPLATE_FILE="$REPO_ROOT/config/iot-lan_conf.env"
 IOT_LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
 
 if [ ! -d "$CONFIG_DIR" ]; then
@@ -58,23 +57,30 @@ render_and_stage_file() {
 }
 
 if [ -f "$IOT_LAN_ACTIVE_FILE" ]; then
+  # shellcheck disable=SC1090
   . "$IOT_LAN_ACTIVE_FILE"
-  else
-    echo "Error: no active setup file found. Run s2_init_env_vars.sh first." >&2
-    exit 1
-  fi
+else
+  echo "Error: no active setup file found. Run networking/s2_init_env_vars_iot.sh first." >&2
+  exit 1
+fi
 
-
-required_vars="WIFI_PASSPHRASE WIFI_INTERFACE WIFI_SSID"
+required_vars="WIFI_INTERFACE"
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') ;;
+  *) required_vars="$required_vars WIFI_SSID" ;;
+esac
 for var_name in $required_vars; do
-    eval "var_value=\${$var_name-}"
-    if [ -z "$var_value" ]; then
+  eval "var_value=\${$var_name-}"
+  if [ -z "$var_value" ]; then
     echo "Error: required variable $var_name is empty in $IOT_LAN_ACTIVE_FILE" >&2
     exit 1
-    fi
+  fi
 done
 
-render_and_stage_file "hostapd/hostapd.conf"
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') echo "WIFI_INTERFACE=none; skipping hostapd staging" ;;
+  *) render_and_stage_file "hostapd/hostapd.conf" ;;
+esac
 render_and_stage_file "netplan/99-iot-lan.yaml"
 
 stage_static_file "resolv.conf"
@@ -83,10 +89,7 @@ stage_static_file "sysctl.d/packet_forwarding.conf"
 stage_static_file "avahi/avahi-daemon.conf"
 stage_static_file "avahi/hosts"
 
-
-esac
-
-# Set minimlal permissions for netplan files
+# Set minimal permissions for netplan files
 chmod 640 "$STAGING_ETC_DIR/netplan/99-iot-lan.yaml"
 chmod 640 "$STAGING_ETC_DIR/netplan"/*
 

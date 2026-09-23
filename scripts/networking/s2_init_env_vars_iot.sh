@@ -9,20 +9,11 @@ case "${0##*/}" in
     ;;
 esac
 
-# Install additional packages used by the Horto OS setup for IoT LAN components.
-echo "Installing IoT LAN components..."
-sudo apt install -y hostapd dnsmasq iptables avahi-daemon
-
-echo "Base packages for IOT-LAN installed."
-
 SCRIPT_DIR="/srv/horto-os/scripts"
 REPO_ROOT="/srv/horto-os"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 IOT_LAN_TEMPLATE_FILE="$REPO_ROOT/config/iot-lan_conf.env"
 IOT_LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
-
-OS_CONF_TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
-OS_CONF_ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
 
 SETUP_SCRIPT="$SCRIPT_DIR/helpers/s2_helper_script_iot.sh"
 
@@ -49,7 +40,28 @@ fi
 # shellcheck disable=SC1090
 . "$active_file"
 
-required_vars="WIFI_INTERFACE WIFI_SSID"
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  ''|-|n|no) WIFI_INTERFACE="none" ;;
+esac
+
+# Install packages used by the Horto OS setup for IoT LAN components.
+echo "Installing IoT LAN components..."
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none)
+    sudo apt install -y dnsmasq iptables avahi-daemon
+    echo "Base packages for Ethernet-only IOT-LAN installed (no hostapd)."
+    ;;
+  *)
+    sudo apt install -y hostapd dnsmasq iptables avahi-daemon
+    echo "Base packages for IOT-LAN installed."
+    ;;
+esac
+
+required_vars="WIFI_INTERFACE"
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none) ;;
+  *) required_vars="$required_vars WIFI_SSID" ;;
+esac
 for var_name in $required_vars; do
   eval "var_value=\${$var_name-}"
   if [ -z "$var_value" ]; then
@@ -60,7 +72,7 @@ done
 
 echo "Loaded full deployment variables from $active_file"
 echo "  WIFI_INTERFACE=$WIFI_INTERFACE"
-echo "  WIFI_SSID=$WIFI_SSID"
+echo "  WIFI_SSID=${WIFI_SSID:-}"
 if [ -n "${WIFI_PASSPHRASE:-}" ]; then
   echo "  WIFI_PASSPHRASE is set"
 else
@@ -68,20 +80,21 @@ else
 fi
 
 # Automatically discover physical ethernet interfaces based on connection state
-ACTIVE_ETH=$(ip -o link show | awk -F': ' '$2 ~ /^en/ && /LOWER_UP/ {print $2}')
+ETH_RE='^(en|eth|wan|lan)'
+ACTIVE_ETH=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re && /LOWER_UP/ {print $2}')
 
-# Fallback: if none are actively linked, grab the first three 'en' interfaces alphabetically
+# Fallback: if none are actively linked, grab the first three matching interfaces alphabetically
 if [ -z "$ACTIVE_ETH" ]; then
-    ETH0=$(ip -o link show | awk -F': ' '$2 ~ /^en/ {print $2}' | head -n 1)
-    ETH1=$(ip -o link show | awk -F': ' '$2 ~ /^en/ {print $2}' | tail -n +2 | head -n 1)
-    ETH2=$(ip -o link show | awk -F': ' '$2 ~ /^en/ {print $2}' | tail -n +3 | head -n 1)
+    ETH0=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re {print $2}' | head -n 1)
+    ETH1=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re {print $2}' | tail -n +2 | head -n 1)
+    ETH2=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re {print $2}' | tail -n +3 | head -n 1)
     : "${ETH0:=wan}"
     : "${ETH1:=lan1}"
     # ETH2 stays empty if not found — no default
 else
     ETH0="$ACTIVE_ETH"
-    ETH1=$(ip -o link show | awk -F': ' '$2 ~ /^en/ && $2 != "'"$ETH0"'" {print $2}' | head -n 1)
-    ETH2=$(ip -o link show | awk -F': ' '$2 ~ /^en/ && $2 != "'"$ETH0"'" && $2 != "'"$ETH1"'" {print $2}' | head -n 1)
+    ETH1=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re && $2 != "'"$ETH0"'" {print $2}' | head -n 1)
+    ETH2=$(ip -o link show | awk -F': ' -v re="$ETH_RE" '$2 ~ re && $2 != "'"$ETH0"'" && $2 != "'"$ETH1"'" {print $2}' | head -n 1)
 fi
 
 # Write discovered interfaces to the active variables file

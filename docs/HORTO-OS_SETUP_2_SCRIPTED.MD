@@ -91,8 +91,14 @@ MY_CLOUDFLARE_TOKEN=""
 ```
 
 > [!NOTE]
+<<<<<<< HEAD
 > In case you want to use a WiFi Adapter for the IOT-LAN you need to identify
 > `WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+=======
+> In case you want to use a WiFi Adapter for the IOT-LAN you need to define
+`WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+> For Ethernet-only, set `WIFI_INTERFACE=none`.
+>>>>>>> f62071f (fix(iot-lan): allow Ethernet-only when WIFI_INTERFACE=none)
 
 This command `ip link show` lists the network interfaces on the system. Look for
 the WiFi interface you want to use for the IOT-LAN.
@@ -186,7 +192,7 @@ This step:
 
 - reloads `sysctl`,
 - applies `netplan`,
-- restarts `dnsmasq`, `hostapd`, and `avahi-daemon` if present,
+- restarts `dnsmasq` and `avahi-daemon` if present (`hostapd` only when WiFi AP is enabled),
 - optionally adds the `iptables` NAT / masquerade rules,
 - optionally installs `iptables-persistent`.
 
