@@ -47,9 +47,14 @@ escape_double_quotes() {
   printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'
 }
 
-WIFI_INTERFACE=$(prompt_value "${WIFI_INTERFACE:-wlx0_xxxxx}" "WiFi interface")
-WIFI_SSID=$(prompt_value "${WIFI_SSID:-Horto-IoT-LAN}" "WiFi SSID")
-WIFI_PASSPHRASE=$(prompt_value "${WIFI_PASSPHRASE:-}" "WiFi passphrase")
+WIFI_INTERFACE=$(prompt_value "${WIFI_INTERFACE:-wlx0_xxxxx}" "WiFi interface (none = Ethernet-only)")
+case "$(printf '%s' "$WIFI_INTERFACE" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') WIFI_INTERFACE="none"; WIFI_SSID=""; WIFI_PASSPHRASE="" ;;
+  *)
+    WIFI_SSID=$(prompt_value "${WIFI_SSID:-Horto-IoT-LAN}" "WiFi SSID")
+    WIFI_PASSPHRASE=$(prompt_value "${WIFI_PASSPHRASE:-}" "WiFi passphrase")
+    ;;
+esac
 
 cat > "$ACTIVE_FILE" <<EOF
 WIFI_INTERFACE="$(escape_double_quotes "$WIFI_INTERFACE")"

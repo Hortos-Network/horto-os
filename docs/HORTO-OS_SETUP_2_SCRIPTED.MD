@@ -101,6 +101,19 @@ MY_URL="YourDomainName.net"
 MY_CLOUDFLARE_TOKEN=""
 ```
 
+> [!NOTE]
+> In case you want to use a WiFi Adapter for the IOT-LAN you need to identify
+> `WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+> For Ethernet-only, set `WIFI_INTERFACE=none`.
+
+This command `ip link show` lists the network interfaces on the system. Look for
+the WiFi interface you want to use for the IOT-LAN.
+
+```bash
+ip link show
+```
+
+This creates this file in `/srv/active_setup/`:
 If IOT_LAN="y/n" is set to "y", the script will also create this
 file in `/srv/active_setup/`:
 
@@ -204,7 +217,7 @@ This step:
 
 - reloads `sysctl`,
 - applies `netplan`,
-- restarts `dnsmasq`, `hostapd`, and `avahi-daemon` if present,
+- restarts `dnsmasq` and `avahi-daemon` if present (`hostapd` only when WiFi AP is enabled),
 - optionally adds the `iptables` NAT / masquerade rules,
 - optionally installs `iptables-persistent`.
 

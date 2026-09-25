@@ -64,6 +64,8 @@ ETH_IOT1=en... # IOT interface 1
 ETH_IOT2=en... # IOT interface 2
 ```
 
+For Ethernet-only (no WiFi AP), set `WIFI_INTERFACE=none`.
+
 ## Current managed Netplan config
 
 File:
