@@ -48,22 +48,33 @@ Steps for full IoT LAN setup:
 * `scripts/networking/s6_validate_configs.sh`
 * `scripts/networking/s7_activate_services.sh`
 
-### 1. Install required packages for IOT-LAN setup
+### 1. Install required minimal required packages.
 
 ```bash
 sh s1_init_horto_os.sh
 ```
 
-This installs the required host packages for the IOT-LAN path.
-
-- The base packages are installed first.
+This installs the required host packages used by Horto OS.
 
 
 ### 2. Create active variables
 
 > [!NOTE]
-> To allow the script to identify your LAN interface, make sure to attach the
-ethernet cable to the correct port. It chooses the port witch detects an active connection.
+> To allow the script to identify your LAN interface (IOT-LAN only), make sure
+> to attach the ethernet cable to the correct port. It chooses the port witch detects an active connection.
+
+> [!WARNING]
+> In case you want to use a WiFi Adapter for the IOT-LAN you need to identify
+> `WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+
+This command `ip link show` lists the network interfaces on the system. Look for
+the WiFi interface you want to use for the IOT-LAN.
+
+```bash
+ip link show
+```
+
+Then run the setup script to create the active variables:
 
 ```bash
 sh s2_init_env_vars.sh
@@ -71,7 +82,7 @@ sh s2_init_env_vars.sh
 
 This creates this file in `/srv/active_setup/`:
 
-- `/srv/active_setup/os-configuration.env` for the full IoT LAN setup
+- `/srv/active_setup/os-configuration.env` for common configuration variables
 
 
 For the basic setup, the script currently manages these variables:
@@ -103,11 +114,12 @@ ip link show
 ```
 
 This creates this file in `/srv/active_setup/`:
+If IOT_LAN="y/n" is set to "y", the script will also create this
+file in `/srv/active_setup/`:
 
 - `/srv/active_setup/iot-lan_conf.env` for the full IoT LAN setup
 
 ```env
-# Read in the docs, how to get the WIFI_INTERFACE name
 WIFI_INTERFACE="wlx00xxxxxx"
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
@@ -145,6 +157,13 @@ Use this before later changes or repeated testing.
 ### 5. Stage the rendered configuration
 
 ```bash
+sh s4_deploy_configs.sh
+```
+
+If IOT_LAN="y/n" is set to "y", the script will run the following script too,
+to stage the IoT LAN configuration.
+
+```bash
 sh networking/s4_deploy_configs.sh
 ```
 
@@ -158,6 +177,17 @@ Instead, it:
 Review the staged files before applying them.
 
 ### 6. Apply the staged configuration
+
+For non-IoT LAN setups, run:
+
+```bash
+sh s5_apply_host_configs.sh
+```
+
+> [!NOTE]
+> The none-IoT LAN setup scripts are now all executed and you need to reboot.
+
+For IoT LAN setups, run:
 
 ```bash
 sh networking/s5_apply_configs.sh
