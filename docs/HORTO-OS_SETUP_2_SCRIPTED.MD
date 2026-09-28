@@ -23,40 +23,50 @@ Run the scripts from `/srv/horto-os/scripts`.
 > [!NOTE]
 > The scripts are run in the order shown below.
 There is a difference between the full IoT LAN setup and the minimal hostname-only setup.
-For the minimal setup, only the hostname is configured, go to
-[Horto-OS_setup_2_scripted_minimal.md](Horto-OS_setup_2_scripted_minimal.md) and follow the guide.
-In the full IoT LAN setup below, the hostname is configured along with the WiFi
+For the minimal setup, only the hostname is configured, you will define to have
+a IOT-LAN in the `s2_init_env_vars.sh` script.
+In the full IoT LAN setup, the hostname is configured along with the WiFi
 credentials and a DHCP server is installed.
 
 
-### 1. Install required packages for IOT-LAN setup
+Steps for basic setup:
+
+* `scripts/s1_init_horto_os.sh`
+* `scripts/s2_init_env_vars.sh`
+* `scripts/s3_backup_etc_configs.sh`
+* `scripts/s4_deploy_configs.sh`
+* `scripts/s5_apply_configs.sh`
+
+Steps for full IoT LAN setup:
+
+* `scripts/s1_init_horto_os.sh`
+* `scripts/s2_init_env_vars.sh`
+* `scripts/networking/s2_init_env_vars_iot.sh`
+* `scripts/s3_backup_etc_configs.sh`
+* `scripts/networking/s4_deploy_configs.sh`
+* `scripts/networking/s5_apply_configs.sh`
+* `scripts/networking/s6_validate_configs.sh`
+* `scripts/networking/s7_activate_services.sh`
+
+### 1. Install required minimal required packages.
 
 ```bash
 sh s1_init_horto_os.sh
 ```
 
-This installs the required host packages for the IOT-LAN path.
-
-- The base packages are installed first.
+This installs the required host packages used by Horto OS.
 
 
 ### 2. Create active variables
 
 > [!NOTE]
-> To allow the script to identify your LAN interface, make sure to attach the
-ethernet cable to the correct port. It chooses the port witch detects an active connection.
+> To allow the script to identify your LAN interface (IOT-LAN only), make sure
+> to attach the ethernet cable to the correct port. It chooses the port witch detects an active connection.
 
-```bash
-sh s2_init_env_vars.sh
-```
-
-This creates this file in `/srv/active_setup/`:
-
-- `/srv/active_setup/my_variables.env` for the full IoT LAN setup
-
-> [!NOTE]
-> In case you want to use a WiFi Adapter for the IOT-LAN you need to define
-`WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+> [!WARNING]
+> In case you want to use a WiFi Adapter for the IOT-LAN you need to identify
+> `WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+> For Ethernet-only, set `WIFI_INTERFACE=none`.
 
 This command `ip link show` lists the network interfaces on the system. Look for
 the WiFi interface you want to use for the IOT-LAN.
@@ -65,17 +75,56 @@ the WiFi interface you want to use for the IOT-LAN.
 ip link show
 ```
 
-For the full setup, the script currently manages these variables:
+Then run the setup script to create the active variables:
+
+```bash
+sh s2_init_env_vars.sh
+```
+
+This creates this file in `/srv/active_setup/`:
+
+- `/srv/active_setup/os-configuration.env` for common configuration variables
+
+
+For the basic setup, the script currently manages these variables:
 
 ```env
+# Those Variables get copied to active_setup used by setup scripts
+OS_TYPE="debian" # debian/armbian select
+# Read in the docs, how to identify which NPU or GPU type you can use for AI models
+NPU_TYPE="rkRK3588" # rkRK3576/rkRK3588/ select
+RAM_SYZE="8gb"
+# There are 3 different flavours to install Horto OS. (home,satellite,hortex)
+INSTALL_TYP="home"
+IOT_LAN="y/n" # if Yes the setup will create an independend IOT_LAN
 MY_HOSTNAME="Horto-OS_xxx"
-WIFI_INTERFACE="wlx00xxxxxx"
+MY_URL="YourDomainName.net"
+MY_CLOUDFLARE_TOKEN=""
+```
+
+> [!NOTE]
+> In case you want to use a WiFi Adapter for the IOT-LAN you need to identify
+> `WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+> For Ethernet-only, set `WIFI_INTERFACE=none`.
+
+This command `ip link show` lists the network interfaces on the system. Look for
+the WiFi interface you want to use for the IOT-LAN.
+
+```bash
+ip link show
+```
+
+This creates this file in `/srv/active_setup/`:
+If IOT_LAN="y/n" is set to "y", the script will also create this
+file in `/srv/active_setup/`:
+
+- `/srv/active_setup/iot-lan_conf.env` for the full IoT LAN setup
+
+```env
+WIFI_INTERFACE="none" 
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
-MY_URL="YourDomainName.net"
-ETH_LAN=en... # LAN interface linked to the router
-ETH_IOT1=en... # IOT interface 1
-ETH_IOT2=en... # IOT interface 2
+# Additonal variables get added during the setup here.
 ```
 
 ### 3. Create the protected initial backup
@@ -112,6 +161,13 @@ Use this before later changes or repeated testing.
 sh s4_deploy_configs.sh
 ```
 
+If IOT_LAN="y/n" is set to "y", the script will run the following script too,
+to stage the IoT LAN configuration.
+
+```bash
+sh networking/s4_deploy_configs.sh
+```
+
 This does **not** write directly into `/etc`.
 Instead, it:
 
@@ -123,8 +179,19 @@ Review the staged files before applying them.
 
 ### 6. Apply the staged configuration
 
+For non-IoT LAN setups, run:
+
 ```bash
-sh s5_apply_configs.sh
+sh s5_apply_host_configs.sh
+```
+
+> [!NOTE]
+> The none-IoT LAN setup scripts are now all executed and you need to reboot.
+
+For IoT LAN setups, run:
+
+```bash
+sh networking/s5_apply_configs.sh
 ```
 
 This copies the staged files from `/srv/active_setup/etc` into `/etc`.
@@ -132,7 +199,7 @@ This copies the staged files from `/srv/active_setup/etc` into `/etc`.
 ### 7. Validate the applied configuration
 
 ```bash
-sh s6_validate_configs.sh
+sh networking/s6_validate_configs.sh
 ```
 
 This checks:
@@ -144,14 +211,14 @@ This checks:
 ### 8. Activate services and optional NAT rules
 
 ```bash
-sh s7_activate_services.sh
+sh networking/s7_activate_services.sh
 ```
 
 This step:
 
 - reloads `sysctl`,
 - applies `netplan`,
-- restarts `dnsmasq`, `hostapd`, and `avahi-daemon` if present,
+- restarts `dnsmasq` and `avahi-daemon` if present (`hostapd` only when WiFi AP is enabled),
 - optionally adds the `iptables` NAT / masquerade rules,
 - optionally installs `iptables-persistent`.
 
@@ -177,9 +244,11 @@ nameserver 127.0.0.1
 nameserver 9.9.9.9
 ```
 
-This assumes the host uses the local `dnsmasq` instance for DNS and keeps a public resolver as fallback.
+This assumes the host uses the local `dnsmasq` instance for DNS and keeps a public
+resolver as fallback.
 
-Do not switch `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`) in this setup when `dnsmasq` is already serving local DNS on the host.
+Do not switch `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`) 
+in this setup when `dnsmasq` is already serving local DNS on the host.
 
 ### WAN uplink handling
 

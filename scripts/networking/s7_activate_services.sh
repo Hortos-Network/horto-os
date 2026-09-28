@@ -9,15 +9,17 @@ case "${0##*/}" in
     ;;
 esac
 
-FULL_ACTIVE_FILE="/srv/active_setup/my_variables.env"
-if [ ! -f "$FULL_ACTIVE_FILE" ]; then
+
+ACTIVE_SETUP_DIR="/srv/active_setup"
+IOT_LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
+
+if [ ! -f "$IOT_LAN_ACTIVE_FILE" ]; then
   echo "This script is only needed for a IOT-LAN Setup"
   exit 0
 fi
 
-ACTIVE_SETUP_DIR="/srv/active_setup"
 
-if [ -f "$FULL_ACTIVE_FILE" ]; then
+if [ -f "$IOT_LAN_ACTIVE_FILE" ]; then
   mode="full"
 else
   echo "Error: no active setup file found in $ACTIVE_SETUP_DIR" >&2
@@ -37,12 +39,12 @@ restart_service_if_present() {
 }
 
 apply_nat_rules() {
-  if [ -f "$FULL_ACTIVE_FILE" ]; then
-    echo "Loading variables from $FULL_ACTIVE_FILE"
-    sed -i -e 's/\r$//' "$FULL_ACTIVE_FILE"
-    . "$FULL_ACTIVE_FILE"
+  if [ -f "$IOT_LAN_ACTIVE_FILE" ]; then
+    echo "Loading variables from $IOT_LAN_ACTIVE_FILE"
+    sed -i -e 's/\r$//' "$IOT_LAN_ACTIVE_FILE"
+    . "$IOT_LAN_ACTIVE_FILE"
   else
-    echo "Warning: Env file not found at $FULL_ACTIVE_FILE, falling back to auto-detection."
+    echo "Warning: Env file not found at $IOT_LAN_ACTIVE_FILE, falling back to auto-detection."
   fi
 
   WAN_IF="${ETH_LAN:-$(ip route show default | awk '/default/ {print $5}' | head -n1)}"
@@ -87,7 +89,11 @@ else
 fi
 
 restart_service_if_present dnsmasq
-restart_service_if_present hostapd
+WIFI_INTERFACE=$(sed -n 's/^WIFI_INTERFACE="//p' "$IOT_LAN_ACTIVE_FILE" | sed 's/"$//')
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') echo "WIFI_INTERFACE=none; skipping hostapd restart" ;;
+  *) restart_service_if_present hostapd ;;
+esac
 restart_service_if_present avahi-daemon
 
 printf "Apply NAT / masquerade iptables rules now? [y/N]: " >&2
@@ -110,7 +116,7 @@ OUTPUT_DIR="/srv/docker/assets"
 mkdir -p "$OUTPUT_DIR"
 
 # Use absolute path based on the repository structure
-EXPORT_SCRIPT="/srv/horto-os/scripts/export_dhcp_leases.sh"
+EXPORT_SCRIPT="/srv/horto-os/scripts/networking/export_dhcp_leases.sh"
 
 CRON_FILE="/etc/cron.d/export_dhcp_leases"
 

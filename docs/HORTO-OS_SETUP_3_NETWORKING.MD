@@ -34,6 +34,12 @@ via DHCP from the upstream router.
 - If you intend to use WiFi for the IoT LAN, you will need to attach a Linux compatible WiFi USB
   stick to the board. Or if your board does have built-in WiFi, you should use this instead.
 
+```bash
+# Install additional packages used by the Horto OS setup for IoT LAN components.
+echo "Installing IoT LAN components..."
+sudo apt install -y hostapd dnsmasq iptables avahi-daemon
+```
+
 ## Environment variables
 
 For the full setup with IOT-LAN, it is recommended to manage these variables,
@@ -46,19 +52,19 @@ the WiFi interface and Ethernet interface you want to use for the IOT-LAN.
 ip link show
 ```
 
-The template for the env variable you find in `config/my_variables.env`
-Copy this file to `/srv/active_setup/my_variables.env` and edit it to your needs.
+The template for the env variable you find in `config/iot-lan_conf.env`
+Copy this file to `/srv/active_setup/iot-lan_conf.env` and edit it to your needs.
 
 ```env
-MY_HOSTNAME="Horto-OS_xxx"
-WIFI_INTERFACE="wlx00xxxxxx"
+WIFI_INTERFACE="wlx00xxxxxx" # WiFi interface (or none for Ethernet-only)
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
-MY_URL="YourDomainName.net"
 ETH_LAN=en... # LAN interface linked to the router
 ETH_IOT1=en... # IOT interface 1
 ETH_IOT2=en... # IOT interface 2
 ```
+
+For Ethernet-only (no WiFi AP), set `WIFI_INTERFACE=none`.
 
 ## Current managed Netplan config
 

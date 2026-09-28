@@ -9,13 +9,15 @@ case "${0##*/}" in
     ;;
 esac
 
-FULL_ACTIVE_FILE="/srv/active_setup/my_variables.env"
-if [ ! -f "$FULL_ACTIVE_FILE" ]; then
+ACTIVE_SETUP_DIR="/srv/active_setup"
+IOT_LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
+
+if [ ! -f "$IOT_LAN_ACTIVE_FILE" ]; then
   echo "This script is only needed for a IOT-LAN Setup"
   exit 0
 fi
 
-ACTIVE_SETUP_DIR="/srv/active_setup"
+WIFI_INTERFACE=$(sed -n 's/^WIFI_INTERFACE="//p' "$IOT_LAN_ACTIVE_FILE" | sed 's/"$//')
 TARGET_ROOT="/etc"
 FAILED=0
 
@@ -51,8 +53,13 @@ check_no_placeholders "$TARGET_ROOT/hosts"
 check_file_exists "$TARGET_ROOT/netplan/99-iot-lan.yaml"
 check_no_placeholders "$TARGET_ROOT/netplan/99-iot-lan.yaml"
 
-check_file_exists "$TARGET_ROOT/hostapd/hostapd.conf"
-check_no_placeholders "$TARGET_ROOT/hostapd/hostapd.conf"
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') echo "WIFI_INTERFACE=none; skipping hostapd validation" ;;
+  *)
+    check_file_exists "$TARGET_ROOT/hostapd/hostapd.conf"
+    check_no_placeholders "$TARGET_ROOT/hostapd/hostapd.conf"
+    ;;
+esac
 
 check_file_exists "$TARGET_ROOT/avahi/avahi-daemon.conf"
 check_file_exists "$TARGET_ROOT/avahi/hosts"
@@ -79,8 +86,13 @@ fi
 
 echo "Step 6 complete: configuration validation passed."
 
-# Unmask / enable / start hostapd (required for IoT LAN)
-echo "Enabling hostapd..."
-sudo systemctl unmask hostapd || true
-sudo systemctl enable hostapd || true
-sudo systemctl start hostapd || true
+case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
+  none|-|n|no|'') echo "WIFI_INTERFACE=none; skipping hostapd enable" ;;
+  *)
+    # Unmask / enable / start hostapd (required when WiFi AP is enabled)
+    echo "Enabling hostapd..."
+    sudo systemctl unmask hostapd || true
+    sudo systemctl enable hostapd || true
+    sudo systemctl start hostapd || true
+    ;;
+esac

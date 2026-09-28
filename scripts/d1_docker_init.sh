@@ -12,31 +12,52 @@ esac
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 SOURCE_DIR="$REPO_ROOT/docker_source"
+SOURCE_DIR_STACK="$REPO_ROOT/docker_source/stacks"
 TARGET_DIR="/srv/docker/"
 ACTIVE_SETUP_DIR="/srv/active_setup"
-FULL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/my_variables.env"
-MINIMAL_ACTIVE_FILE="$ACTIVE_SETUP_DIR/minimal_setup_vars.env"
+OS_CONF_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
 
 if [ ! -d "$SOURCE_DIR" ]; then
   echo "Error: source directory not found: $SOURCE_DIR" >&2
   exit 1
 fi
 
-if [ -f "$FULL_ACTIVE_FILE" ]; then
+if [ -f "$OS_CONF_FILE" ]; then
   # shellcheck disable=SC1090
-  . "$FULL_ACTIVE_FILE"
-elif [ -f "$MINIMAL_ACTIVE_FILE" ]; then
-  # shellcheck disable=SC1090
-  . "$MINIMAL_ACTIVE_FILE"
+  . "$OS_CONF_FILE"
 else
   echo "Error: no active setup file found in $ACTIVE_SETUP_DIR" >&2
   echo "Run s2_init_env_vars.sh first." >&2
   exit 1
 fi
 
+# Copy Docker Compose stack into "$TARGET_DIR/" (exclude stacks/)
 mkdir -p "$TARGET_DIR"
-cp -a "$SOURCE_DIR/." "$TARGET_DIR/"
-echo "Copied docker source tree: $SOURCE_DIR -> $TARGET_DIR"
+for item in "$SOURCE_DIR"/*; do
+  [ "$(basename "$item")" = "stacks" ] && continue
+  cp -a "$item" "$TARGET_DIR/"
+done
+echo "Copied docker source tree: $SOURCE_DIR -> $TARGET_DIR (excluded stacks/)"
+
+# Copy Docker Common stack into "$TARGET_DIR/"
+cp -a "$SOURCE_DIR_STACK/common"/." "$TARGET_DIR/"
+echo "Copied docker source common: $SOURCE_DIR_STACK/common -> $TARGET_DIR"
+
+# Copy Docker Compose AI (with NPU) stack into "$TARGET_DIR/"
+if [ -f "$OS_CONF_FILE" ]; then
+  # shellcheck disable=SC1090
+  . "$OS_CONF_FILE"
+  if [ "$NPU_TYPE" = "none" ]; then
+    echo "No configuration for NPU/GPU in setup file found in $OS_CONF_FILE" >&2
+  else
+    cp -a "$SOURCE_DIR_STACK/$NPU_TYPE"/." "$TARGET_DIR/"
+    echo "Copied docker source tree: $SOURCE_DIR_STACK/$NPU_TYPE -> $TARGET_DIR"
+  fi
+else
+  echo "Error: no active OS-conf setup file found in $OS_CONF_FILE" >&2
+  exit 1
+fi
+
 
 # Copy assets (Homepage images, filtered to homepage*)
 ASSETS_SOURCE="$REPO_ROOT/_assets"
@@ -77,15 +98,6 @@ find "$TARGET_DIR" -type f | while IFS= read -r file_path; do
   fi
 done
 
-# Get Piper models
-mkdir -p "$TARGET_DIR"/docker_repos/piper
-cd "$TARGET_DIR"/docker_repos/piper
-
-# Download the models into the docker_repos directory:
-wget https://github.com/Hanzo-Huang/rk3576-home-assistant-voice/releases/download/models-v1/piper-rk3576-models.tar.gz
-
-# Copy Required model files to the Stack Directory
-tar -xzf piper-rk3576-models.tar.gz -C "$TARGET_DIR"/stacks || true
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"
 echo "Go back the Docker documentation file `HORTO-OS_SETUP_4_DOCKER`"

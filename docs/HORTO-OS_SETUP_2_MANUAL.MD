@@ -43,11 +43,11 @@ For a minimal hostname-only setup:
 
 ```bash
 mkdir -p /srv/active_setup
-cp /srv/horto-os/config/minimal_setup_vars.env /srv/active_setup/
-nano /srv/active_setup/minimal_setup_vars.env
+cp /srv/horto-os/config/os-configuration.env /srv/active_setup/
+nano /srv/active_setup/os-configuration.env
 ```
 
-Edit the `minimal_setup_vars.env` file to set your desired hostname.
+Edit the `os-configuration.env` file to set your desired hostname.
 
 Skip the IoT LAN setup and continue with:
 
@@ -79,13 +79,13 @@ For the full setup:
 
 ```bash
 mkdir -p /srv/active_setup
-cp /srv/horto-os/config/my_variables.env /srv/active_setup/
+cp /srv/horto-os/config/os-configuration.env /srv/active_setup/
 ```
 
 Edit the file:
 
 ```bash
-nano /srv/active_setup/my_variables.env
+nano /srv/active_setup/os-configuration.env
 ```
 
 ## 4. Apply the managed config files manually
