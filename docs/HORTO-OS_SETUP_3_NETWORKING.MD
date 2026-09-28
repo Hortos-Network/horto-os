@@ -56,7 +56,7 @@ The template for the env variable you find in `config/iot-lan_conf.env`
 Copy this file to `/srv/active_setup/iot-lan_conf.env` and edit it to your needs.
 
 ```env
-WIFI_INTERFACE="wlx00xxxxxx"
+WIFI_INTERFACE="wlx00xxxxxx" # WiFi interface (or none for Ethernet-only)
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
 ETH_LAN=en... # LAN interface linked to the router

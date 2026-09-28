@@ -66,6 +66,7 @@ This installs the required host packages used by Horto OS.
 > [!WARNING]
 > In case you want to use a WiFi Adapter for the IOT-LAN you need to identify
 > `WIFI_INTERFACE`, `WIFI_SSID`, and `WIFI_PASSPHRASE` in advance.
+> For Ethernet-only, set `WIFI_INTERFACE=none`.
 
 This command `ip link show` lists the network interfaces on the system. Look for
 the WiFi interface you want to use for the IOT-LAN.
@@ -120,7 +121,7 @@ file in `/srv/active_setup/`:
 - `/srv/active_setup/iot-lan_conf.env` for the full IoT LAN setup
 
 ```env
-WIFI_INTERFACE="wlx00xxxxxx"
+WIFI_INTERFACE="none" 
 WIFI_SSID="Horto-IoT-LAN"
 WIFI_PASSPHRASE=""
 # Additonal variables get added during the setup here.
@@ -243,9 +244,11 @@ nameserver 127.0.0.1
 nameserver 9.9.9.9
 ```
 
-This assumes the host uses the local `dnsmasq` instance for DNS and keeps a public resolver as fallback.
+This assumes the host uses the local `dnsmasq` instance for DNS and keeps a public
+resolver as fallback.
 
-Do not switch `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`) in this setup when `dnsmasq` is already serving local DNS on the host.
+Do not switch `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`) 
+in this setup when `dnsmasq` is already serving local DNS on the host.
 
 ### WAN uplink handling
 
