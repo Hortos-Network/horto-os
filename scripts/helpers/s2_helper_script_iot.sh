@@ -47,7 +47,8 @@ escape_double_quotes() {
   printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'
 }
 
-WIFI_INTERFACE=$(prompt_value "${WIFI_INTERFACE:-wlx0_xxxxx}" "WiFi interface (none = Ethernet-only)")
+
+WIFI_INTERFACE=$(prompt_value "${WIFI_INTERFACE:-none}" "WiFi interface (none = Ethernet-only)")
 case "$(printf '%s' "$WIFI_INTERFACE" | tr '[:upper:]' '[:lower:]')" in
   none|-|n|no|'') WIFI_INTERFACE="none"; WIFI_SSID=""; WIFI_PASSPHRASE="" ;;
   *)
