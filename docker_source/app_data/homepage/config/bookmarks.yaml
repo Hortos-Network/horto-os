@@ -2,10 +2,10 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/bookmarks
 
-- Horto-OS Repo:
+- DGI-OS Repo:
     - Github:
         - abbr: GH
-          href: https://github.com/Hortos-Network/horto-os
+          href: https://github.com/Hortos-Network/dgi-os
 
 - Social:
     - Discord:
@@ -13,6 +13,6 @@
           href: https://discord.gg/Hbxd6vv98v
 
 - Website:
-    - www.hortos.dev:
+    - www.xintel.dev:
         - abbr: www
-          href: https://www.hortos.dev/
+          href: https://www.xintel.dev/

@@ -59,11 +59,11 @@ Apart from ok_nabu, the standard rhasspy/wyoming-openwakeword container includes
 ## Work in Progress
 
 The Wyoming protocol implementation is currently a work in progress.
-The most recent version you find in the [Horto-OS dev_wyoming branch](https://github.com/Hortos-Network/horto-os/tree/dev_wyoming) repository.
+The most recent version you find in the [DGI-OS dev_wyoming branch](https://github.com/Hortos-Network/dgi-os/tree/dev_wyoming) repository.
 
 ## Acknowledgments
 
-To get wyoming compatible API's in to Horto-OS we use the libraries from:
+To get wyoming compatible API's in to DGI-OS we use the libraries from:
 
 - Wyoming for RK3576 [Github repo of Hanzo-Huang](https://github.com/Hanzo-Huang/rk3576-home-assistant-voice.git)
 - [Wyoming Protocol](https://github.com/OHF-Voice/wyoming.git) (AI Voice Pipeline)

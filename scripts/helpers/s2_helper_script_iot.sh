@@ -8,8 +8,8 @@ case "${0##*/}" in
     ;;
 esac
 
-SCRIPT_DIR="/srv/horto-os/scripts"
-REPO_ROOT="/srv/horto-os"
+SCRIPT_DIR="/srv/dgi-os/scripts"
+REPO_ROOT="/srv/dgi-os"
 TEMPLATE_FILE="$REPO_ROOT/config/iot-lan_conf.env"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
@@ -52,7 +52,7 @@ WIFI_INTERFACE=$(prompt_value "${WIFI_INTERFACE:-none}" "WiFi interface (none = 
 case "$(printf '%s' "$WIFI_INTERFACE" | tr '[:upper:]' '[:lower:]')" in
   none|-|n|no|'') WIFI_INTERFACE="none"; WIFI_SSID=""; WIFI_PASSPHRASE="" ;;
   *)
-    WIFI_SSID=$(prompt_value "${WIFI_SSID:-Horto-IoT-LAN}" "WiFi SSID")
+    WIFI_SSID=$(prompt_value "${WIFI_SSID:-DGI-IoT-LAN}" "WiFi SSID")
     WIFI_PASSPHRASE=$(prompt_value "${WIFI_PASSPHRASE:-}" "WiFi passphrase")
     ;;
 esac

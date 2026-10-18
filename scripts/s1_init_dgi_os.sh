@@ -4,7 +4,7 @@ set -eu
 
 case "${0##*/}" in
   sh|dash|bash)
-    echo "Error: do not source this script. Run it with 'sh s1_init_horto_os.sh' or './s1_init_horto_os.sh'." >&2
+    echo "Error: do not source this script. Run it with 'sh s1_init_dgi_os.sh' or './s1_init_dgi_os.sh'." >&2
     return 1 2>/dev/null || exit 1
     ;;
 esac

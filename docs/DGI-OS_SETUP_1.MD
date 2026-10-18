@@ -1,6 +1,6 @@
-# Horto-OS setup 1
+# DGI-OS setup 1
 
-**Summary**: Choose your setup path, clone the Horto-OS repository into `/srv/horto-os`.
+**Summary**: Choose your setup path, clone the DGI-OS repository into `/srv/dgi-os`.
 
 ---
 
@@ -11,7 +11,7 @@ For X86/AMD64 boards with Debian or Ubuntu continue here.
 
 ## 2. Install git
 
-Before using the Horto-OS setup scripts, install `git` manually.
+Before using the DGI-OS setup scripts, install `git` manually.
 Without `git` you cannot clone the repository.
 
 ```bash
@@ -23,14 +23,14 @@ sudo apt install -y git
 
 ```bash
 cd /srv
-git clone https://github.com/Hortos-Network/horto-os
+git clone https://github.com/Hortos-Network/dgi-os
 ```
 
 The resulting layout should look like this:
 
 ```text
 /srv/
-├── horto-os/         <-- Git repository
+├── dgi-os/         <-- Git repository
 │   ├── config/       <-- Managed configuration templates and static files
 │   ├── docker_source/ <-- Docker stacks and app data sources
 │   ├── docs/         <-- Documentation
@@ -41,7 +41,7 @@ The resulting layout should look like this:
 
 ## 6. Choose the next setup path
 
-After the repository exists in `/srv/horto-os`, continue with either:
+After the repository exists in `/srv/dgi-os`, continue with either:
 
-- [HORTO-OS_SETUP_2_MANUAL](HORTO-OS_SETUP_2_MANUAL.MD)
-- [HORTO-OS_SETUP_2_SCRIPTED](HORTO-OS_SETUP_2_SCRIPTED.MD)
+- [DGI-OS_SETUP_2_MANUAL](DGI-OS_SETUP_2_MANUAL.MD)
+- [DGI-OS_SETUP_2_SCRIPTED](DGI-OS_SETUP_2_SCRIPTED.MD)

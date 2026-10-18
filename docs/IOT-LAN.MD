@@ -1,8 +1,8 @@
-# Horto-OS IoT LAN Documentation
+# DGI-OS IoT LAN Documentation
 
 ## 1. Why You Should Use an IoT LAN
 
-An isolated or dedicated IoT Local Area Network (IoT LAN) is a foundational architecture choice for modern smart home deployments, especially in self-hosted, energy-conscious, and privacy-first environments like **Horto-OS**.
+An isolated or dedicated IoT Local Area Network (IoT LAN) is a foundational architecture choice for modern smart home deployments, especially in self-hosted, energy-conscious, and privacy-first environments like **DGI-OS**.
 
 ### Key Benefits
 
@@ -23,13 +23,13 @@ Implementing a robust IoT LAN requires careful planning regarding network gear, 
 
 ### Core Requirements
 
-We only cover the built-in Horto-OS IOT-LAN router and DHCP server functionality here.
+We only cover the built-in DGI-OS IOT-LAN router and DHCP server functionality here.
 
 **Your RK3588 board does need at least two Ethernet ports, if you need wired connectivity.**
 
 Some device as the [reComputer RK3588](Hardware/reComputer RK3588-30.md) have a built-in Wifi Adapter that can be used as an IoT LAN Wifi router. Other devices need a USB Wifi Adapter or an external IoT LAN router atached to a Ethernet port.
 
-* **Built-in Horto-OS IOT-LAN Router:** The built-in router capable routing and DHCP server functionality (dedicated DHCP `dnsmasq`).
+* **Built-in DGI-OS IOT-LAN Router:** The built-in router capable routing and DHCP server functionality (dedicated DHCP `dnsmasq`).
 * **Router / Firewall with VLAN Support:** A router capable of multi-subnet routing, firewall rules (inter-VLAN routing controls), and DHCP server functionality (or a dedicated DHCP server like `dnsmasq`).
 * **Managed Switches (if wired):** To carry multiple VLAN tags across physical Ethernet cables if your IoT devices span multiple physical locations.
 
@@ -43,9 +43,9 @@ In rural, agricultural, or expansive garden setups (such as monitoring remote so
 
 ---
 
-## 3. Configuring Fixed IPs, DNS, and mDNS on Horto-OS
+## 3. Configuring Fixed IPs, DNS, and mDNS on DGI-OS
 
-To maintain absolute deterministic control over your IoT infrastructure, Horto-OS relies on a combination of **dnsmasq** for static DHCP leases and full domain name resolution, alongside **avahi-daemon** for local multicast name resolution (`.local`).
+To maintain absolute deterministic control over your IoT infrastructure, DGI-OS relies on a combination of **dnsmasq** for static DHCP leases and full domain name resolution, alongside **avahi-daemon** for local multicast name resolution (`.local`).
 
 > [!note]
 > When you did run a standard scripted setup, you may not need to manually
@@ -59,7 +59,7 @@ By enforcing fixed MAC-to-IP bindings and assigning explicit `.local` hostnames,
 ```text
 # --- DHCP Reservations for Fixed IPs ---
 # Format: MAC address, Hostname/Domain, IP Address
-# Reserved IP allocations for Horto-OS infrastructure and IoT nodes
+# Reserved IP allocations for DGI-OS infrastructure and IoT nodes
 
 # Core Home Automation & Concierge Nodes
 dhcp-host=20:f8:3b:0a:67:90,home-assistant-voice.local,192.168.10.44
@@ -72,7 +72,7 @@ To ensure that `.local` hostnames resolve correctly across your network interfac
 
 ```ini
 [server]
-host-name=horto-os-gateway
+host-name=dgi-os-gateway
 domain-name=local
 use-ipv4=yes
 use-ipv6=yes
@@ -91,7 +91,7 @@ The Avahi hosts file defines static routes for IoT LAN devices, which needs to
 be accessed through your Home Network. (The names need to be resolvable via DNSmasq)
 
 ```hosts
-# Horto-OS static DHCP, see at dnsmasq.d/iot-lan.conf
+# DGI-OS static DHCP, see at dnsmasq.d/iot-lan.conf
 192.168.10.4 horty1.local
 192.168.10.44 home-assistant-voice.local
 ```

@@ -1,4 +1,4 @@
-# Horto-OS setup 1
+# DGI-OS setup 1
 
 **Summary**: Prepare the RK3588 board, install the base OS.
 
@@ -33,7 +33,7 @@ After first reboot you can move the installation to the internal eMMC or SSD.
 > [!NOTE]
 > You can do this step later in the process too. If your SD card is large enough
 (min. 32GB) you can do the full install on the SD card, but we don't reccomend
-running Horto-OS on SD cards.
+running DGI-OS on SD cards.
 
 ```bash
 sudo sudo armbian-install
@@ -65,4 +65,4 @@ source ~/.bashrc
 
 After the basic steps continue:
 
-- [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD)
+- [DGI-OS_SETUP_1](../DGI-OS_SETUP_1.MD)

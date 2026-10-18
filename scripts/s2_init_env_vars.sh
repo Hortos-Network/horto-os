@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-# Step 2: configure persistent environment variables for the Horto OS setup.
+# Step 2: configure persistent environment variables for the DGI-OS setup.
 
 case "${0##*/}" in
   sh|dash|bash)
@@ -9,8 +9,8 @@ case "${0##*/}" in
     ;;
 esac
 
-SCRIPT_DIR="/srv/horto-os/scripts"
-REPO_ROOT="/srv/horto-os"
+SCRIPT_DIR="/srv/dgi-os/scripts"
+REPO_ROOT="/srv/dgi-os"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 
 OS_CONF_TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"

@@ -100,4 +100,4 @@ done
 
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"
-echo "Go back the Docker documentation file `HORTO-OS_SETUP_4_DOCKER`"
+echo "Go back the Docker documentation file `DGI-OS_SETUP_4_DOCKER`"

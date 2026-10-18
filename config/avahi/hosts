@@ -26,5 +26,5 @@
 # 192.168.0.1 router.local
 # 2001::81:1 test.local
 
-# Horto-OS static DHCP, see at dnsmasq.d/iot-lan.conf
+# DGI-OS static DHCP, see at dnsmasq.d/iot-lan.conf
 192.168.10.4 horty1.local

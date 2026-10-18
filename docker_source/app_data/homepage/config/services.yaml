@@ -20,7 +20,7 @@
         server: my-docker
         container: open-webui
 
-- Horto-OS Server Apps:
+- DGI-OS Server Apps:
     - Cockpit:
         icon: cockpit.png
         href: http://{{MY_HOSTNAME}}:9890
@@ -39,7 +39,7 @@
           type: iframe
           src: /images/leases.html
 
-- Horto-OS (AI) Services:
+- DGI-OS (AI) Services:
     - Whisper (STT):
         icon: /images/homepage_mic_icon.png
         href: http://{{MY_HOSTNAME}}:8000/docs
@@ -60,6 +60,6 @@
         container: piper
     - Cloudflared:
         icon: cloudflared.png
-        description: Tunnel to the Hortos OS services
+        description: Tunnel to the DGI-OS services
         server: my-docker
         container: cloudflare-tunnel

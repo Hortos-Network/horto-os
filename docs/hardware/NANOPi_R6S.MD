@@ -14,9 +14,9 @@ The NanoPi R6S has rich hardware resources with a compact size of 90 x 62 mm. Fr
   
 The NanoPi R6S has two USB ports, and supports USB type-C power delivery. 
   
-It needs a minimum 20W USB-C PD GaN charger and a M.2 SSD half size drive to run Horto-OS.
+It needs a minimum 20W USB-C PD GaN charger and a M.2 SSD half size drive to run DGI-OS.
 
-You need to install Armbian to set it up. The Horto-OS setup sequence starts here: [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD).
+You need to install Armbian to set it up. The DGI-OS setup sequence starts here: [DGI-OS_SETUP_1](../DGI-OS_SETUP_1.MD).
 ## Related Topics
-- [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD)
-- [HORTO-OS_SETUP_3_NETWORKING](../HORTO-OS_SETUP_3_NETWORKING.MD)
+- [DGI-OS_SETUP_1](../DGI-OS_SETUP_1.MD)
+- [DGI-OS_SETUP_3_NETWORKING](../DGI-OS_SETUP_3_NETWORKING.MD)

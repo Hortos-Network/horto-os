@@ -1,6 +1,6 @@
-# Backup your Horto-OS
+# Backup your DGI-OS
 
-**Summary**: A concise step by step instruction how to back up Horto-OS on a RK3588 mini PC.
+**Summary**: A concise step by step instruction how to back up DGI-OS on a RK3588 mini PC.
 
 **Sources**: Gemini
 
@@ -146,10 +146,10 @@ sudo mount /dev/sda5 /mnt/external
 
 6. **Create compressed image of a partition:**
 
-In the case you have a folder folder `horto-os`
+In the case you have a folder folder `dgi-os`
 
 ```bash
-sudo partclone.ext4 -c -s /dev/mmcblk0p1 | gzip -c > /mnt/external/horto-os/emmc_p1_backup_$(date +%Y%m%d).img.gz
+sudo partclone.ext4 -c -s /dev/mmcblk0p1 | gzip -c > /mnt/external/dgi-os/emmc_p1_backup_$(date +%Y%m%d).img.gz
 ```
 
    - `partclone.ext4`: Use the specific `partclone` command for your filesystem type (e.g., `partclone.ext4` for ext4, `partclone.btrfs` for btrfs).
@@ -159,10 +159,10 @@ sudo partclone.ext4 -c -s /dev/mmcblk0p1 | gzip -c > /mnt/external/horto-os/emmc
    - `> /path/to/your/external/drive/emmc_p1_backup_$(date +%Y%m%d).img.gz`: Destination file.
    - **Repeat this for all partitions on your eMMC.**
 
-If you have downloaded the Horto-OS repo into `/srv`, you can use the included helper script for a `partclone` backup. You may still need to adapt the paths to your environment.
+If you have downloaded the DGI-OS repo into `/srv`, you can use the included helper script for a `partclone` backup. You may still need to adapt the paths to your environment.
 
 ```bash
-sh /srv/horto-os/scripts/partclone_backup_sda5.sh
+sh /srv/dgi-os/scripts/partclone_backup_sda5.sh
 ```
 
 ### About the Boot Sector?
@@ -175,7 +175,7 @@ What your current backup misses: Since your partclone.ext4 command only targets 
 How to handle the boot sector for deployment: To make a truly standalone bootable image for eMMC boards, you should also dump the raw partition table and the initial boot sectors of the disk layout using dd:
 
 ```Bash
-sudo dd if=/dev/mmcblk0 of=/mnt/external/horto-os/emmc_bootsectors_backup.img bs=1M count=4
+sudo dd if=/dev/mmcblk0 of=/mnt/external/dgi-os/emmc_bootsectors_backup.img bs=1M count=4
 ```
 
 When deploying to a new board, you write those boot sectors back to the target disk first, create your 32GB target partition structure, and then restore your partclone image into
@@ -192,7 +192,7 @@ When deploying to a new board, you write those boot sectors back to the target d
 4. Decompress and restore the image to the partition:
 
 ```bash
-sudo gzip -dc /mnt/external/horto-os/emmc_p1_backup_YYYYMMDD.img.gz | partclone.ext4 -r -o /dev/mmcblk0p1
+sudo gzip -dc /mnt/external/dgi-os/emmc_p1_backup_YYYYMMDD.img.gz | partclone.ext4 -r -o /dev/mmcblk0p1
 ```
 
    - `-r`: Restore image.
@@ -239,7 +239,7 @@ Full drive backup example
 sudo mount /dev/sda5 /mnt/external
 sudo apt install gdisk # install gdisk if not already installed
 # start backup of eMMC partition 1
-sudo ./shrink-backup -a  /mnt/external/horto-os/horto-os_expndbl_backup_$(date +%Y%m%d).img
+sudo ./shrink-backup -a  /mnt/external/dgi-os/dgi-os_expndbl_backup_$(date +%Y%m%d).img
 ```
 
 Ref: [github.com/UnconnectedBedna/shrink-backup](https://github.com/UnconnectedBedna/shrink-backup)

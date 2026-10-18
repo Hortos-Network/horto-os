@@ -1,13 +1,13 @@
-# Horto-OS setup 4 – Docker AI
+# DGI-OS setup 4 – Docker AI
 
-**Summary**: This guide covers the AI-related Docker services for Horto-OS,
+**Summary**: This guide covers the AI-related Docker services for DGI-OS,
 including LLM, STT, TTS, and vision-related stacks.
 
 ---
 
 ## Overview
 
-Horto-OS can run several AI-related services on RK3588 boards.
+DGI-OS can run several AI-related services on RK3588 boards.
 These are normally managed as Docker stacks, typically through Dockge.
 
 The exact services you can run depend strongly on available RAM, storage, and NPU support.
@@ -24,10 +24,10 @@ Use Dockge to manage these services from stack directories under:
 /srv/docker/stacks/
 ```
 
-The Horto-OS repository provides source material and examples under:
+The DGI-OS repository provides source material and examples under:
 
 ```text
-/srv/horto-os/docker_source/
+/srv/dgi-os/docker_source/
 ```
 
 ## Example LLM stack
@@ -75,7 +75,7 @@ The FastAPI LLM API is exposed at `http://"MY_HOSTNAME":8081/v1`.
 
 To check the API endpoints from the browser, navigate to `http://"MY_HOSTNAME":8001/docs`.
 
-Now you can run a test with the following command inside Horto-OS.
+Now you can run a test with the following command inside DGI-OS.
 
 ```Bash
 curl http://192.168.10.1:8001/v1/chat/completions \
@@ -247,4 +247,4 @@ Remote links can be templated with `MY_URL` in the Homepage config.
 ## Continue
 
 - [Homepage (Dashboard)](Homepage%20%28Dashboard%29.md)
-- [What is Horto OS?](What%20is%20Horto%20OS%3F.md)
+- [What is DGI-OS?](What%20is%20DGI%20OS%3F.md)

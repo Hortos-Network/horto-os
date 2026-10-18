@@ -1,7 +1,7 @@
 # reComputer RK3588-30 
 
 **Summary**: Open Rockchip AI Box tailored for AI application development.
-It is recommended hardware for running Horto OS. Minimum RAM requirement is 8 GB; 16 GB is preferred for advanced AI and larger Docker workloads.
+It is recommended hardware for running DGI-OS. Minimum RAM requirement is 8 GB; 16 GB is preferred for advanced AI and larger Docker workloads.
 
 **Sources**: [seeedstudio.com/reComputer-RK3588-30-p-6817.html](https://www.seeedstudio.com/reComputer-RK3588-30-p-6817.html)
 
@@ -49,5 +49,5 @@ a) 2 × M.2 M Key: PCIe 3.0 x4 and PCIe 2.1 x1, supports SSD expansion and AI ac
 b) 1 x miniPCIe for wireless expansion, like 4G LTE, LoRaWAN, Wi-Fi HaLow
 
 ## Related Topics
-- [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD)
-- [HORTO-OS_SETUP_4_DOCKER](../HORTO-OS_SETUP_4_DOCKER.MD)
+- [DGI-OS_SETUP_1](../DGI-OS_SETUP_1.MD)
+- [DGI-OS_SETUP_4_DOCKER](../DGI-OS_SETUP_4_DOCKER.MD)

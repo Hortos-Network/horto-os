@@ -1,6 +1,6 @@
-# HORTO-OS Dependencies
+# DGI-OS Dependencies
 
-**Summary**: This document lists the dependencies required for different setup paths to run HORTO-OS. It is provided as a work in progress, as the mayority of the setup process is still being developed.
+**Summary**: This document lists the dependencies required for different setup paths to run DGI-OS. It is provided as a work in progress, as the mayority of the setup process is still being developed.
 
 The dependencies are basically defined by the setup, and how you define these variables:
 
@@ -8,24 +8,24 @@ The dependencies are basically defined by the setup, and how you define these va
 OS\\\_TYPE="debian" \\\# debian/armbian select    
 NPU\\\_TYPE="rkRK3588" \\\# rkRK3576/rkRK3588/ select    
 RAM\\\_SYZE="8gb"    
-INSTALL\\\_TYP="hems" \\\# (hems,sat,hortex)    
+INSTALL\\\_TYP="hems" \\\# (hems,sat,dgi)    
 IOT\\\_LAN="y/n" \\\# if Yes the setup will create an independent IOT\\\_LAN    
-MY\\\_HOSTNAME="Horto-OS\\\_xxx"    
+MY\\\_HOSTNAME="DGI-OS\\\_xxx"    
 MY\\\_URL="YourDomainName.net"    
 MY\\\_CLOUDFLARE\\\_TOKEN=""
 ```
 
 ## 1. Dependencies by Deployment Profile
 
-HORTO-OS can be deployed in different flavors, corresponding to the different use cases. There are three main use cases:
+DGI-OS can be deployed in different flavors, corresponding to the different use cases. There are three main use cases:
 
-| Deployment Profile | Core node | (HORTEX) | **Satellite Node** |
+| Deployment Profile | Core node | (XINTEL-DGI) | **Satellite Node** |
 | - | - | - | :-: |
-| **Selection \>** | hortex | sat | hems |
+| **Selection \>** | dgi | sat | hems |
 | **Hardware** | Mini Server | Edge node | Edge node |
 | **Managed** | yes | yes | partially |
-| **Packages** | NEXUS/HORTEX setup (tbd) | NEXUS/Sat setup (tbd) | NEXUS/HEMS setup (tbd), Docker |
-| **Remark** | A node in the HORTEX network | Satellites connected to a HORTEX node | HEMS system for households or SME's |
+| **Packages** | NEXUS/XINTEL-DGI setup (tbd) | NEXUS/Sat setup (tbd) | NEXUS/HEMS setup (tbd), Docker |
+| **Remark** | A node in the XINTEL-DGI network | Satellites connected to a XINTEL-DGI node | HEMS system for households or SME's |
 
 
 ## 2. Dependencies by OS Type
@@ -58,4 +58,3 @@ If IOT\_LAN is set to yes the setup will create an dedicated IOT-LAN.
 The following packages will be installed by the setup scripts:
 
 hostapd, dnsmasq, iptables, avahi-daemon
-

@@ -23,11 +23,11 @@ Here is the quick step-by-step guide to setting it up in the Cloudflare Zero Tru
     
 2. Fill out the basic settings:
     
-    - **Application name:** Give it a clear label (e.g., `Horto Node SSH` or `Horto Dashboard`).
+    - **Application name:** Give it a clear label (e.g., `DGI Node SSH` or `DGI Dashboard`).
         
     - **Session Duration:** Choose how long a user stays authenticated before needing to log in again (e.g., `24 hours`).
         
-    - **Application Domain:** Enter your exact subdomain route (e.g., `ssl-hos1.hortos.dev` or `homepage.hortos.dev`).
+    - **Application Domain:** Enter your exact subdomain route (e.g., `ssl-hos1.xintel.dev` or `homepage.xintel.dev`).
         
 3. Click **Next**.
     

@@ -1,6 +1,6 @@
-# Horto-OS setup 3 – networking
+# DGI-OS setup 3 – networking
 
-**Summary**: Reference for the networking configuration used by the Horto-OS IoT LAN setup.
+**Summary**: Reference for the networking configuration used by the DGI-OS IoT LAN setup.
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## Networking model
 
-Horto-OS uses:
+DGI-OS uses:
 
 - one WAN interface with DHCP uplink,
 - minimal one bridged LAN ports for the IoT LAN,
@@ -35,7 +35,7 @@ via DHCP from the upstream router.
   stick to the board. Or if your board does have built-in WiFi, you should use this instead.
 
 ```bash
-# Install additional packages used by the Horto OS setup for IoT LAN components.
+# Install additional packages used by the DGI-OS setup for IoT LAN components.
 echo "Installing IoT LAN components..."
 sudo apt install -y hostapd dnsmasq iptables avahi-daemon
 ```
@@ -57,7 +57,7 @@ Copy this file to `/srv/active_setup/iot-lan_conf.env` and edit it to your needs
 
 ```env
 WIFI_INTERFACE="wlx00xxxxxx" # WiFi interface (or none for Ethernet-only)
-WIFI_SSID="Horto-IoT-LAN"
+WIFI_SSID="DGI-IoT-LAN"
 WIFI_PASSPHRASE=""
 ETH_LAN=en... # LAN interface linked to the router
 ETH_IOT1=en... # IOT interface 1
@@ -228,7 +228,7 @@ sudo systemctl restart dnsmasq
 
 ## Resolver note
 
-In the IoT LAN setup, Horto-OS uses a managed plain `/etc/resolv.conf` from `config/resolv.conf`.
+In the IoT LAN setup, DGI-OS uses a managed plain `/etc/resolv.conf` from `config/resolv.conf`.
 The tested content is:
 
 ```conf
@@ -303,5 +303,5 @@ The scripted setup can also apply these rules for you in `s7_activate_services.s
 
 After networking is working, continue with:
 
-- [HORTO-OS_SETUP_4_DOCKER](HORTO-OS_SETUP_4_DOCKER.MD)
+- [DGI-OS_SETUP_4_DOCKER](DGI-OS_SETUP_4_DOCKER.MD)
 - [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)
