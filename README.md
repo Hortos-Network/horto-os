@@ -2,7 +2,7 @@
 
 # DGI-OS
 
-**DGI-OS** is a decentralised, privacy-focused operating system designed for **XINTEL-DGI nodes** or **Home Hubs** (the **DGI-Box**), primarily built upon our future NEXUS framework, which is an Energy Management framework in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter-node communication and data exchange. The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
+**DGI-OS** is a decentralised, privacy-focused operating system designed for **XINTEL-DGI nodes** or **Home Hubs** (the **DGI-Box**), primarily built upon our future NEXUS framework, which is an Energy Management System in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter-node communication and data exchange. The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
 
 The underlying Operating System can be any Debian/Ubuntu or Armbian OS. The apps
 either run on DGI Nexus framework, or as Docker apps.
