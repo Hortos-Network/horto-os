@@ -23,7 +23,7 @@ sudo apt install -y git
 
 ```bash
 cd /srv
-git clone https://github.com/Hortos-Network/dgi-os
+git clone https://github.com/xintel-labs/dgi-os
 ```
 
 The resulting layout should look like this:

@@ -27,4 +27,4 @@
 # 2001::81:1 test.local
 
 # DGI-OS static DHCP, see at dnsmasq.d/iot-lan.conf
-192.168.10.4 horty1.local
+192.168.10.4 dgi1.local

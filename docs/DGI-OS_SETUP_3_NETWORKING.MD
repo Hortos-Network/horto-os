@@ -199,7 +199,7 @@ dhcp-option=6,9.9.9.9,1.1.1.1
 # --- DHCP Reservations for Fixed IPs ---
 # MAC address,Name,IP Address
 # Reserved IP for [[Energy Concierge]] etc. (04-09)
-dhcp-host=ec:71:db:e0:9f:b6,horty1.local,192.168.10.4
+dhcp-host=ec:71:db:e0:9f:b6,dgi1.local,192.168.10.4
 
 # Example for a Solar Inverter/s (10-19)
 # dhcp-host=AA:BB:CC:DD:EE:F1,solar_inverter1,192.168.10.10

@@ -134,7 +134,7 @@ detectors:
 # Sometimes it helps to add the cameras in the config.yaml and not in the UI
 # and it is in most cases more reliable.
 cameras:
-  horty_tapo: # Replace with your camera name
+  dgi_tapo: # Replace with your camera name
     ffmpeg:
       inputs:
               - path: rtsp://<username>:<password>@192.168.10.139:554/stream1

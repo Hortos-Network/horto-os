@@ -63,7 +63,7 @@ By enforcing fixed MAC-to-IP bindings and assigning explicit `.local` hostnames,
 
 # Core Home Automation & Concierge Nodes
 dhcp-host=20:f8:3b:0a:67:90,home-assistant-voice.local,192.168.10.44
-dhcp-host=98:03:8e:03:7c:6a,horty1.local,192.168.10.4
+dhcp-host=98:03:8e:03:7c:6a,dgi1.local,192.168.10.4
 ```
 
 ### Avahi Daemon Configuration (`/etc/avahi/avahi-daemon.conf`)
@@ -92,6 +92,6 @@ be accessed through your Home Network. (The names need to be resolvable via DNSm
 
 ```hosts
 # DGI-OS static DHCP, see at dnsmasq.d/iot-lan.conf
-192.168.10.4 horty1.local
+192.168.10.4 dgi1.local
 192.168.10.44 home-assistant-voice.local
 ```

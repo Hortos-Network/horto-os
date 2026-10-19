@@ -59,7 +59,7 @@ Apart from ok_nabu, the standard rhasspy/wyoming-openwakeword container includes
 ## Work in Progress
 
 The Wyoming protocol implementation is currently a work in progress.
-The most recent version you find in the [DGI-OS dev_wyoming branch](https://github.com/Hortos-Network/dgi-os/tree/dev_wyoming) repository.
+The most recent version you find in the [DGI-OS dev_wyoming branch](https://github.com/xintel-labs/dgi-os/tree/dev_wyoming) repository.
 
 ## Acknowledgments
 
