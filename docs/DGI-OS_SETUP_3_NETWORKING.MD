@@ -6,7 +6,7 @@
 
 > [!WARNING]
 > This networking layout is currently tested with the scripted setup on the
-> [NanoPi R6S](hardware/NANOPi_R6S.md) and [ReComputer RK3588](hardware/RECOMPUTER_RK3588.md).
+> [NanoPi R6S](hardware/NANOPi_R6S.MD) and [ReComputer RK3588](hardware/RECOMPUTER_RK3588-30.MD).
 > If your board has a different interface layout, adjust the config accordingly.
 > We strongly recommend using the scripted setup for configuring networking.
 
@@ -197,7 +197,7 @@ dhcp-option=3,192.168.10.1
 dhcp-option=6,9.9.9.9,1.1.1.1
 
 # --- DHCP Reservations for Fixed IPs ---
-# MAC address,Name,IP Adress
+# MAC address,Name,IP Address
 # Reserved IP for [[Energy Concierge]] etc. (04-09)
 dhcp-host=ec:71:db:e0:9f:b6,horty1.local,192.168.10.4
 
@@ -304,4 +304,4 @@ The scripted setup can also apply these rules for you in `s7_activate_services.s
 After networking is working, continue with:
 
 - [DGI-OS_SETUP_4_DOCKER](DGI-OS_SETUP_4_DOCKER.MD)
-- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)
+- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_%28DASHBOARD%29.MD)

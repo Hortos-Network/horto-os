@@ -1,4 +1,4 @@
-# reComputer RK3588-30 
+# reComputer RK3588-30
 
 **Summary**: Open Rockchip AI Box tailored for AI application development.
 It is recommended hardware for running DGI-OS. Minimum RAM requirement is 8 GB; 16 GB is preferred for advanced AI and larger Docker workloads.

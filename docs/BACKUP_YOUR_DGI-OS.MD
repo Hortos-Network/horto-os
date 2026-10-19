@@ -167,7 +167,7 @@ sh /srv/dgi-os/scripts/partclone_backup_sda5.sh
 
 ### About the Boot Sector?
 
-Because you are working with an ARM Rockchip board (like the [NanoPi R6S](Hardware/NanoPi%20R6S.md)) rather than an x86 PC:
+Because you are working with an ARM Rockchip board (like the [NanoPi R6S](hardware/NANOPi_R6S.MD)) rather than an x86 PC:
 
 No Traditional MBR/BIOS: Rockchip SoCs do not store bootloaders in a standard Master Boot Record (MBR) at sector 0. Instead, the primary bootloader code (SPL/U-Boot) is flashed to specific offset sectors right at the very beginning of the raw disk (usually starting around sector 64 or 32k) before the first partition begins.
 
@@ -227,7 +227,7 @@ Usage:
 
 ```Bash
 chmod +x shrink-backup
-./shrink-backup -a /path/to/backup.img 
+./shrink-backup -a /path/to/backup.img
 ```
 
 the "./" in front of "shrink-backup" says the script to use is in the current folder

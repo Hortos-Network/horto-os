@@ -27,7 +27,7 @@ We only cover the built-in DGI-OS IOT-LAN router and DHCP server functionality h
 
 **Your RK3588 board does need at least two Ethernet ports, if you need wired connectivity.**
 
-Some device as the [reComputer RK3588](Hardware/reComputer RK3588-30.md) have a built-in Wifi Adapter that can be used as an IoT LAN Wifi router. Other devices need a USB Wifi Adapter or an external IoT LAN router atached to a Ethernet port.
+Some devices such as the [reComputer RK3588](hardware/RECOMPUTER_RK3588-30.MD) have a built-in Wifi Adapter that can be used as an IoT LAN Wifi router. Other devices need a USB Wifi Adapter or an external IoT LAN router attached to an Ethernet port.
 
 * **Built-in DGI-OS IOT-LAN Router:** The built-in router capable routing and DHCP server functionality (dedicated DHCP `dnsmasq`).
 * **Router / Firewall with VLAN Support:** A router capable of multi-subnet routing, firewall rules (inter-VLAN routing controls), and DHCP server functionality (or a dedicated DHCP server like `dnsmasq`).

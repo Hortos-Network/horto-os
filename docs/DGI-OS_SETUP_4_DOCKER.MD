@@ -49,7 +49,7 @@ can access it via the web interface at `http://MY_HOSTNAME:5001`.
 Ref: [github.com/louislam/dockge](https://github.com/louislam/dockge)
 
 For the further installation of container we rely on Dockge instead of
-Portainer, which is packaged with [Armbian](Armbian).
+Portainer, which is packaged with [Armbian](armbian/ARMBIAN_SETUP_1.MD).
 
 - **Portainer** is a heavy, all-encompassing management suite that abstracts almost everything in Docker (networks, volumes, single containers, images, registries) behind its own database and internal logic.
 

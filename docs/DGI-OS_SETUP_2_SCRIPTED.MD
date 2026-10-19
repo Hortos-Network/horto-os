@@ -35,7 +35,7 @@ Steps for basic setup:
 * `scripts/s2_init_env_vars.sh`
 * `scripts/s3_backup_etc_configs.sh`
 * `scripts/s4_deploy_configs.sh`
-* `scripts/s5_apply_configs.sh`
+* `scripts/s5_apply_host_configs.sh`
 
 Steps for full IoT LAN setup:
 
@@ -92,11 +92,11 @@ For the basic setup, the script currently manages these variables:
 # Those Variables get copied to active_setup used by setup scripts
 OS_TYPE="debian" # debian/armbian select
 # Read in the docs, how to identify which NPU or GPU type you can use for AI models
-NPU_TYPE="rkRK3588" # rkRK3576/rkRK3588/ select
-RAM_SYZE="8gb"
+NPU_TYPE="rk3588" # rk3576/rk3588 select
+RAM_SIZE="8gb"
 # There are 3 different flavours to install DGI-OS. (home,satellite,dgi)
-INSTALL_TYP="home"
-IOT_LAN="y/n" # if Yes the setup will create an independend IOT_LAN
+INSTALL_TYPE="home"
+IOT_LAN="y/n" # if Yes the setup will create an independent IOT_LAN
 MY_HOSTNAME="DGI-OS_xxx"
 MY_URL="YourDomainName.net"
 MY_CLOUDFLARE_TOKEN=""
@@ -121,10 +121,10 @@ file in `/srv/active_setup/`:
 - `/srv/active_setup/iot-lan_conf.env` for the full IoT LAN setup
 
 ```env
-WIFI_INTERFACE="none" 
+WIFI_INTERFACE="none"
 WIFI_SSID="DGI-IoT-LAN"
 WIFI_PASSPHRASE=""
-# Additonal variables get added during the setup here.
+# Additional variables get added during the setup here.
 ```
 
 ### 3. Create the protected initial backup
@@ -247,7 +247,7 @@ nameserver 9.9.9.9
 This assumes the host uses the local `dnsmasq` instance for DNS and keeps a public
 resolver as fallback.
 
-Do not switch `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`) 
+Do not switch `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`)
 in this setup when `dnsmasq` is already serving local DNS on the host.
 
 ### WAN uplink handling
@@ -269,4 +269,4 @@ This makes the setup more portable for cloned images and less technical users.
 After the host-side setup is complete, continue with:
 
 - [DGI-OS_SETUP_4_DOCKER](DGI-OS_SETUP_4_DOCKER.MD)
-- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)
+- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_%28DASHBOARD%29.MD)

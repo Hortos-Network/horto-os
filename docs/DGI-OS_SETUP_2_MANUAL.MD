@@ -34,7 +34,7 @@ port, or you don't want to run a separate LAN for the IOT devices,
 you can install the stack without the networking part.
 But be aware that you need to perform more configuration, as the DGI-OS is
 designed to use an IOT LAN.
-> 
+>
 
 
 **If you don't want to install the IOT LAN, you can continue here.**
@@ -51,8 +51,8 @@ Edit the `os-configuration.env` file to set your desired hostname.
 
 Skip the IoT LAN setup and continue with:
 
-- [Docker apps](Docker%20apps.md)
-- [Homepage (Dashboard)](Homepage%20%28Dashboard%29.md)
+- [Docker apps](DGI-OS_SETUP_4_DOCKER.MD)
+- [Homepage (Dashboard)](HOMEPAGE_%28DASHBOARD%29.MD)
 
 
 **To install the IOT LAN, you can start with the networking setup.**
@@ -133,4 +133,4 @@ sudo systemctl restart avahi-daemon
 After the host-side setup is complete, continue with:
 
 - [DGI-OS_SETUP_4_DOCKER](DGI-OS_SETUP_4_DOCKER.MD)
-- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)
+- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_%28DASHBOARD%29.MD)

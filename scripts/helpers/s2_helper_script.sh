@@ -50,7 +50,7 @@ escape_double_quotes() {
 OS_TYPE=$(prompt_value "${OS_TYPE:-debian}" "debian/armbian select")
 NPU_TYPE=$(prompt_value "${NPU_TYPE:-rk3588}" "NPU or GPU type ")
 INSTALL_TYPE=$(prompt_value "${INSTALL_TYPE:-home}" "home/sat/dgi select")
-IOT_LAN=$(prompt_value "${IOT_LAN:-y}" "# y/n: if Yes the setup will create an independend IOT_LAN")
+IOT_LAN=$(prompt_value "${IOT_LAN:-y}" "# y/n: if Yes the setup will create an independent IOT_LAN")
 MY_HOSTNAME=$(prompt_value "${MY_HOSTNAME:-DGI-OS_xxx}" "Device hostname")
 MY_URL=$(prompt_value "${MY_URL:-YourDomainName.net}" "Public URL / domain")
 

@@ -147,9 +147,9 @@ Cockpit is a system service, not a Docker container, so it should usually remain
 ## Remote links
 
 > [!NOTE]
-> In case you want to access your DGI-OS over the internet, you can use `services_remote.yaml` instead of `services.yaml`. Rename `services.yaml` into `services_local.yaml` and copy `services_remote.yaml` into `services.yaml`. After a container restart your DGI-OS can be accessed over the internet, which introduces security risks. Be sure to secure your Cloudflare tunnel with ACL. See [Cloudflare Tunnels](Cloudflare%20Tunnels.md) for more information.
+> In case you want to access your DGI-OS over the internet, you can use `services_remote.yaml` instead of `services.yaml`. Rename `services.yaml` into `services_local.yaml` and copy `services_remote.yaml` into `services.yaml`. After a container restart your DGI-OS can be accessed over the internet, which introduces security risks. Be sure to secure your Cloudflare tunnel with ACL. See [Cloudflare Tunnels](CLOUDFLARE_TUNNELS_ZERO_TRUST_ACCESS.MD) for more information.
 
-Remote/public links can be defined separately in: 
+Remote/public links can be defined separately in:
 
 ```text
 /srv/docker/app_data/homepage/config/services_remote.yaml

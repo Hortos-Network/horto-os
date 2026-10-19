@@ -1,18 +1,18 @@
 # DGI-OS Dependencies
 
-**Summary**: This document lists the dependencies required for different setup paths to run DGI-OS. It is provided as a work in progress, as the mayority of the setup process is still being developed.
+**Summary**: This document lists the dependencies required for different setup paths to run DGI-OS. It is provided as a work in progress, as the majority of the setup process is still being developed.
 
 The dependencies are basically defined by the setup, and how you define these variables:
 
 ```
-OS\\\_TYPE="debian" \\\# debian/armbian select    
-NPU\\\_TYPE="rkRK3588" \\\# rkRK3576/rkRK3588/ select    
-RAM\\\_SYZE="8gb"    
-INSTALL\\\_TYP="hems" \\\# (hems,sat,dgi)    
-IOT\\\_LAN="y/n" \\\# if Yes the setup will create an independent IOT\\\_LAN    
-MY\\\_HOSTNAME="DGI-OS\\\_xxx"    
-MY\\\_URL="YourDomainName.net"    
-MY\\\_CLOUDFLARE\\\_TOKEN=""
+OS_TYPE="debian" # debian/armbian select
+NPU_TYPE="rk3588" # rk3576/rk3588 select
+RAM_SIZE="8gb"
+INSTALL_TYPE="hems" # (hems,sat,dgi)
+IOT_LAN="y/n" # if Yes the setup will create an independent IOT_LAN
+MY_HOSTNAME="DGI-OS_xxx"
+MY_URL="YourDomainName.net"
+MY_CLOUDFLARE_TOKEN=""
 ```
 
 ## 1. Dependencies by Deployment Profile
@@ -30,7 +30,7 @@ DGI-OS can be deployed in different flavors, corresponding to the different use 
 
 ## 2. Dependencies by OS Type
 
-Depending on the type of the underlying operation system NEXUS and ADAM Layer packages require to be compiled accordingly.
+Depending on the type of the underlying operating system NEXUS and ADAM Layer packages require to be compiled accordingly.
 
 | OS Type | Debian/Ubuntu (x86\_64) | Armbian (aarch64) |
 | - | - | - |

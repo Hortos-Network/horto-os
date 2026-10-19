@@ -6,9 +6,9 @@ DGI-OS is a decentralised, privacy-focused operating system designed for **XINTE
 
 ## What is DGI-OS?
 
-**DGI-OS** is primarily built upon our future NEXUS framework, which is a Energy Managment in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter node communication and data exchange. 
+**DGI-OS** is primarily built upon our future NEXUS framework, which is an Energy Management framework in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter-node communication and data exchange.
 
-At its core, DGI-OS runs on DebianArmbian and integrates applications through a unique architecture:
+At its core, DGI-OS runs on Debian/Armbian and integrates applications through a unique architecture:
 
 - **NEXUS Framework**: The core energy device automation and monitoring happen within NEXUS.
 
@@ -43,4 +43,4 @@ In short, this comprehensive framework focuses on **enclosed, stable environment
 
 ### Core and Sat nodes (XINTEL-DGI)
 
-XINTEL-DGI is our future sovereign, hardware-agnostic, open-source peer-to-peer (P2P) energy management and accounting infrastructure. Rather than treating microgrids or residential home energy management as centralized utility projects,HORTEX treats every individual household, commercial building, or industrial facility as an autonomous microgrid node.
+XINTEL-DGI is our future sovereign, hardware-agnostic, open-source peer-to-peer (P2P) energy management and accounting infrastructure. Rather than treating microgrids or residential home energy management as centralized utility projects, XINTEL-DGI treats every individual household, commercial building, or industrial facility as an autonomous microgrid node.

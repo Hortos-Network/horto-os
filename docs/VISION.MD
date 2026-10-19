@@ -22,4 +22,4 @@ Xintel is building the open-source infrastructure to transition energy managemen
 
 The system supports a diverse range of functional layers, including **Unyt** for micro-payments and energy management via our future **NEXUS Framework**. Beyond its core stack, the platform facilitates **IoT management** through tools like the DGI IoT Router which will integrate with the NEXUS Framework.
 
- **coherence** (the ability to align and act as one) vs **sovereignty**: ![DGI-OS topology](../_assets/sovereignty-coherence.avif)
+ Image: **Coherence** (the ability to align and act as one) vs **sovereignty**: ![DGI-OS topology](../_assets/sovereignty-coherence.avif)

@@ -12,7 +12,7 @@ Before you start, make sure you have:
 - a reliable SD card,
 - a way to flash the card from another computer.
 
-We recommend using Armbian Imager. Use the minimal CLI image for your board. 
+We recommend using Armbian Imager. Use the minimal CLI image for your board.
 
 Reference:
 [docs.armbian.com/User-Guide_Getting-Started](https://docs.armbian.com/User-Guide_Getting-Started/)
@@ -40,7 +40,7 @@ sudo sudo armbian-install
 # on less recent Armbian versions the command may be called `nand-sata-install`
 ```
 
-![Armbian nand-sata-install screenshot](../_assets/Screenshot_Armbian_nand-sata-install.avif)
+![Armbian nand-sata-install screenshot](../../_assets/Screenshot_Armbian_nand-sata-install.avif)
 
 **Select Boot from eMMC - system on eMMC** or **Select Boot from SSD - system on SSD**
 

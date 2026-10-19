@@ -40,7 +40,7 @@ done
 echo "Copied docker source tree: $SOURCE_DIR -> $TARGET_DIR (excluded stacks/)"
 
 # Copy Docker Common stack into "$TARGET_DIR/"
-cp -a "$SOURCE_DIR_STACK/common"/." "$TARGET_DIR/"
+cp -a "$SOURCE_DIR_STACK/common"/. "$TARGET_DIR/"
 echo "Copied docker source common: $SOURCE_DIR_STACK/common -> $TARGET_DIR"
 
 # Copy Docker Compose AI (with NPU) stack into "$TARGET_DIR/"
@@ -50,7 +50,7 @@ if [ -f "$OS_CONF_FILE" ]; then
   if [ "$NPU_TYPE" = "none" ]; then
     echo "No configuration for NPU/GPU in setup file found in $OS_CONF_FILE" >&2
   else
-    cp -a "$SOURCE_DIR_STACK/$NPU_TYPE"/." "$TARGET_DIR/"
+    cp -a "$SOURCE_DIR_STACK/$NPU_TYPE"/. "$TARGET_DIR/"
     echo "Copied docker source tree: $SOURCE_DIR_STACK/$NPU_TYPE -> $TARGET_DIR"
   fi
 else
@@ -100,4 +100,4 @@ done
 
 
 echo "d1 complete: full docker source copied and rendered in $TARGET_DIR"
-echo "Go back the Docker documentation file `DGI-OS_SETUP_4_DOCKER`"
+echo "Go back to the Docker documentation file DGI-OS_SETUP_4_DOCKER"

@@ -246,5 +246,5 @@ Remote links can be templated with `MY_URL` in the Homepage config.
 
 ## Continue
 
-- [Homepage (Dashboard)](Homepage%20%28Dashboard%29.md)
-- [What is DGI-OS?](What%20is%20DGI%20OS%3F.md)
+- [Homepage (Dashboard)](HOMEPAGE_%28DASHBOARD%29.MD)
+- [What is DGI-OS?](WHAT_IS_DGI-OS.MD)

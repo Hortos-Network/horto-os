@@ -8,7 +8,7 @@ ref: [Wyoming Protocol](https://github.com/OHF-Voice/wyoming.git) (AI Voice Pipe
 
 ## Why Home Assistant Prefers Wyoming over an OpenAI API for Local Models
 
-Even if your local container hosted an OpenAI-compatible API endpoint 
+Even if your local container hosted an OpenAI-compatible API endpoint
 (like `/v1/audio/transcriptions`), Home Assistant would have to constantly open HTTP connections, dump complete audio files, and parse JSON responses.
 
 Using Wyoming gives you:
@@ -25,22 +25,22 @@ Using Wyoming gives you:
 Other models might work too, but they are not officially supported.
 
 - Audio input/output
-	- [mic-external](https://github.com/rhasspy/wyoming-mic-external)
-		- [snd-external](https://github.com/rhasspy/wyoming-snd-external)
-		- [SDL2](https://github.com/rhasspy/wyoming-sdl2)
+    - [mic-external](https://github.com/rhasspy/wyoming-mic-external)
+        - [snd-external](https://github.com/rhasspy/wyoming-snd-external)
+        - [SDL2](https://github.com/rhasspy/wyoming-sdl2)
 - Wake word detection
-	- [openWakeWord](https://github.com/rhasspy/wyoming-openwakeword)
-		- [porcupine1](https://github.com/rhasspy/wyoming-porcupine1)
-		- [snowboy](https://github.com/rhasspy/wyoming-snowboy)
-		- [microWakeWord](https://github.com/rhasspy/wyoming-microwakeword)
+    - [openWakeWord](https://github.com/rhasspy/wyoming-openwakeword)
+        - [porcupine1](https://github.com/rhasspy/wyoming-porcupine1)
+        - [snowboy](https://github.com/rhasspy/wyoming-snowboy)
+        - [microWakeWord](https://github.com/rhasspy/wyoming-microwakeword)
 - Speech-to-text
-	- [Faster Whisper](https://github.com/rhasspy/wyoming-faster-whisper)
-		- [Vosk](https://github.com/rhasspy/wyoming-vosk)
-		- [Whisper.cpp](https://github.com/rhasspy/wyoming-whisper-cpp)
+    - [Faster Whisper](https://github.com/rhasspy/wyoming-faster-whisper)
+        - [Vosk](https://github.com/rhasspy/wyoming-vosk)
+        - [Whisper.cpp](https://github.com/rhasspy/wyoming-whisper-cpp)
 - Text-to-speech
-	- [Piper](https://github.com/rhasspy/wyoming-piper)
+    - [Piper](https://github.com/rhasspy/wyoming-piper)
 - Intent handling
-	- [handle-external](https://github.com/rhasspy/wyoming-handle-external)
+    - [handle-external](https://github.com/rhasspy/wyoming-handle-external)
 
 
 ### OpenWakeWord

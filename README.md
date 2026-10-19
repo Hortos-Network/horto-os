@@ -1,10 +1,10 @@
-[![Discord](https://img.shields.io/badge/Discord-Horto%20OS-5865F2?logo=discord&logoColor=white)](https://discord.gg/Hbxd6vv98v)
+[![Discord](https://img.shields.io/badge/Discord-DGI--OS-5865F2?logo=discord&logoColor=white)](https://discord.gg/Hbxd6vv98v)
 
 # DGI-OS
 
-**DGI-OS** is a decentralised, privacy-focused operating system designed for **XINTEL-DGI nodes** or **Home Hubs** (the **DGI-Box**), primarily built upon our future NEXUS framework, which is a Energy Managment in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter node communication and data exchange. The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
+**DGI-OS** is a decentralised, privacy-focused operating system designed for **XINTEL-DGI nodes** or **Home Hubs** (the **DGI-Box**), primarily built upon our future NEXUS framework, which is an Energy Management framework in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter-node communication and data exchange. The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
 
-The underlying Operation System can be any Debian/Ubuntu or Armbian OS. The apps
+The underlying Operating System can be any Debian/Ubuntu or Armbian OS. The apps
 either run on DGI Nexus framework, or as Docker apps.
 
 Basically DGI-OS can be deployed in different "flavors", corresponding to the
@@ -27,11 +27,11 @@ different use cases. There are three main use cases or deployment profiles:
 
 - Developers who want to contribute to the project
 
-This use cases are related on using RK3576/3588 boards!
+These use cases relate to using RK3576/3588 boards!
 
 - People who are interested in edge computing on RK3576/3588 boards
 - People who want to run [Frigate NVR](docs/apps/FRIGATE_NVR.md), evcc or Home
-  Assistant on a powerfull ARM CPU with AI capabilites.
+  Assistant on a powerful ARM CPU with AI capabilities.
 - DGI-OS comes with a fully Home Assistant compatible local AI stack (voice
   pipeline, AI inference)
 
@@ -41,11 +41,11 @@ and [VISION](docs/VISION.MD).
 
 ## What can you get with DGI-OS?
 
-- **An IOT LAN**, which means your DGI-Box acts as a local Router and you can separate all your Smart Home devices from the rest of the your local network.
+- **An IOT LAN**, which means your DGI-Box acts as a local Router and you can separate all your Smart Home devices from the rest of your local network.
 - An easy to manage Docker stack with a graphical UI (Dockge).
 - All the necessary scripts and Docker compose files to install for instance evcc (evcc.io)
 - All the necessary scripts and Docker compose files to install several AI models, as LLM, STT, TTS
-- A pre-configured Dashboard (Homepage Dasboard) to get easy access to the apps and monitor your DGI-Box.
+- A pre-configured Dashboard (Homepage Dashboard) to get easy access to the apps and monitor your DGI-Box.
 - If your DGI-Box has sufficient RAM (16GB) you can also run larger AI models, as the provided DeepSeek 1.7b model.
 
 ![Dashboard](_assets/Screenshot_Homepage-Dashboard_Draft.avif)
@@ -102,11 +102,11 @@ Here's a high-level overview of the main installation phases:
 
 
 3. **Network Configuration reference**:
-   
+
    * Additional network explanations and NAT examples are in [DGI-OS_SETUP_3 NETWORKING](docs/DGI-OS_SETUP_3_NETWORKING.MD).
 
 4. **Docker and dashboard setup**:
-   
+
    * How to install the full Docker stack.
    * Deployment of Dockge for user-friendly management of containerized applications.
    * Docker source/app-data initialization begins with `scripts/d1_docker_init.sh`.
@@ -120,13 +120,13 @@ We welcome contributions to DGI-OS! Please refer to the `CONTRIBUTING.md` file f
 ## Known Issues
 
 - The scripted host setup flow may not work on all platforms.
-- The minimal SETUP flow is not extensifly tested and may need some adjustments.
+- The minimal SETUP flow is not extensively tested and may need some adjustments.
 - The Docker container 'yolo-detection' has been removed, due to performance issues.
 
 
 ## License
 
-Unless otherwise stated, this repository is licensed under Apache-2.0.  
+Unless otherwise stated, this repository is licensed under Apache-2.0.
 Some subdirectories may be licensed differently; see the local LICENSE files.
 
 ## Acknowledgments
