@@ -1,6 +1,6 @@
-# Docker apps for Horto OS
+# Docker apps for DGI-OS
 
-**Summary**: How to install Docker and basic Docker apps for Horto OS.
+**Summary**: How to install Docker and basic Docker apps for DGI-OS.
 
 ---
 
@@ -26,7 +26,7 @@ Ref: [docs.armbian.com/User-Guide_Armbian-Software/Containers](https://docs.armb
 >`d1_docker_init.sh`:
 
 ```bash
-sh /srv/horto-os/scripts/d1_docker_init.sh
+sh /srv/dgi-os/scripts/d1_docker_init.sh
 ```
 
 After running this script, come back to this document to continue with spinning
@@ -49,13 +49,13 @@ can access it via the web interface at `http://MY_HOSTNAME:5001`.
 Ref: [github.com/louislam/dockge](https://github.com/louislam/dockge)
 
 For the further installation of container we rely on Dockge instead of
-Portainer, which is packaged with [Armbian](Armbian).
+Portainer, which is packaged with [Armbian](armbian/ARMBIAN_SETUP_1.MD).
 
 - **Portainer** is a heavy, all-encompassing management suite that abstracts almost everything in Docker (networks, volumes, single containers, images, registries) behind its own database and internal logic.
 
 - **Dockge** is file-centric. It doesn't trap your configuration in a database; your `compose.yaml` files live natively on your disk in `/opt/stacks/`, meaning you can manage, back up, or run standard `docker compose` commands in the terminal just as easily as through its web GUI.
 
-We don't follow the standard basic instructions from the repository to install Dockge. Instead, Horto-OS keeps Docker app data under `/srv/docker`.
+We don't follow the standard basic instructions from the repository to install Dockge. Instead, DGI-OS keeps Docker app data under `/srv/docker`.
 
 ```Bash
 #### Create directories that store your stacks and Dockge's store
@@ -104,16 +104,16 @@ Once it spins up, you can access the web UI at `http://<your-hostname-or-ip>:500
 
 ## Docker source copy
 
-The Horto-OS repository contains Docker sources and app data under:
+The DGI-OS repository contains Docker sources and app data under:
 
 ```text
-/srv/horto-os/docker_source/
+/srv/dgi-os/docker_source/
 ```
 
 To copy the full tree into `/srv/docker/` and render placeholders in the copied files, run:
 
 ```bash
-sh /srv/horto-os/scripts/d1_docker_init.sh
+sh /srv/dgi-os/scripts/d1_docker_init.sh
 ```
 
 
@@ -170,7 +170,7 @@ Homepage [gethomepage.io](https://gethomepage.io) can be installed via Dockge.
 Assets such as background images are automatically copied by `d1_docker_init.sh`:
 
 ```bash
-sh /srv/horto-os/scripts/d1_docker_init.sh
+sh /srv/dgi-os/scripts/d1_docker_init.sh
 ```
 
 This copies the `_assets/` folder into `/srv/docker/assets/`, which can then be mounted in the Homepage container.
@@ -195,7 +195,7 @@ networks: {}
 
 ### Cloudflared Compose Stack (remote access)
 
-The easiest way to remotely access different apps running on Horto-OS
+The easiest way to remotely access different apps running on DGI-OS
 is [Cloudflare Tunnels](https://developers.cloudflare.com/tunnel/).
 
 You can create a dedicated stack in Dockge with a configuration like this:
@@ -215,11 +215,11 @@ services:
 
 You generate the `TUNNEL_TOKEN` in the Cloudflare Zero Trust dashboard.
 
-Once deployed, map your subdomains in Cloudflare to the local services running on the host. Horto-OS also supports templated dashboard links using `MY_URL` and `MY_HOSTNAME`.
+Once deployed, map your subdomains in Cloudflare to the local services running on the host. DGI-OS also supports templated dashboard links using `MY_URL` and `MY_HOSTNAME`.
 
-As the most of the apps on Horto OS are not designed to be exposed to the internet it is highly recommended to use Cloudflare’s Zero Trust Access Control. A guide how to set it up you can find here [[Cloudflare_Tunnels Zero Trust Access]].
+As the most of the apps on DGI-OS are not designed to be exposed to the internet it is highly recommended to use Cloudflare’s Zero Trust Access Control. A guide how to set it up you can find here [[Cloudflare_Tunnels Zero Trust Access]].
 ## 6. Continue with Docker AI setup
 
 After the Docker setup is complete, continue with:
 
-- [HORTO-OS_SETUP_4_DOCKER_AI](HORTO-OS_SETUP_4_DOCKER_AI.MD)
+- [DGI-OS_SETUP_4_DOCKER_AI](DGI-OS_SETUP_4_DOCKER_AI.MD)

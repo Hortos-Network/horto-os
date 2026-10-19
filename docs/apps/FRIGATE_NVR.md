@@ -1,6 +1,6 @@
 # Frigate NVR
 
-**Summary**: How to install [Frigate NVR](https://docs.frigate.video/) on Horto OS.
+**Summary**: How to install [Frigate NVR](https://docs.frigate.video/) on DGI-OS.
 
 To run Frigate on the RK3588 with hardware-accelerated video decoding (VPU via
 MPP) and object detection (NPU via RKNN), you need to use the dedicated Rockchip

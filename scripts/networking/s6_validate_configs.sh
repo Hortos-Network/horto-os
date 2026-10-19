@@ -68,11 +68,11 @@ check_file_exists "$TARGET_ROOT/dnsmasq.d/iot-lan.conf"
 check_file_exists "$TARGET_ROOT/sysctl.d/packet_forwarding.conf"
 
 if command -v netplan >/dev/null 2>&1; then
-  if netplan generate >/tmp/horto-netplan-validate.out 2>/tmp/horto-netplan-validate.err; then
+  if netplan generate >/tmp/dgi-netplan-validate.out 2>/tmp/dgi-netplan-validate.err; then
     echo "OK: netplan generate succeeded"
   else
     echo "ERROR: netplan generate failed" >&2
-    cat /tmp/horto-netplan-validate.err >&2
+    cat /tmp/dgi-netplan-validate.err >&2
     FAILED=1
   fi
 else

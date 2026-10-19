@@ -7,4 +7,4 @@
 sudo mount /dev/sda5 /mnt/external
 # start backup of eMMC partition 1
 # if there are other partitions you need to add this here
-sudo partclone.ext4 -c -s /dev/mmcblk0p1 | gzip -c > /mnt/external/horto-os/emmc_p1_backup_$(date +%Y%m%d).img.gz
+sudo partclone.ext4 -c -s /dev/mmcblk0p1 | gzip -c > /mnt/external/dgi-os/emmc_p1_backup_$(date +%Y%m%d).img.gz

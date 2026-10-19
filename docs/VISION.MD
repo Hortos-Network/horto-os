@@ -1,20 +1,25 @@
-# Hortos Vision
+# DGI-OS (Distributed Grid Intelligence Operating System)
 
-## Etymology
+**The digital energy nervous system for the decentralized web.**
 
-Garden in Portuguese, Huerto in Spanish
-From Old Galician-Portuguese orto, from Latin hortus (“garden”), from Proto-Indo-European *ǵʰortós, from *ǵʰer- (“to enclose”)
+**Our Vision**
 
-![Secret garden ideas](../_assets/secret-garden-ideas.jpg)
+Xintel is building the open-source infrastructure to transition energy management into a sovereign, modular framework. We enable system integrators, energy communities, and homeowners to deploy microgrids, manage local P2P energy sharing, and run Virtual Power Plant (VPP) infrastructure—without cloud lock-in or centralized control.
 
-## Secret Garden analogy
+**Core Architecture & Principles**
 
-As the name Horto suggests, the vision of an enclosed garden is exactly what we aim for. Through the unique Holochain / NEXUS architecture it provides a high degree of privacy without limiting communication with the wider network. Think of NEXUS as the central meeting point in this garden, where a secret gardener keeps the plants in good shape, including a solarpunk-styled house with solar panels. The secret gardener lives inside the Horto-OS software stack and is represented by the integrated AI, which constantly monitors and improves the ecosystem.
+- Decentralized Control: Xintel provides the OS, security layers, and core protocols for critical infrastructure. We do not run the network; stakeholders govern expansion and adapt the system locally.
 
-## Horto OS Summary
+- Hardware Agnosticism: Seamlessly bridge disparate local assets (inverters, EV chargers, heat pumps) across brands without manufacturer silos.
 
-**Horto OS** is a **Linux-based operating system** designed to provide a **private and decentralised environment** for managing distributed applications. Its foundation relies on Holochain for peer-to-peer integrity and the **ADAM Layer** for integrating **artificial intelligence** and semantic web capabilities.
+- Built on Trust (Open Energy Network License): Hardcoded rules of engagement ensure the core software framework and fee structures remain permanently bound to stakeholder interests, preventing unilateral corporate changes.
 
-The system supports a diverse range of functional layers, including **Unyt** for micro-payments and energy management via our future **NEXUS Framework**. Beyond its core stack, the platform facilitates **IoT management** through tools like the Horto IoT Router which will integrate with the NEXUS Framework.
+- Integrated Value Rails: Built-in micro-accounting and payment rails treat energy as a liquid asset, bridging decentralized ledgers with regional regulatory frameworks.
 
-Furthermore, the architecture allows for the **integration of containerised apps**, enabling the community to link third-party services such as security camera software and smart home tools into the wider ecosystem. This comprehensive framework focuses on **enclosed, stable environments** that prioritise user autonomy and connectivity.
+## DGI-OS Summary
+
+**DGI-OS** is a **Linux-based operating system** designed to provide a **private and decentralised environment** for managing distributed applications. Its foundation relies on Holochain for peer-to-peer integrity and the **ADAM Layer** for integrating **artificial intelligence** and semantic web capabilities.
+
+The system supports a diverse range of functional layers, including **Unyt** for micro-payments and energy management via our future **NEXUS Framework**. Beyond its core stack, the platform facilitates **IoT management** through tools like the DGI IoT Router which will integrate with the NEXUS Framework.
+
+ Image: **Coherence** (the ability to align and act as one) vs **sovereignty**: ![DGI-OS topology](../_assets/sovereignty-coherence.avif)

@@ -8,8 +8,8 @@ case "${0##*/}" in
     ;;
 esac
 
-SCRIPT_DIR="/srv/horto-os/scripts"
-REPO_ROOT="/srv/horto-os"
+SCRIPT_DIR="/srv/dgi-os/scripts"
+REPO_ROOT="/srv/dgi-os"
 TEMPLATE_FILE="$REPO_ROOT/config/os-configuration.env"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 ACTIVE_FILE="$ACTIVE_SETUP_DIR/os-configuration.env"
@@ -49,9 +49,9 @@ escape_double_quotes() {
 
 OS_TYPE=$(prompt_value "${OS_TYPE:-debian}" "debian/armbian select")
 NPU_TYPE=$(prompt_value "${NPU_TYPE:-rk3588}" "NPU or GPU type ")
-INSTALL_TYPE=$(prompt_value "${INSTALL_TYPE:-home}" "home/sat/hortex select")
-IOT_LAN=$(prompt_value "${IOT_LAN:-y}" "# y/n: if Yes the setup will create an independend IOT_LAN")
-MY_HOSTNAME=$(prompt_value "${MY_HOSTNAME:-Horto-OS_xxx}" "Device hostname")
+INSTALL_TYPE=$(prompt_value "${INSTALL_TYPE:-home}" "home/sat/dgi select")
+IOT_LAN=$(prompt_value "${IOT_LAN:-y}" "# y/n: if Yes the setup will create an independent IOT_LAN")
+MY_HOSTNAME=$(prompt_value "${MY_HOSTNAME:-DGI-OS_xxx}" "Device hostname")
 MY_URL=$(prompt_value "${MY_URL:-YourDomainName.net}" "Public URL / domain")
 
 cat > "$ACTIVE_FILE" <<EOF

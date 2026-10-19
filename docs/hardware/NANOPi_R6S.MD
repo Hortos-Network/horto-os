@@ -9,14 +9,14 @@
 ![NanoPi R6S](../../_assets/NanoPi_R6S-01.webp)
 
 The NanoPi R6S (as “R6S”) is an open-sourced mini IoT gateway device with two 2.5G and one Gbps Ethernet ports, designed and developed by FriendlyElec. It is integrated with a Rockchip RK3588S CPU, 8GB LPDDR4x RAM and 32GB/64GB eMMC flash. It supports booting with TF cards and works with operating systems such as FriendlyWrt, Armbian etc.
-  
-The NanoPi R6S has rich hardware resources with a compact size of 90 x 62 mm. FriendlyElec has released a carefully-designed custom CNC housing for it. It has one HDMI port.
-  
-The NanoPi R6S has two USB ports, and supports USB type-C power delivery. 
-  
-It needs a minimum 20W USB-C PD GaN charger and a M.2 SSD half size drive to run Horto-OS.
 
-You need to install Armbian to set it up. The Horto-OS setup sequence starts here: [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD).
+The NanoPi R6S has rich hardware resources with a compact size of 90 x 62 mm. FriendlyElec has released a carefully-designed custom CNC housing for it. It has one HDMI port.
+
+The NanoPi R6S has two USB ports, and supports USB type-C power delivery.
+
+It needs a minimum 20W USB-C PD GaN charger and a M.2 SSD half size drive to run DGI-OS.
+
+You need to install Armbian to set it up. The DGI-OS setup sequence starts here: [DGI-OS_SETUP_1](../DGI-OS_SETUP_1.MD).
 ## Related Topics
-- [HORTO-OS_SETUP_1](../HORTO-OS_SETUP_1.MD)
-- [HORTO-OS_SETUP_3_NETWORKING](../HORTO-OS_SETUP_3_NETWORKING.MD)
+- [DGI-OS_SETUP_1](../DGI-OS_SETUP_1.MD)
+- [DGI-OS_SETUP_3_NETWORKING](../DGI-OS_SETUP_3_NETWORKING.MD)

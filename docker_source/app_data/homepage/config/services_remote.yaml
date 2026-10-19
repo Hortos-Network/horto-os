@@ -15,7 +15,7 @@
         href: https://owebui-hos01.{{MY_URL}}
         description: DeepSeek 1.7b param LLM
 
-- Horto-OS Services:
+- DGI-OS Services:
     - Cockpit:
         icon: cockpit.png
         href: https://cockpit-hos01.{{MY_URL}}
@@ -32,7 +32,7 @@
           type: iframe
           src: /images/leases.html
 
-- Horto-OS (AI) Services:
+- DGI-OS (AI) Services:
     - Whisper (STT):
         href: http://{{MY_HOSTNAME}}:8000/docs
         icon: /images/homepage_mic_icon.png
@@ -53,6 +53,6 @@
         container: piper
     - Cloudflared:
         icon: cloudflared.png
-        description: Tunnel to the Hortos OS services
+        description: Tunnel to the DGI-OS services
         server: my-docker
         container: cloudflare-tunnel

@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-# Step 2: configure persistent environment variables for the Horto OS IOT LAN setup.
+# Step 2: configure persistent environment variables for the DGI-OS IOT LAN setup.
 
 case "${0##*/}" in
   sh|dash|bash)
@@ -9,8 +9,8 @@ case "${0##*/}" in
     ;;
 esac
 
-SCRIPT_DIR="/srv/horto-os/scripts"
-REPO_ROOT="/srv/horto-os"
+SCRIPT_DIR="/srv/dgi-os/scripts"
+REPO_ROOT="/srv/dgi-os"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 IOT_LAN_TEMPLATE_FILE="$REPO_ROOT/config/iot-lan_conf.env"
 IOT_LAN_ACTIVE_FILE="$ACTIVE_SETUP_DIR/iot-lan_conf.env"
@@ -44,7 +44,7 @@ case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
   ''|-|n|no) WIFI_INTERFACE="none" ;;
 esac
 
-# Install packages used by the Horto OS setup for IoT LAN components.
+# Install packages used by the DGI-OS setup for IoT LAN components.
 echo "Installing IoT LAN components..."
 case "$(printf '%s' "${WIFI_INTERFACE:-}" | tr '[:upper:]' '[:lower:]')" in
   none)

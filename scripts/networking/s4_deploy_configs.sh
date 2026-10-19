@@ -9,8 +9,8 @@ case "${0##*/}" in
     ;;
 esac
 
-SCRIPT_DIR="/srv/horto-os/scripts"
-REPO_ROOT="/srv/horto-os"
+SCRIPT_DIR="/srv/dgi-os/scripts"
+REPO_ROOT="/srv/dgi-os"
 CONFIG_DIR="$REPO_ROOT/config"
 ACTIVE_SETUP_DIR="/srv/active_setup"
 STAGING_ETC_DIR="$ACTIVE_SETUP_DIR/etc"

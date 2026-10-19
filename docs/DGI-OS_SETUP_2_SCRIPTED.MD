@@ -1,6 +1,6 @@
-# Horto-OS scripted setup
+# DGI-OS scripted setup
 
-**Summary**: This guide describes the tested scripted setup flow for Horto-OS on
+**Summary**: This guide describes the tested scripted setup flow for DGI-OS on
 a fresh RK3588-based system with IoT LAN support.
 
 ---
@@ -12,13 +12,13 @@ Make sure you already:
 1. flashed and booted Armbian,
 2. optionally copied the system to eMMC,
 3. installed `git`,
-4. cloned the repository into `/srv/horto-os`.
+4. cloned the repository into `/srv/dgi-os`.
 
 At this point the scripted setup begins.
 
 ## Scripted setup sequence
 
-Run the scripts from `/srv/horto-os/scripts`.
+Run the scripts from `/srv/dgi-os/scripts`.
 
 > [!NOTE]
 > The scripts are run in the order shown below.
@@ -31,15 +31,15 @@ credentials and a DHCP server is installed.
 
 Steps for basic setup:
 
-* `scripts/s1_init_horto_os.sh`
+* `scripts/s1_init_dgi_os.sh`
 * `scripts/s2_init_env_vars.sh`
 * `scripts/s3_backup_etc_configs.sh`
 * `scripts/s4_deploy_configs.sh`
-* `scripts/s5_apply_configs.sh`
+* `scripts/s5_apply_host_configs.sh`
 
 Steps for full IoT LAN setup:
 
-* `scripts/s1_init_horto_os.sh`
+* `scripts/s1_init_dgi_os.sh`
 * `scripts/s2_init_env_vars.sh`
 * `scripts/networking/s2_init_env_vars_iot.sh`
 * `scripts/s3_backup_etc_configs.sh`
@@ -51,10 +51,10 @@ Steps for full IoT LAN setup:
 ### 1. Install required minimal required packages.
 
 ```bash
-sh s1_init_horto_os.sh
+sh s1_init_dgi_os.sh
 ```
 
-This installs the required host packages used by Horto OS.
+This installs the required host packages used by DGI-OS.
 
 
 ### 2. Create active variables
@@ -92,12 +92,12 @@ For the basic setup, the script currently manages these variables:
 # Those Variables get copied to active_setup used by setup scripts
 OS_TYPE="debian" # debian/armbian select
 # Read in the docs, how to identify which NPU or GPU type you can use for AI models
-NPU_TYPE="rkRK3588" # rkRK3576/rkRK3588/ select
-RAM_SYZE="8gb"
-# There are 3 different flavours to install Horto OS. (home,satellite,hortex)
-INSTALL_TYP="home"
-IOT_LAN="y/n" # if Yes the setup will create an independend IOT_LAN
-MY_HOSTNAME="Horto-OS_xxx"
+NPU_TYPE="rk3588" # rk3576/rk3588 select
+RAM_SIZE="8gb"
+# There are 3 different flavours to install DGI-OS. (home,satellite,dgi)
+INSTALL_TYPE="home"
+IOT_LAN="y/n" # if Yes the setup will create an independent IOT_LAN
+MY_HOSTNAME="DGI-OS_xxx"
 MY_URL="YourDomainName.net"
 MY_CLOUDFLARE_TOKEN=""
 ```
@@ -121,10 +121,10 @@ file in `/srv/active_setup/`:
 - `/srv/active_setup/iot-lan_conf.env` for the full IoT LAN setup
 
 ```env
-WIFI_INTERFACE="none" 
-WIFI_SSID="Horto-IoT-LAN"
+WIFI_INTERFACE="none"
+WIFI_SSID="DGI-IoT-LAN"
 WIFI_PASSPHRASE=""
-# Additonal variables get added during the setup here.
+# Additional variables get added during the setup here.
 ```
 
 ### 3. Create the protected initial backup
@@ -236,7 +236,7 @@ A reboot is strongly recommended after network-related changes.
 
 ### Resolver handling
 
-In the IoT LAN setup, Horto-OS deploys a plain `/etc/resolv.conf` from the managed `config/resolv.conf` file.
+In the IoT LAN setup, DGI-OS deploys a plain `/etc/resolv.conf` from the managed `config/resolv.conf` file.
 The current tested resolver design uses:
 
 ```conf
@@ -247,7 +247,7 @@ nameserver 9.9.9.9
 This assumes the host uses the local `dnsmasq` instance for DNS and keeps a public
 resolver as fallback.
 
-Do not switch `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`) 
+Do not switch `/etc/resolv.conf` to the `systemd-resolved` stub (`127.0.0.53`)
 in this setup when `dnsmasq` is already serving local DNS on the host.
 
 ### WAN uplink handling
@@ -268,5 +268,5 @@ This makes the setup more portable for cloned images and less technical users.
 
 After the host-side setup is complete, continue with:
 
-- [HORTO-OS_SETUP_4_DOCKER](HORTO-OS_SETUP_4_DOCKER.MD)
-- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)
+- [DGI-OS_SETUP_4_DOCKER](DGI-OS_SETUP_4_DOCKER.MD)
+- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_%28DASHBOARD%29.MD)

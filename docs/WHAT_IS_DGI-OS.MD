@@ -1,0 +1,46 @@
+# What is DGI-OS?
+
+DGI-OS is a decentralised, privacy-focused operating system designed for **XINTEL-DGI nodes** or **Home Hubs** (the **DGI-Box**).
+
+> \[!NOTE\] This description of the project aims to inform about what we intend to develop for DGI-OS and not the current state.
+
+## What is DGI-OS?
+
+**DGI-OS** is primarily built upon our future NEXUS framework, which is an Energy Management framework in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter-node communication and data exchange.
+
+At its core, DGI-OS runs on Debian/Armbian and integrates applications through a unique architecture:
+
+- **NEXUS Framework**: The core energy device automation and monitoring happen within NEXUS.
+
+- **Adam Layer**: The Adam Layer from [Coasys](https://coasys.org/), acting as a "Semantic Orchestrator" to create a local semantic web and integrate APIs and AI.
+
+- **Holochain**: An open-source framework for building distributed applications (hApps), enabling agent-centric data integrity and peer-to-peer interactions.
+
+- **Unyt**: A multi-tier value/currency and payment rail framework (Holochain based).
+
+## Deployment Profiles
+
+### Home Hub (HEMS)
+
+The **DGI-Box** functions as the physical "Brain" of the home, organized into four functional layers:
+
+1. **Physical & Networking**: Establishes secure communication using Iroh for peer-to-peer addressing and an integrated LAN router, called DGI IOT Router.
+
+2. **Platform & Middleware**: The runtime environment based on Nix and Rust, managing distributed integrity via Holochain Adam Layer and NEXUS (energy management)
+
+3. **Application Framework**: Utilizes Docker (often on top of Nix) to run containerised AI models and services like Frigate (security)
+
+4. **Intelligence & Analytics**: Enables local execution of Small Language Models (SLMs) (up to 7B parameters, such as DeepSeek or Qwen) for predictive analytics and autonomous behaviour.
+
+**Application Framework (HEMS deployment)**:
+
+The core of the DGI-OS Home stack is focused on deploying a managed service for Home Energy Management (HEMS). As an open operating system, it is also capable of running a variety of Smart Home and Home Server applications. We do not intend to launch all such additional products ourselves.
+
+For instance, you can install Home Assistant or Frigate NVR, but keep in mind that these more resource-hungry applications are constrained by available memory.
+
+In short, this comprehensive framework focuses on **enclosed, stable environments** that prioritize user autonomy and connectivity, while allowing the integration of third-party containerized apps and community-driven Holochain applications.
+
+
+### Core and Sat nodes (XINTEL-DGI)
+
+XINTEL-DGI is our future sovereign, hardware-agnostic, open-source peer-to-peer (P2P) energy management and accounting infrastructure. Rather than treating microgrids or residential home energy management as centralized utility projects, XINTEL-DGI treats every individual household, commercial building, or industrial facility as an autonomous microgrid node.

@@ -1,6 +1,6 @@
-# Horto-OS manual setup 2
+# DGI-OS manual setup 2
 
-**Summary**: This guide describes the manual setup path for Horto-OS when you do
+**Summary**: This guide describes the manual setup path for DGI-OS when you do
 not want to use the scripted deployment flow.
 
 ---
@@ -11,7 +11,7 @@ Even for the manual path, keep the same directory layout:
 
 ```text
 /srv/
-├── horto-os/
+├── dgi-os/
 ├── active_setup/
 └── backup/
 ```
@@ -28,13 +28,13 @@ sudo apt install -y cockpit cockpit-networkmanager
 ```
 
 > [!important]
-> Horto-OS is designed to run with a dedicated IOT LAN - a separate Local Area
+> DGI-OS is designed to run with a dedicated IOT LAN - a separate Local Area
 Network reserved for IOT devices. If your RK3588 board has only one Ethernet
 port, or you don't want to run a separate LAN for the IOT devices,
 you can install the stack without the networking part.
-But be aware that you need to perform more configuration, as the Horto-OS is
+But be aware that you need to perform more configuration, as the DGI-OS is
 designed to use an IOT LAN.
-> 
+>
 
 
 **If you don't want to install the IOT LAN, you can continue here.**
@@ -43,7 +43,7 @@ For a minimal hostname-only setup:
 
 ```bash
 mkdir -p /srv/active_setup
-cp /srv/horto-os/config/os-configuration.env /srv/active_setup/
+cp /srv/dgi-os/config/os-configuration.env /srv/active_setup/
 nano /srv/active_setup/os-configuration.env
 ```
 
@@ -51,8 +51,8 @@ Edit the `os-configuration.env` file to set your desired hostname.
 
 Skip the IoT LAN setup and continue with:
 
-- [Docker apps](Docker%20apps.md)
-- [Homepage (Dashboard)](Homepage%20%28Dashboard%29.md)
+- [Docker apps](DGI-OS_SETUP_4_DOCKER.MD)
+- [Homepage (Dashboard)](HOMEPAGE_%28DASHBOARD%29.MD)
 
 
 **To install the IOT LAN, you can start with the networking setup.**
@@ -71,7 +71,7 @@ Create the backup directory:
 sudo mkdir -p /srv/backup/etc/manual_initial
 ```
 
-Then copy the relevant `/etc` files and directories corresponding to the managed items in `/srv/horto-os/config`.
+Then copy the relevant `/etc` files and directories corresponding to the managed items in `/srv/dgi-os/config`.
 
 ## 3. Create the active variables file
 
@@ -79,7 +79,7 @@ For the full setup:
 
 ```bash
 mkdir -p /srv/active_setup
-cp /srv/horto-os/config/os-configuration.env /srv/active_setup/
+cp /srv/dgi-os/config/os-configuration.env /srv/active_setup/
 ```
 
 Edit the file:
@@ -93,7 +93,7 @@ nano /srv/active_setup/os-configuration.env
 The managed config templates and files are located under:
 
 ```text
-/srv/horto-os/config/
+/srv/dgi-os/config/
 ```
 
 For templated files, replace placeholders manually before copying them into `/etc`.
@@ -113,7 +113,7 @@ Typical static files:
 - `resolv.conf`
 
 > [!IMPORTANT]
-> In the IoT LAN setup, Horto-OS uses a plain `/etc/resolv.conf` with the local `dnsmasq` resolver on `127.0.0.1` and an upstream fallback resolver. Do not replace it with the `systemd-resolved` stub (`127.0.0.53`) while `dnsmasq` is serving local DNS on the host.
+> In the IoT LAN setup, DGI-OS uses a plain `/etc/resolv.conf` with the local `dnsmasq` resolver on `127.0.0.1` and an upstream fallback resolver. Do not replace it with the `systemd-resolved` stub (`127.0.0.53`) while `dnsmasq` is serving local DNS on the host.
 
 ## 5. Apply and activate the network changes manually
 
@@ -132,5 +132,5 @@ sudo systemctl restart avahi-daemon
 
 After the host-side setup is complete, continue with:
 
-- [HORTO-OS_SETUP_4_DOCKER](HORTO-OS_SETUP_4_DOCKER.MD)
-- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_(DASHBOARD).MD)
+- [DGI-OS_SETUP_4_DOCKER](DGI-OS_SETUP_4_DOCKER.MD)
+- [HOMEPAGE_(DASHBOARD)](HOMEPAGE_%28DASHBOARD%29.MD)

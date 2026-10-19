@@ -1,6 +1,6 @@
 # Homepage (Dashboard)
 
-**Summary**: Homepage is the lightweight dashboard used to access and monitor Horto-OS services.
+**Summary**: Homepage is the lightweight dashboard used to access and monitor DGI-OS services.
 
 ---
 
@@ -30,7 +30,7 @@ services:
     volumes:
       - /srv/docker/app_data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro # Optional: allows Homepage to auto-discover your other containers
-      - /srv/horto-os/_assets:/app/public/images # for serving images from /srv/horto-os/_assets to Homepage
+      - /srv/dgi-os/_assets:/app/public/images # for serving images from /srv/dgi-os/_assets to Homepage
     restart: unless-stopped
 networks: {}
 ```
@@ -52,7 +52,7 @@ http://<your-hostname-or-ip>:3021
 The source Homepage config lives in:
 
 ```text
-/srv/horto-os/docker_source/app_data/homepage/config/
+/srv/dgi-os/docker_source/app_data/homepage/config/
 ```
 
 The active copied config is written to:
@@ -64,7 +64,7 @@ The active copied config is written to:
 Initialize it with:
 
 ```bash
-sh /srv/horto-os/scripts/d1_docker_init.sh
+sh /srv/dgi-os/scripts/d1_docker_init.sh
 ```
 
 This copies the full Docker source tree and renders placeholders such as:
@@ -147,9 +147,9 @@ Cockpit is a system service, not a Docker container, so it should usually remain
 ## Remote links
 
 > [!NOTE]
-> In case you want to access your Horto-OS over the internet, you can use `services_remote.yaml` instead of `services.yaml`. Rename `services.yaml` into `services_local.yaml` and copy `services_remote.yaml` into `services.yaml`. After a container restart your Horto OS can be accessed over the internet, which introduces security risks. Be sure to secure your Cloudflare tunnel with ACL. See [Cloudflare Tunnels](Cloudflare%20Tunnels.md) for more information.
+> In case you want to access your DGI-OS over the internet, you can use `services_remote.yaml` instead of `services.yaml`. Rename `services.yaml` into `services_local.yaml` and copy `services_remote.yaml` into `services.yaml`. After a container restart your DGI-OS can be accessed over the internet, which introduces security risks. Be sure to secure your Cloudflare tunnel with ACL. See [Cloudflare Tunnels](CLOUDFLARE_TUNNELS_ZERO_TRUST_ACCESS.MD) for more information.
 
-Remote/public links can be defined separately in: 
+Remote/public links can be defined separately in:
 
 ```text
 /srv/docker/app_data/homepage/config/services_remote.yaml
@@ -179,7 +179,7 @@ Current source config:
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/settings/
 
-title: Horto OS Dashboard
+title: DGI-OS Dashboard
 
 # Needs restart to change image.
 background:
@@ -192,13 +192,13 @@ background:
 This works together with the compose mount:
 
 ```yaml
-- /srv/horto-os/_assets:/app/public/images
+- /srv/dgi-os/_assets:/app/public/images
 ```
 
 So the host file:
 
 ```text
-/srv/horto-os/_assets/frontpage_WP-BP.avif
+/srv/dgi-os/_assets/frontpage_WP-BP.avif
 ```
 
 is exposed inside Homepage as:
@@ -216,7 +216,7 @@ is exposed inside Homepage as:
 
 Check:
 
-1. the image file exists under `/srv/horto-os/_assets/`,
+1. the image file exists under `/srv/dgi-os/_assets/`,
 2. the volume mount is present in the Homepage compose file,
 3. the path in `settings.yaml` matches `/images/<filename>`,
 4. the Homepage container was restarted.
@@ -232,5 +232,5 @@ Check:
 
 ## Related topics
 
-- [HORTO-OS_SETUP_4_DOCKER](HORTO-OS_SETUP_4_DOCKER.MD)
-- [HORTO-OS_SETUP_4_DOCKER_AI](HORTO-OS_SETUP_4_DOCKER_AI.MD)
+- [DGI-OS_SETUP_4_DOCKER](DGI-OS_SETUP_4_DOCKER.MD)
+- [DGI-OS_SETUP_4_DOCKER_AI](DGI-OS_SETUP_4_DOCKER_AI.MD)

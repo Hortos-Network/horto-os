@@ -116,7 +116,7 @@ OUTPUT_DIR="/srv/docker/assets"
 mkdir -p "$OUTPUT_DIR"
 
 # Use absolute path based on the repository structure
-EXPORT_SCRIPT="/srv/horto-os/scripts/networking/export_dhcp_leases.sh"
+EXPORT_SCRIPT="/srv/dgi-os/scripts/networking/export_dhcp_leases.sh"
 
 CRON_FILE="/etc/cron.d/export_dhcp_leases"
 
