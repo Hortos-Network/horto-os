@@ -1,26 +1,26 @@
-Mi[![Discord](https://img.shields.io/badge/Discord-Horto%20OS-5865F2?logo=discord&logoColor=white)](https://discord.gg/Hbxd6vv98v)
+[![Discord](https://img.shields.io/badge/Discord-Horto%20OS-5865F2?logo=discord&logoColor=white)](https://discord.gg/Hbxd6vv98v)
 
 # DGI-OS
 
-**DGI-OS** is a decentralised, privacy-focused operating system designed for **XINTEL-DGI nodes** or **Home Hubs** (the **DGI-Box**), primarily built upon a fork of the technical substrate provided by [**Coasys**](https://coasys.org/). The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
+**DGI-OS** is a decentralised, privacy-focused operating system designed for **XINTEL-DGI nodes** or **Home Hubs** (the **DGI-Box**), primarily built upon our future NEXUS framework, which is a Energy Managment in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter node communication and data exchange. The architecture is designed to resolve the fundamental tension in networked systems between **coherence** (the ability to align and act as one) and **sovereignty** (the freedom of participants to remain independent).
 
 The underlying Operation System can be any Debian/Ubuntu or Armbian OS. The apps
-either run on the Holochain, peer to peer architecture, the DGI Nexus (Coasys
-Adam Layer), or as Docker apps.
+either run on DGI Nexus framework, or as Docker apps.
 
 Basically DGI-OS can be deployed in different "flavors", corresponding to the
 different use cases. There are three main use cases or deployment profiles:
 
+## Deployment Profiles
+
 |     | Deployment Profile | Managed Status | Description & Role |
 | --- | ------------------ | -------------- | ------------------------------------------------------------- |
-| 1st | **Core Node** *(XINTEL-DGI Server)* | Fully Managed | Industrial Mini Server anchoring the wider XINTEL-DGI network. |
-| 2nd | **Satellite Node** *(DGI Satellite)* | Fully Managed | Edge nodes deployed as satellites connected upstream to a Core Node. |
-| 3rd | **DGI-Box** *(HEMS)* | Partially Managed | Residential or SME deployment acting as an independent Home Energy Management System (HEMS). |
-
-![Sovereign_Garden](_assets/Sovereign_Garden_Nightcafe_v5_with_EV_and_power_connect_x2_control.avif)
+| 1st | **DGI-Hub Node** *(XINTEL-DGI Server)* | Fully Managed | Industrial Mini Server anchoring the wider XINTEL-DGI network. |
+| 2nd | **DGI-Sat Node** *(DGI Satellite)* | Fully Managed | Edge nodes deployed as satellites connected upstream to a Core Node. |
+| 3rd | **DGI-Home** *(HEMS)* | Partially Managed | Residential or SME deployment acting as an independent Home Energy Management System (HEMS). |
 
 > [!NOTE]
 > This project is in an early stage and only basic functionalities are present yet.
+> DGI-Hub and DGI-Sat deployments are not yet implemented.
 > Nevertheless, it can already be used to run a Homelab focused on Home Energy Management and / or Home Automation.
 
 **List of potential use cases in the current stage of development:**

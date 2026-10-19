@@ -2,13 +2,11 @@
 
 DGI-OS is a decentralised, privacy-focused operating system designed for **XINTEL-DGI nodes** or **Home Hubs** (the **DGI-Box**).
 
-Topology of the full stack: ![DGI-OS topology](../_assets/Infographic_topology_dgi-os.avif)
-
 > \[!NOTE\] This description of the project aims to inform about what we intend to develop for DGI-OS and not the current state.
 
 ## What is DGI-OS?
 
-DGI-OS is built upon a fork of the technical substrate provided by [Coasys](https://coasys.org/), aiming to resolve the fundamental tension between coherence and sovereignty in networked systems.
+**DGI-OS** is primarily built upon our future NEXUS framework, which is a Energy Managment in Rust. NEXUS is connected to the Adam Layer provided by [**Coasys**](https://coasys.org/), which allows inter node communication and data exchange. 
 
 At its core, DGI-OS runs on DebianArmbian and integrates applications through a unique architecture:
 

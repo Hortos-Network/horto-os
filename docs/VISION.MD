@@ -21,3 +21,5 @@ Xintel is building the open-source infrastructure to transition energy managemen
 **DGI-OS** is a **Linux-based operating system** designed to provide a **private and decentralised environment** for managing distributed applications. Its foundation relies on Holochain for peer-to-peer integrity and the **ADAM Layer** for integrating **artificial intelligence** and semantic web capabilities.
 
 The system supports a diverse range of functional layers, including **Unyt** for micro-payments and energy management via our future **NEXUS Framework**. Beyond its core stack, the platform facilitates **IoT management** through tools like the DGI IoT Router which will integrate with the NEXUS Framework.
+
+ **coherence** (the ability to align and act as one) vs **sovereignty**: ![DGI-OS topology](../_assets/sovereignty-coherence.avif)
